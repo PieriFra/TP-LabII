@@ -29,13 +29,34 @@ namespace TP_Lab_II
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.Correr1 = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // Correr1
+            // 
+            this.Correr1.Location = new System.Drawing.Point(192, 93);
+            this.Correr1.Name = "Correr1";
+            this.Correr1.Size = new System.Drawing.Size(75, 23);
+            this.Correr1.TabIndex = 0;
+            this.Correr1.Text = "CorrerBtn1";
+            this.Correr1.UseVisualStyleBackColor = true;
+            this.Correr1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Correr1);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button Correr1;
     }
 }
 
