@@ -29,25 +29,24 @@ namespace TP_Lab_II
         /// </summary>
         private void InitializeComponent()
         {
-            this.Correr1 = new System.Windows.Forms.Button();
+            this.CorrerBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Correr1
+            // CorrerBtn
             // 
-            this.Correr1.Location = new System.Drawing.Point(192, 93);
-            this.Correr1.Name = "Correr1";
-            this.Correr1.Size = new System.Drawing.Size(75, 23);
-            this.Correr1.TabIndex = 0;
-            this.Correr1.Text = "CorrerBtn1";
-            this.Correr1.UseVisualStyleBackColor = true;
-            this.Correr1.Click += new System.EventHandler(this.button1_Click);
+            this.CorrerBtn.Location = new System.Drawing.Point(177, 62);
+            this.CorrerBtn.Name = "CorrerBtn";
+            this.CorrerBtn.Size = new System.Drawing.Size(75, 23);
+            this.CorrerBtn.TabIndex = 0;
+            this.CorrerBtn.Text = "Correr";
+            this.CorrerBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Correr1);
+            this.ClientSize = new System.Drawing.Size(431, 174);
+            this.Controls.Add(this.CorrerBtn);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -56,7 +55,7 @@ namespace TP_Lab_II
 
         #endregion
 
-        private System.Windows.Forms.Button Correr1;
+        private System.Windows.Forms.Button CorrerBtn;
     }
 }
 
