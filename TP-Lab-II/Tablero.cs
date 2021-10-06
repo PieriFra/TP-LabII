@@ -45,7 +45,7 @@ namespace TP_Lab_II
                     {
                         int Ficha_mover = rand.Next(0, 8);
                         CalcularMovimiento(Ficha_mover, tableroOriginal);
-                        AnalizarTablero(tableroOriginal, tableroAux);
+                        AnalizarTableroAux(tableroOriginal, tableroAux);
                         mov++;
                     }
                 }
@@ -66,6 +66,7 @@ namespace TP_Lab_II
             //en caso de que ya exista la solucion retornamos null, o que mas podriamos retornar???
             return null;
         }
+
     }
 }
 
