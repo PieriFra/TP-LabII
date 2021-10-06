@@ -9,11 +9,13 @@ namespace TP_Lab_II
     class Tablero
     {
         private const int tam = 8;
-        private const int cant_fichas= 9;
+        private const int cant_fichas = 9;
+        //Agregar lista de fichas 
         protected Tablero(int tam_, int cant_fichas_) { tam_ = tam; cant_fichas_ = cant_fichas; }
-        ~Tablero() { }
+        ~Tablero() {;}
 
-
+        public int GetTam() {return tam;} //No existen los metodos constantes en c#
+        public Ficha GetFicha() { return Ficha; }//Ver esto, me tiene que devolver una ficha de la lista 
         public bool VerificarTablero(int [,]tableroAux)
         {
            //verifica que todas las posciones del tablero esten siendo atacadas

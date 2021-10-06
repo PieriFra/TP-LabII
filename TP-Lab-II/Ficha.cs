@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+ 
 namespace TP_Lab_II
 {
     class Ficha
@@ -13,18 +14,18 @@ namespace TP_Lab_II
         public int Codigo;
 
         //Metodos
-        protected Ficha() { Nombre = " "; Codigo = 0; } //Verificar que tenga fichas distintas a estos numeros
-        protected Ficha(string Nombre_, int Codigo_) { Nombre = Nombre_; Codigo = Codigo_; }
-        protected string Get_Nombre() { return Nombre; }
-        protected int Get_Codigo() { return Codigo; }
-        protected int [] CalcularPosicion(Ficha ficha, Tablero TableroOriginal) 
+        public Ficha() { Nombre = " "; Codigo = 0; } //por las dudas
+        public Ficha(string Nombre_, int Codigo_) { Nombre = Nombre_; Codigo = Codigo_; }
+        public string Get_Nombre() { return Nombre; }
+        public int Get_Codigo() { return Codigo; }
+        public int [] CalcularPosicion(Ficha ficha, Tablero TableroOriginal) 
         {
             int[] Posicion= new int [0]; //Ver si lo dejamos como vector o matriz
             for (int i=0; i<TableroOriginal.GetTam();  i++) //Ver que en la clase Tablero este el metodo TableroOriginal.GetTam()
             {
                 for (int j = 0; j< TableroOriginal.GetTam(); j++)
                 {
-                    if (TableroOriginal[i, j] = ficha)
+                    if (TableroOriginal.GetFicha() == ficha) //Ver que en la clase Tablero este el metodo GetFicha()
                     {
                         Posicion[0] = i;
                         Posicion[1] = j;
@@ -32,16 +33,16 @@ namespace TP_Lab_II
                         return  Posicion;
                 }
             }
-        ; }
-
-        protected int CalcularMovimiento(Ficha ficha, Tablero TableroOriginal)
+            return Posicion;
+            ; }
+        public int CalcularMovimiento(Ficha ficha, Tablero TableroOriginal)
         {
             int cont = 0;
             int movimiento;
             int[] Posicion;
             switch (ficha.Get_Codigo())
             {
-                case 1:
+               /* case 1:
                     Posicion = CalcularPosicion(ficha, TableroOriginal);
                     do
                     {
@@ -139,11 +140,12 @@ namespace TP_Lab_II
 
                     } while (cont != 0);
                     break;
+               */
             }
             return 0;
         } //ver que cambiamos 
 
-        ~Ficha() {; }
+        ~Ficha() {;}
     };
   
 }
