@@ -21,5 +21,10 @@ namespace TP_Lab_II
         {
 
         }
+
+        private void CorrerBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
