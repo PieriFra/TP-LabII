@@ -25,12 +25,12 @@ namespace TP_Lab_II
             {
                 for (int j = 0; j< TableroOriginal.GetTam(); j++)
                 {
-                    if (TableroOriginal.GetFicha() == ficha) //Ver que en la clase Tablero este el metodo GetFicha()
+                    if (TableroOriginal.GetPosFichaOrg(i,j) == ficha.Codigo) //Ver que en la clase Tablero este el metodo GetFicha()
                     {
                         Posicion[0] = i;
                         Posicion[1] = j;
                     }
-                        return  Posicion;
+                    return  Posicion;
                 }
             }
             return Posicion;

@@ -8,15 +8,33 @@ namespace TP_Lab_II
 {
     class Tablero
     {
-        private const int tam = 8;
+        private int tam = 8; //ver como poner const
         private List<Ficha> ListaFichas;
+        private int [,]TableroOriginal;
         private int [,]TableroAux; //debemos inicializar aca??
-        protected Tablero(int tam_, List<Ficha> ListaFichas_) { tam_ = tam; ListaFichas_ = ListaFichas; }
+        protected Tablero(int tam_, List<Ficha> ListaFichas_, int[,] TableroAux_, int [,]TableroOriginal_) {
+            tam= tam_;
+            ListaFichas = ListaFichas_;
+            TableroAux = TableroAux_; //inicializar!
+            TableroOriginal = TableroOriginal_; //incializar!
+        }
         ~Tablero() { }
 
-
+        public int[,] GetTableroOrig() { return TableroOriginal; }
+        public int GetPosFichaOrg(int k , int l)
+        {
+            //k=i, l=j
+            for (int i = 0; i < tam; i++) 
+            {
+                for (int j = 0; j < tam; j++)
+                {
+                    return TableroOriginal[i,j];
+                }
+            }
+            return 0; //no se encontro la ficha
+        }
         public int GetTam() {return tam;} //No existen los metodos constantes en c#
-        public Ficha GetFicha() { return Ficha; }//Ver esto, me tiene que devolver una ficha de la lista 
+        public Ficha GetFicha(int pos) { return ListaFichas[pos]; } //Ver esto, me tiene que devolver una ficha de la lista 
         public bool VerificarTablero(int [,]tableroAux)
         {
            //verifica que todas las posciones del tablero esten siendo atacadas
