@@ -21,11 +21,11 @@ namespace TP_Lab_II
         public int [] CalcularPosicion(Ficha ficha, Tablero TableroOriginal) 
         {
             int[] Posicion= new int [0]; //Ver si lo dejamos como vector o matriz
-            for (int i=0; i<TableroOriginal.GetTam();  i++) //Ver que en la clase Tablero este el metodo TableroOriginal.GetTam()
+            for (int i=0; i<TableroOriginal.GetTam();  i++) 
             {
                 for (int j = 0; j< TableroOriginal.GetTam(); j++)
                 {
-                    if (TableroOriginal.GetPosFichaOrg(i,j) == ficha.Codigo) //Ver que en la clase Tablero este el metodo GetFicha()
+                    if (TableroOriginal.GetPosFichaOrg(i,j) == ficha.Codigo)
                     {
                         Posicion[0] = i;
                         Posicion[1] = j;
@@ -34,116 +34,42 @@ namespace TP_Lab_II
                 }
             }
             return Posicion;
-            ; }
-        public int CalcularMovimiento(Ficha ficha, Tablero TableroOriginal)
+            }
+        public void CalcularMovimiento(Ficha ficha, Tablero TableroOriginal)
         {
             int cont = 0;
-            int movimiento;
-            int[] Posicion;
-            switch (ficha.Get_Codigo())
-            {
-               /* case 1:
-                    Posicion = CalcularPosicion(ficha, TableroOriginal);
-                    do
+            //Como para todas las fichas (menos el alfil) no me importa donde la pongo
+            if (ficha.Get_Codigo() != 3 && ficha.Get_Codigo() != 4) 
+            { 
+                for (int i = 0; i < TableroOriginal.GetTam(); i++)
+                {
+                    for (int j = 0; j < TableroOriginal.GetTam(); j++)
                     {
-                        movimiento = Random; //ver como se hace
-
-
- 
-                    } while (cont != 0);
-                    break;
-
-                case 2:
-                    Posicion = CalcularPosicion(ficha, TableroOriginal);
-                    do
-                    {
-                        movimiento = Random; //ver como se hace
-
-
-
-                    } while (cont != 0);
-                    break;
-
-                case 3:
-                    Posicion = CalcularPosicion(ficha, TableroOriginal);
-                    do
-                    {
-                        movimiento = Random; //ver como se hace
-
-
-
-                    } while (cont != 0);
-                    break;
-
-                case 4:
-                    Posicion = CalcularPosicion(ficha, TableroOriginal);
-                    do
-                    {
-                        movimiento = Random; //ver como se hace
-
-
-
-                    } while (cont != 0);
-                    break;
-
-                case 5:
-                    Posicion = CalcularPosicion(ficha, TableroOriginal);
-                    do
-                    {
-                        movimiento = Random; //ver como se hace
-
-
-
-                    } while (cont != 0);
-                    break;
-
-                case 6:
-                    Posicion = CalcularPosicion(ficha, TableroOriginal);
-                    do
-                    {
-                        movimiento = Random; //ver como se hace
-
-
-
-                    } while (cont != 0);
-                    break;
-
-                case 7:
-                    Posicion = CalcularPosicion(ficha, TableroOriginal);
-                    do
-                    {
-                        movimiento = Random; //ver como se hace
-
-
-
-                    } while (cont != 0);
-                    break;
-
-                case 8:
-                    Posicion = CalcularPosicion(ficha, TableroOriginal);
-                    do
-                    {
-                        movimiento = Random; //ver como se hace
-
-
-
-                    } while (cont != 0);
-                    break;
-
-                case 9:
-                    Posicion = CalcularPosicion(ficha, TableroOriginal);
-                    do
-                    {
-                        movimiento = Random; //ver como se hace
-
-
-
-                    } while (cont != 0);
-                    break;
-               */
+                        if (TableroOriginal.GetPosFichaOrg(i, j) != 0)
+                        {
+                            TableroOriginal.SetPosFichaOrg(ficha);
+                            cont++;
+                        }
+                    }
+                }
             }
-            return 0;
-        } //ver que cambiamos 
+            else
+            {
+                for (int i = 0; i < TableroOriginal.GetTam(); i++)
+                {
+                    for (int j = 0; j < TableroOriginal.GetTam(); j++)
+                    {
+                        if (TableroOriginal.GetPosFichaOrg(i, j) != 0)
+                        {
+                            //VER SI CUMPLE CON LAS CONDUCIONES DEL ALFIL 
+                            TableroOriginal.SetPosFichaOrg(ficha);
+                            cont++;
+                        }
+                    }
+                }
+            }
+            
+        } 
 
         ~Ficha() {;}
     };

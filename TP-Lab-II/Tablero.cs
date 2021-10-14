@@ -9,17 +9,34 @@ namespace TP_Lab_II
     class Tablero
     {
         private int tam = 8; //ver como poner const
-        private List<Ficha> ListaFichas;
+        private List<Ficha> ListaFichas = new List<Ficha>(9);
         private int [,]TableroOriginal;
         private int [,]TableroAux; //debemos inicializar aca??
-        protected Tablero(int tam_, List<Ficha> ListaFichas_, int[,] TableroAux_, int [,]TableroOriginal_) {
+        protected Tablero(int tam_, List<Ficha> ListaFichas_, int [,]TableroOriginal_) 
+        {
             tam= tam_;
             ListaFichas = ListaFichas_;
-            TableroAux = TableroAux_; //inicializar!
-            TableroOriginal = TableroOriginal_; //incializar!
+            for (int i = 0; i < tam; i++)
+            {
+                for (int j = 0; j < tam; j++)
+                {
+                    TableroAux[i,j] = 0;
+                    TableroOriginal[i, j] = TableroOriginal_[i, j];//pasa los valores desde el main 
+                }
+            }
+            
         }
-        ~Tablero() { }
-
+        ~Tablero() { delete ListaFichas; }
+        public void SetPosFichaOrg(Ficha ficha)
+        {  
+            for (int i = 0; i < tam; i++)
+            {
+                for (int j = 0; j < tam; j++)
+                {
+                   TableroOriginal[i, j]= ficha.Get_Codigo();
+                }
+            }
+        }
         public int[,] GetTableroOrig() { return TableroOriginal; }
         public int GetPosFichaOrg(int k , int l)
         {
