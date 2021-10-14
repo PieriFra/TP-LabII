@@ -62,6 +62,7 @@ namespace TP_Lab_II
                 }
                 else
                 {
+                    
                     for (int i = 0; i < TableroOriginal.GetTam(); i++)
                     {
                         for (int j = 0; j < TableroOriginal.GetTam(); j++)
@@ -69,6 +70,7 @@ namespace TP_Lab_II
                             if (TableroOriginal.GetPosFichaOrg(i, j) != 0)
                             {
                                 //VER SI CUMPLE CON LAS CONDUCIONES DEL ALFIL 
+
                                 TableroOriginal.SetPosFichaOrg(ficha);
                                 cont++;
                             }
