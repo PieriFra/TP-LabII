@@ -52,6 +52,7 @@ namespace TP_Lab_II
         }
         public int GetTam() {return tam;} //No existen los metodos constantes en c#
         public Ficha GetFicha(int pos) { return ListaFichas[pos]; } //Ver esto, me tiene que devolver una ficha de la lista 
+
         public bool VerificarTablero(int [,]tableroAux)
         {
            //verifica que todas las posciones del tablero esten siendo atacadas
@@ -74,14 +75,19 @@ namespace TP_Lab_II
         {
             var rand = new Random(); //verrrrr
             int mov = 0; //contador de movimientos.
+            
             do
             {
                 if (mov > 8)
                 {
                     for (int i = 0; i < 8; i++)
                     {
-                        int Ficha_mover = rand.Next(0, 8);
-                        CalcularMovimiento(Ficha_mover, tableroOriginal);
+                        //Ficha_mover.SetCodigo(rand.Next(9));
+                        //Ficha_mover.CalcularMovimiento(Ficha_mover.Get_Codigo(), tableroOriginal);
+
+                        int codigo = rand.Next(9);
+                        Ficha ficha_mover;
+                        ficha_mover.CalcularMovimiento(ListaFichas.Find(ficha_mover.SetCodigo(codigo)), tableroOriginal);
                         AnalizarTableroAux(tableroOriginal, tableroAux);
                         mov++;
                     }
