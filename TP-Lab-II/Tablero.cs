@@ -12,6 +12,7 @@ namespace TP_Lab_II
         private List<Ficha> ListaFichas = new List<Ficha>(9);
         private int [,]TableroOriginal;
         private int [,]TableroAux; //debemos inicializar aca??
+        
         protected Tablero(int tam_, List<Ficha> ListaFichas_, int [,]TableroOriginal_) 
         {
             tam= tam_;
@@ -24,7 +25,7 @@ namespace TP_Lab_II
                     TableroOriginal[i, j] = TableroOriginal_[i, j];//pasa los valores desde el main 
                 }
             }
-            
+        
         }
         ~Tablero() { delete ListaFichas; }
         public void SetPosFichaOrg(Ficha ficha)

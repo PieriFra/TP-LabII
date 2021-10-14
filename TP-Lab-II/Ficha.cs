@@ -18,6 +18,7 @@ namespace TP_Lab_II
         public Ficha(string Nombre_, int Codigo_) { Nombre = Nombre_; Codigo = Codigo_; }
         public string Get_Nombre() { return Nombre; }
         public int Get_Codigo() { return Codigo; }
+        public void SetCodigo(int codigo) { Codigo=codigo; }
         public int [] CalcularPosicion(Ficha ficha, Tablero TableroOriginal) 
         {
             int[] Posicion= new int [0]; //Ver si lo dejamos como vector o matriz
@@ -35,40 +36,47 @@ namespace TP_Lab_II
             }
             return Posicion;
             }
+
+
+        //Realiza el movimiento que le indicamos
         public void CalcularMovimiento(Ficha ficha, Tablero TableroOriginal)
+        
         {
             int cont = 0;
-            //Como para todas las fichas (menos el alfil) no me importa donde la pongo
-            if (ficha.Get_Codigo() != 3 && ficha.Get_Codigo() != 4) 
-            { 
-                for (int i = 0; i < TableroOriginal.GetTam(); i++)
-                {
-                    for (int j = 0; j < TableroOriginal.GetTam(); j++)
-                    {
-                        if (TableroOriginal.GetPosFichaOrg(i, j) != 0)
-                        {
-                            TableroOriginal.SetPosFichaOrg(ficha);
-                            cont++;
-                        }
-                    }
-                }
-            }
-            else
+            do
             {
-                for (int i = 0; i < TableroOriginal.GetTam(); i++)
+                //Para todas las fichas (menos el alfil) no me importa donde la pongo
+                if (ficha.Get_Codigo() != 3 && ficha.Get_Codigo() != 4)
                 {
-                    for (int j = 0; j < TableroOriginal.GetTam(); j++)
+                    for (int i = 0; i < TableroOriginal.GetTam(); i++)
                     {
-                        if (TableroOriginal.GetPosFichaOrg(i, j) != 0)
+                        for (int j = 0; j < TableroOriginal.GetTam(); j++)
                         {
-                            //VER SI CUMPLE CON LAS CONDUCIONES DEL ALFIL 
-                            TableroOriginal.SetPosFichaOrg(ficha);
-                            cont++;
+                            if (TableroOriginal.GetPosFichaOrg(i, j) != 0)
+                            {
+                                TableroOriginal.SetPosFichaOrg(ficha);
+                                cont++;
+                            }
                         }
                     }
                 }
-            }
-            
+                else
+                {
+                    for (int i = 0; i < TableroOriginal.GetTam(); i++)
+                    {
+                        for (int j = 0; j < TableroOriginal.GetTam(); j++)
+                        {
+                            if (TableroOriginal.GetPosFichaOrg(i, j) != 0)
+                            {
+                                //VER SI CUMPLE CON LAS CONDUCIONES DEL ALFIL 
+                                TableroOriginal.SetPosFichaOrg(ficha);
+                                cont++;
+                            }
+                        }
+                    }
+                }
+            } while (cont > 10);
+
         } 
 
         ~Ficha() {;}
