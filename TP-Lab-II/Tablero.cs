@@ -39,19 +39,19 @@ namespace TP_Lab_II
             }
         }
         public int[,] GetTableroOrig() { return TableroOriginal; }
-        public int GetPosFichaOrg(int k , int l)
+        public int GetPosFichaOrg(int k , int l) //devuelve el codigo de la ficha
         {
             //k=i, l=j
             for (int i = 0; i < tam; i++) 
             {
                 for (int j = 0; j < tam; j++)
                 {
-                    return TableroOriginal[i,j];
+                    return TableroOriginal[i,j]; 
                 }
             }
             return 0; //no se encontro la ficha
         }
-        public int GetTam() {return tam;} //No existen los metodos constantes en c#
+        public int GetTam() {return tam;} 
         public Ficha GetFicha(int pos) { return ListaFichas[pos]; } //Ver esto, me tiene que devolver una ficha de la lista 
 
         public bool VerificarTablero(int [,]tableroAux)
@@ -76,7 +76,6 @@ namespace TP_Lab_II
         {
             var rand = new Random(); //verrrrr
             int mov = 0; //contador de movimientos.
-            
             do
             {
                 if (mov > 8)
