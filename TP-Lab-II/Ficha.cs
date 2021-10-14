@@ -62,19 +62,28 @@ namespace TP_Lab_II
                 }
                 else
                 {
-                    
+                    var rand = new Random();
+                    int movimiento = rand.Next(4);
+                        /*Si Movimiento=1
+Si i<n && j<n && tableroOriginal[i+2,j+2]=0 
+                  tableroOriginal[i+2, j+2]=3
+Cont_movimiento++
+                  tableroOriginal[i, j]=0
+                  Fin si
+           	Fin si*/
                     for (int i = 0; i < TableroOriginal.GetTam(); i++)
                     {
                         for (int j = 0; j < TableroOriginal.GetTam(); j++)
                         {
-                            if (TableroOriginal.GetPosFichaOrg(i, j) != 0)
+                            if (movimiento == 0)
                             {
-                                //VER SI CUMPLE CON LAS CONDUCIONES DEL ALFIL 
-
-                                TableroOriginal.SetPosFichaOrg(ficha);
-                                cont++;
+                                if (i < TableroOriginal.GetTam() && j < TableroOriginal.GetTam() && TableroOriginal.GetPosFichaOrg(i + 2, j + 2) == 0)
+                                {
+                                    Ficha aux=new Ficha();
+                                    TableroOriginal.SetPosFichaOrg(i + 2, j + 2);
                             }
                         }
+                        
                     }
                 }
             } while (cont > 10);

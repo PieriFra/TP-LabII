@@ -28,7 +28,7 @@ namespace TP_Lab_II
         
         }
         ~Tablero() { delete ListaFichas; }
-        public void SetPosFichaOrg(Ficha ficha)
+        public void SetPosFichaOrg(Ficha ficha)//verrr
         {  
             for (int i = 0; i < tam; i++)
             {
