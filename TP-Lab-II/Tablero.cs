@@ -53,6 +53,17 @@ namespace TP_Lab_II
         }
         public int GetTam() {return tam;} 
         public Ficha GetFicha(int pos) { return ListaFichas[pos]; } //Ver esto, me tiene que devolver una ficha de la lista 
+        public Ficha GetFichaCod(int codigo)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                if (ListaFichas[i].Codigo == codigo)
+                    return ListaFichas[i];
+            }
+
+            return null; //si no se encuentra retornamos null
+            
+        }
 
         public bool VerificarTablero(int [,]tableroAux)
         {
@@ -86,8 +97,10 @@ namespace TP_Lab_II
                         //Ficha_mover.CalcularMovimiento(Ficha_mover.Get_Codigo(), tableroOriginal);
 
                         int codigo = rand.Next(9);
-                        Ficha ficha_mover;
-                        ficha_mover.CalcularMovimiento(ListaFichas.Find(ficha_mover.SetCodigo(codigo)), tableroOriginal);
+                        Ficha ficha_mover=new Ficha();
+                        ficha_mover.SetCodigo(codigo);
+                        Ficha ficha_mover2 = ListaFichas.Find(ficha_mover);
+                        ficha_mover.CalcularMovimiento(ListaFichas.Find(ficha_mover), tableroOriginal);
                         AnalizarTableroAux(tableroOriginal, tableroAux);
                         mov++;
                     }
