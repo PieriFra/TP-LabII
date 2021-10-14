@@ -93,21 +93,21 @@ namespace TP_Lab_II
                 {
                     for (int i = 0; i < 8; i++)
                     {
+
                         //Ficha_mover.SetCodigo(rand.Next(9));
                         //Ficha_mover.CalcularMovimiento(Ficha_mover.Get_Codigo(), tableroOriginal);
 
                         int codigo = rand.Next(9);
-                        Ficha ficha_mover=new Ficha();
-                        ficha_mover.SetCodigo(codigo);
-                        Ficha ficha_mover2 = ListaFichas.Find(ficha_mover);
-                        ficha_mover.CalcularMovimiento(ListaFichas.Find(ficha_mover), tableroOriginal);
+                        Ficha ficha_mover = tableroOriginal.GetFichaCod(codigo);
+                        ficha_mover.CalcularMovimiento(ficha_mover, tableroOriginal);
                         AnalizarTableroAux(tableroOriginal, tableroAux);
                         mov++;
                     }
                 }
 
                 //si en 5 movimientos no encontramos una solución juntamos un caballo y una torre y movemos siempre esa ficha
-                CalcularMovimientos(9, tableroOriginal); //realizamos un movimiento
+                Ficha FichaMagica = tableroOriginal.GetFicha(9);
+                FichaMagica.CalcularMovimiento(FichaMagica, tableroOriginal); //realizamos un movimiento
                 AnalizarTableroAux(tableroOriginal, tableroAux);
 
             } while (VerificarTablero(tableroAux) == false);
