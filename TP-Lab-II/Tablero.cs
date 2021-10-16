@@ -12,13 +12,15 @@ namespace TP_Lab_II
         private int tam;
         public List<Ficha> ListaFichas;
         private int [,]TableroOriginal;
-        private int [,]TableroAux; 
-        
+        private int [,]TableroAux;
+
         //Metodos
-        public Tablero(List<Ficha> ListaFichas_) 
+        public Tablero(List<Ficha> ListaFichas_)
         {
-            tam= 8;
+            tam = 8;
             ListaFichas = ListaFichas_;
+            int[,] TableroAux = new int [tam, tam];
+            int[,] TableroOriginal = new int[tam, tam];
             for (int i = 0; i < tam; i++)
             {
                 for (int j = 0; j < tam; j++)
