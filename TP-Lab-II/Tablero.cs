@@ -9,13 +9,13 @@ namespace TP_Lab_II
     class Tablero
     {
         //Atributos
-        private int tam; 
-        private List<Ficha> ListaFichas = new List<Ficha>(9);
+        private int tam;
+        public List<Ficha> ListaFichas;
         private int [,]TableroOriginal;
         private int [,]TableroAux; 
         
         //Metodos
-        protected Tablero(List<Ficha> ListaFichas_, int [,]TableroOriginal_) 
+        public Tablero(List<Ficha> ListaFichas_) 
         {
             tam= 8;
             ListaFichas = ListaFichas_;
@@ -24,7 +24,7 @@ namespace TP_Lab_II
                 for (int j = 0; j < tam; j++)
                 {
                     TableroAux[i,j] = 0;
-                    TableroOriginal[i, j] = TableroOriginal_[i, j];//pasa los valores desde el main 
+                    TableroOriginal[i, j] = 0;
                 }
             }
         }
@@ -343,6 +343,50 @@ namespace TP_Lab_II
                 
             }
         }
+
+
+        public void CargarTablero(Tablero TableroOrg)
+        {
+            var rand = new Random();
+            int opcion = rand.Next(3);
+
+            switch(opcion)
+            {
+                case 1:
+                    TableroOrg.TableroOriginal[0, 0] = 7;
+                    TableroOrg.TableroOriginal[0, 1] = 5;
+                    TableroOrg.TableroOriginal[0, 2] = 3;
+                    TableroOrg.TableroOriginal[0, 3] = 1;
+                    TableroOrg.TableroOriginal[0, 4] = 2;
+                    TableroOrg.TableroOriginal[0, 5] = 4;
+                    TableroOrg.TableroOriginal[0, 6] = 6;
+                    TableroOrg.TableroOriginal[0, 7] = 8;
+
+                    break;
+                case 2:
+                    TableroOrg.TableroOriginal[3, 0] = 7;
+                    TableroOrg.TableroOriginal[3, 1] = 5;
+                    TableroOrg.TableroOriginal[3, 2] = 3;
+                    TableroOrg.TableroOriginal[3, 3] = 1;
+                    TableroOrg.TableroOriginal[3, 4] = 2;
+                    TableroOrg.TableroOriginal[3, 5] = 4;
+                    TableroOrg.TableroOriginal[3, 6] = 6;
+                    TableroOrg.TableroOriginal[3, 7] = 8;
+                    break;
+                case 3:
+                    TableroOrg.TableroOriginal[7, 0] = 7;
+                    TableroOrg.TableroOriginal[7, 1] = 5;
+                    TableroOrg.TableroOriginal[7, 2] = 3;
+                    TableroOrg.TableroOriginal[7, 3] = 1;
+                    TableroOrg.TableroOriginal[7, 4] = 2;
+                    TableroOrg.TableroOriginal[7, 5] = 4;
+                    TableroOrg.TableroOriginal[7, 6] = 6;
+                    TableroOrg.TableroOriginal[7, 7] = 8;
+                    break;
+            }
+
+        }
+
         ~Tablero() {;}
     }
 }
