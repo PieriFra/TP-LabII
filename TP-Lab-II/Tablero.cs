@@ -25,7 +25,7 @@ namespace TP_Lab_II
             {
                 for (int j = 0; j < tam; j++)
                 {
-                    TableroAux[i,j] = 0;
+                    TableroAux[i, j] = 0;
                     TableroOriginal[i, j] = 0;
                 }
             }
@@ -354,7 +354,7 @@ namespace TP_Lab_II
 
             switch(opcion)
             {
-                case 1:
+                case 0:
                     TableroOrg.TableroOriginal[0, 0] = 7;
                     TableroOrg.TableroOriginal[0, 1] = 5;
                     TableroOrg.TableroOriginal[0, 2] = 3;
@@ -365,7 +365,7 @@ namespace TP_Lab_II
                     TableroOrg.TableroOriginal[0, 7] = 8;
 
                     break;
-                case 2:
+                case 1:
                     TableroOrg.TableroOriginal[3, 0] = 7;
                     TableroOrg.TableroOriginal[3, 1] = 5;
                     TableroOrg.TableroOriginal[3, 2] = 3;
@@ -375,7 +375,7 @@ namespace TP_Lab_II
                     TableroOrg.TableroOriginal[3, 6] = 6;
                     TableroOrg.TableroOriginal[3, 7] = 8;
                     break;
-                case 3:
+                case 2:
                     TableroOrg.TableroOriginal[7, 0] = 7;
                     TableroOrg.TableroOriginal[7, 1] = 5;
                     TableroOrg.TableroOriginal[7, 2] = 3;

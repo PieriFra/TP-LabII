@@ -48,18 +48,21 @@ namespace TP_Lab_II
 
             int n_tableros = 10; //como podriamos declarala como varibale global???
             List<Tablero> ListaResultados = new List<Tablero>(n_tableros);
-            
+
+           
             int cant_tableros = 0;
             do
             {
+
                 Tablero TableroOrg = new Tablero(ListaFichas);
+                
                 TableroOrg.CargarTablero(TableroOrg);
 
                 Tablero Aux = new Tablero(ListaFichas);
                 Aux = TableroOrg.CalculoSolucion(TableroOrg, ListaResultados, n_tableros);
                 if (Aux != null)
                 {
-                    ListaResultados[cant_tableros]=Aux;
+                    ListaResultados.Add(Aux);
                         cant_tableros++;
                 }
 
