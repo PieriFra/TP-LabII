@@ -8,14 +8,16 @@ namespace TP_Lab_II
 {
     class Tablero
     {
-        private int tam = 8; //ver como poner const
+        //Atributos
+        private int tam; 
         private List<Ficha> ListaFichas = new List<Ficha>(9);
         private int [,]TableroOriginal;
-        private int [,]TableroAux; //debemos inicializar aca??
+        private int [,]TableroAux; 
         
-        protected Tablero(int tam_, List<Ficha> ListaFichas_, int [,]TableroOriginal_) 
+        //Metodos
+        protected Tablero(List<Ficha> ListaFichas_, int [,]TableroOriginal_) 
         {
-            tam= tam_;
+            tam= 8;
             ListaFichas = ListaFichas_;
             for (int i = 0; i < tam; i++)
             {
@@ -25,49 +27,41 @@ namespace TP_Lab_II
                     TableroOriginal[i, j] = TableroOriginal_[i, j];//pasa los valores desde el main 
                 }
             }
-        
         }
-        ~Tablero() { delete ListaFichas; }
-        public void SetPosFichaOrg(Ficha ficha)//verrr
-        {  
-            for (int i = 0; i < tam; i++)
-            {
-                for (int j = 0; j < tam; j++)
-                {
-                   TableroOriginal[i, j]= ficha.Get_Codigo();
-                }
-            }
-        }
-        public int[,] GetTableroOrig() { return TableroOriginal; }
-        public int GetPosFichaOrg(int k , int l) //devuelve el codigo de la ficha
+        public void Set_CodigoFichaOrg(int I, int J, Ficha ficha)//Cambia el codigo en la posicion que le paso
         {
-            //k=i, l=j
+            TableroOriginal[I, J] = ficha.Get_Codigo(); 
+        }
+        public int[,] GetTableroOrig() { return TableroOriginal; } //devuelve el tableroOriginal completo
+        public int Get_CodigoFichaOrg(int k , int l) //devuelve el codigo de la ficha
+        {
             for (int i = 0; i < tam; i++) 
             {
                 for (int j = 0; j < tam; j++)
                 {
-                    return TableroOriginal[i,j]; 
+                    return TableroOriginal[k,l]; 
                 }
             }
-            return 0; //no se encontro la ficha
+            return 0; 
         }
-        public int GetTam() {return tam;} 
-        public Ficha GetFicha(int pos) { return ListaFichas[pos]; } //Ver esto, me tiene que devolver una ficha de la lista 
-        public Ficha GetFichaCod(int codigo)
+        public int GetTam() {return tam;} //devuelve el tamanio 
+        public Ficha Get_FichaPosicion(int i, int j) //devuelve una ficha de la lista de la posicion que le paso
+        {
+            int codigo=TableroOriginal[i, j];
+            return ListaFichas[codigo]; 
+        } 
+        public Ficha Get_FichaCodigo(int codigo) //Devuelve la ficha por el codigo que le paso
         {
             for (int i = 0; i < 9; i++)
             {
                 if (ListaFichas[i].Codigo == codigo)
                     return ListaFichas[i];
             }
+            return null; 
+        } 
 
-            return null; //si no se encuentra retornamos null
-            
-        }
-
-        public bool VerificarTablero(int [,]tableroAux)
+        public bool VerificarTablero(int [,]tableroAux) //verifica que todas las posciones del tablero esten siendo atacadas
         {
-           //verifica que todas las posciones del tablero esten siendo atacadas
             for (int i=0; i< tam; i++)
             {
                 for(int j=0; j<tam;j++)
@@ -77,28 +71,26 @@ namespace TP_Lab_II
                         return false;
                 }
             }
-
-            //si recorre todo el tablero y no encuentra ninguna posicion libre, efectivamente todas las posciones
-           //estan siendo atacadas y retorna true
+            /*si recorre todo el tablero y no encuentra ninguna posicion libre, efectivamente todas las posciones
+           estan siendo atacadas y retorna true*/
             return true; 
         }
 
-        public Tablero CalculoSolucion(Tablero tableroOriginal, List<Tablero> ListaResultados, int n_tableros)
+        public Tablero CalculoSolucion(Tablero tableroOriginal, List<Tablero> ListaResultados, int n_tableros) //devuelve el tablero resultado
         {
             var rand = new Random(); //verrrrr
-            int mov = 0; //contador de movimientos.
+            int mov = 0;
             do
             {
-                if (mov > 8)
+                if (mov < 8)
                 {
                     for (int i = 0; i < 8; i++)
                     {
-
                         //Ficha_mover.SetCodigo(rand.Next(9));
                         //Ficha_mover.CalcularMovimiento(Ficha_mover.Get_Codigo(), tableroOriginal);
 
-                        int codigo = rand.Next(9);
-                        Ficha ficha_mover = tableroOriginal.GetFichaCod(codigo);
+                        int codigo = rand.Next(8);
+                        Ficha ficha_mover = tableroOriginal.Get_FichaCodigo(codigo);
                         ficha_mover.CalcularMovimiento(ficha_mover, tableroOriginal);
                         AnalizarTableroAux(tableroOriginal);
                         mov++;
@@ -106,11 +98,11 @@ namespace TP_Lab_II
                 }
 
                 //si en 5 movimientos no encontramos una solución juntamos un caballo y una torre y movemos siempre esa ficha
-                Ficha FichaMagica = tableroOriginal.GetFicha(9);
+                Ficha FichaMagica = tableroOriginal.Get_FichaCodigo(9);
                 FichaMagica.CalcularMovimiento(FichaMagica, tableroOriginal); //realizamos un movimiento
                 AnalizarTableroAux(tableroOriginal);
 
-            } while (VerificarTablero(tableroOriginal.TableroAux) == false);
+            } while (VerificarTablero(tableroOriginal.TableroAux) == false); 
 
             //verificamos que la solucion no se repita
             for(int i=0; i < n_tableros; i++)
@@ -118,12 +110,10 @@ namespace TP_Lab_II
                 if (ListaResultados[i] != tableroOriginal)
                     return tableroOriginal; //si no existía retornamos la nueva solución 
             }
-
-            //en caso de que ya exista la solucion retornamos null, o que mas podriamos retornar???
             return null;
         }
 
-        public int[,] AnalizarTableroAux(Tablero tableroOriginal)
+        public void AnalizarTableroAux(Tablero tableroOriginal) //LLena los casilleros que pueden ser atacados
         {
             int[] pos1 = new int[0];
             int[] pos2 = new int[0];
@@ -137,7 +127,7 @@ namespace TP_Lab_II
 
             Ficha ficha = new Ficha();
             //reina 
-            ficha = tableroOriginal.GetFichaCod(1); //obtenemos la ficha que queremos 
+            ficha = tableroOriginal.Get_FichaCodigo(1); //obtenemos la ficha que queremos 
             pos1 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la ficha
             for (int i = pos1[0]; i < tam; i++) //i++ j++
             {
@@ -183,7 +173,7 @@ namespace TP_Lab_II
             }
 
             //rey 
-            ficha = tableroOriginal.GetFichaCod(2); //obtenemos la ficha que queremos 
+            ficha = tableroOriginal.Get_FichaCodigo(2); //obtenemos la ficha que queremos 
             pos2 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la ficha
 
             if (pos2[0] + 1 < tam) { tableroOriginal.TableroAux[pos2[0] + 1, pos2[1]] = 2; }
@@ -196,7 +186,7 @@ namespace TP_Lab_II
             if (pos2[1] - 1 < tam && pos2[0] - 1 < tam) { tableroOriginal.TableroAux[pos2[0] - 1, pos2[1] - 1] = 2; }
 
             //Alfil A
-            ficha = tableroOriginal.GetFichaCod(3); //obtenemos la ficha que queremos 
+            ficha = tableroOriginal.Get_FichaCodigo(3); //obtenemos la ficha que queremos 
             pos3 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
             for (int i = pos3[0]; i < tam; i++) //i++ j++
             {
@@ -228,7 +218,7 @@ namespace TP_Lab_II
             }
 
             //Alfil B
-            ficha = tableroOriginal.GetFichaCod(4); //obtenemos la ficha que queremos 
+            ficha = tableroOriginal.Get_FichaCodigo(4); //obtenemos la ficha que queremos 
             pos4 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
             for (int i = pos4[0]; i < tam; i++) //i++ j++
             {
@@ -260,7 +250,7 @@ namespace TP_Lab_II
             }
 
             //Caballo A
-            ficha = tableroOriginal.GetFichaCod(5); //obtenemos la ficha que queremos 
+            ficha = tableroOriginal.Get_FichaCodigo(5); //obtenemos la ficha que queremos 
             pos5 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
             if (pos5[0] + 2 < tam && pos5[1] + 1 < tam) { tableroOriginal.TableroAux[pos5[0] + 2, pos5[1] + 1] = 5; }
             if (pos5[0] + 2 < tam && pos5[1] - 1 < tam) { tableroOriginal.TableroAux[pos5[0] + 2, pos5[1] - 1] = 5; }
@@ -272,7 +262,7 @@ namespace TP_Lab_II
             if (pos5[0] - 1 < tam && pos5[1] + 2 < tam) { tableroOriginal.TableroAux[pos5[0] - 1, pos5[1] + 2] = 5; }
 
             //Caballo B
-            ficha = tableroOriginal.GetFichaCod(6); //obtenemos la ficha que queremos 
+            ficha = tableroOriginal.Get_FichaCodigo(6); //obtenemos la ficha que queremos 
             pos6 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
             if (pos6[0] + 2 < tam && pos6[1] + 1 < tam) { tableroOriginal.TableroAux[pos6[0] + 2, pos6[1] + 1] = 6; }
             if (pos6[0] + 2 < tam && pos6[1] - 1 < tam) { tableroOriginal.TableroAux[pos6[0] + 2, pos6[1] - 1] = 6; }
@@ -284,7 +274,7 @@ namespace TP_Lab_II
             if (pos6[0] - 1 < tam && pos6[1] + 2 < tam) { tableroOriginal.TableroAux[pos6[0] - 1, pos6[1] + 2] = 6; }
 
             //Torre A
-            ficha = tableroOriginal.GetFichaCod(7); //obtenemos la ficha que queremos 
+            ficha = tableroOriginal.Get_FichaCodigo(7); //obtenemos la ficha que queremos 
             pos7 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
             for (int i = pos7[0]; i < tam; i++)
             {     //i++
@@ -304,7 +294,7 @@ namespace TP_Lab_II
             }
 
             //Torre B
-            ficha = tableroOriginal.GetFichaCod(8); //obtenemos la ficha que queremos 
+            ficha = tableroOriginal.Get_FichaCodigo(8); //obtenemos la ficha que queremos 
             pos8 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
             for (int i = pos8[0]; i < tam; i++)
             {     //i++
@@ -324,7 +314,7 @@ namespace TP_Lab_II
             }
 
             //TorreCaballo
-            ficha = tableroOriginal.GetFichaCod(9); //obtenemos la ficha que queremos 
+            ficha = tableroOriginal.Get_FichaCodigo(9); //obtenemos la ficha que queremos 
             pos9 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
             for (int i = pos9[0]; i < tam; i++)
             {     //i++
@@ -350,9 +340,10 @@ namespace TP_Lab_II
                 if (pos9[0] - 1 < tam && pos9[1] - 2 < tam) { tableroOriginal.TableroAux[pos9[0] - 1, pos9[1] - 2] = 9; }
                 if (pos9[0] - 1 < tam && pos9[1] + 2 < tam) { tableroOriginal.TableroAux[pos9[0] - 1, pos9[1] + 2] = 9; }
 
-                return tableroOriginal.TableroAux;
+                
             }
         }
+        ~Tablero() {;}
     }
 }
 
