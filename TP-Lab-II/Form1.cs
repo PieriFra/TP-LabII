@@ -54,9 +54,21 @@ namespace TP_Lab_II
             {
                 Tablero TableroOrg = new Tablero(ListaFichas);
                 TableroOrg.CargarTablero(TableroOrg);
-                ListaResultados[cant_tableros] = TableroOrg.CalculoSolucion(TableroOrg, ListaResultados, n_tableros);
+
+                Tablero Aux = new Tablero(ListaFichas);
+                Aux = TableroOrg.CalculoSolucion(TableroOrg, ListaResultados, n_tableros);
+                if (Aux != null)
+                {
+                    ListaResultados[cant_tableros]=Aux;
+                        cant_tableros++;
+                }
 
             } while (cant_tableros == n_tableros);
+
+            for(int i=0; i<n_tableros; i++)
+            {
+                Console.WriteLine(ListaResultados[i]);
+            }
         }
 
        
