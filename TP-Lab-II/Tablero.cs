@@ -19,8 +19,8 @@ namespace TP_Lab_II
         {
             tam = 8;
             ListaFichas = ListaFichas_;
-            int[,] TableroAux = new int [tam, tam];
-            int[,] TableroOriginal = new int[tam, tam];
+            TableroAux = new int [tam, tam];
+            TableroOriginal = new int[tam, tam];
             for (int i = 0; i < tam; i++)
             {
                 for (int j = 0; j < tam; j++)
