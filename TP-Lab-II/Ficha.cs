@@ -24,7 +24,7 @@ namespace TP_Lab_II
         //Devuelve la posición (i,j) de la ficha 
         public int [] CalcularPosicion(Ficha ficha, Tablero TableroOriginal) 
         {
-            int[] Posicion= new int [0]; //ver que numero va en el [1]
+            int[] Posicion=new int [2]; //ver que numero va en el [1]
             for (int i=0; i<TableroOriginal.GetTam();  i++) 
             {
                 for (int j = 0; j< TableroOriginal.GetTam(); j++)
@@ -33,8 +33,10 @@ namespace TP_Lab_II
                     {
                         Posicion[0] = i;
                         Posicion[1] = j;
+
+                        return Posicion;
                     }
-                    return  Posicion;
+                    
                 }
             }
             return Posicion;
@@ -44,6 +46,10 @@ namespace TP_Lab_II
         public void CalcularMovimiento(Ficha ficha, Tablero TableroOriginal)
         {
             int cont = 0;
+            Ficha ficha_aux = new Ficha(" ", 0);
+            int[] pos_org = CalcularPosicion(ficha, TableroOriginal);
+
+
             //Para todas las fichas (menos el alfil) no me importa donde la pongo
             if (ficha.Get_Codigo() != 3 && ficha.Get_Codigo() != 4)
             {
@@ -51,11 +57,13 @@ namespace TP_Lab_II
                 {
                     for (int j = 0; j < TableroOriginal.GetTam(); j++)
                     {
-                        if (TableroOriginal.Get_CodigoFichaOrg(i, j) == 0)
+                        if (TableroOriginal.Get_CodigoFichaOrg(i, j) == 0 && cont == 0)
                         {
                             TableroOriginal.Set_CodigoFichaOrg(i, j, ficha);
+                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux);
                             cont++;
                         }
+
                     }
                 }
             }
@@ -65,45 +73,41 @@ namespace TP_Lab_II
                 {
                     for (int j = 0; j < TableroOriginal.GetTam(); j++)
                     {
-                        if (i < TableroOriginal.GetTam() && j < TableroOriginal.GetTam() && TableroOriginal.Get_CodigoFichaOrg(i + 2, j + 2) == 0)
+                        if (i < TableroOriginal.GetTam() && j < TableroOriginal.GetTam() && TableroOriginal.Get_CodigoFichaOrg(i + 2, j + 2) == 0 && cont==0)
                         {
-                            Ficha aux = new Ficha("Alfil", 3);
-                            TableroOriginal.Set_CodigoFichaOrg(i + 2, j + 2, aux);
+                            TableroOriginal.Set_CodigoFichaOrg(i + 2, j + 2, ficha);
+                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux);
                             cont++;
                         }
-                        if (i > 0 && j > 0 && TableroOriginal.Get_CodigoFichaOrg(i - 1, j - 1) == 0)
+                        if (i > 0 && j > 0 && TableroOriginal.Get_CodigoFichaOrg(i - 1, j - 1) == 0 && cont==0)
                         {
-                            Ficha aux = new Ficha("Alfil", 4);
-                            TableroOriginal.Set_CodigoFichaOrg(i - 1, j - 1, aux);
+                            TableroOriginal.Set_CodigoFichaOrg(i - 1, j - 1, ficha);
+                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux);
                             cont++;
                         }
                     }
-
                 }
             }
+
             //MUEVO SOLO LA FICHA COMBINADA 
             cont = 0;
-            for (int i = 0; i < TableroOriginal.GetTam(); i++)
+            if (ficha.Get_Codigo() == 9)
             {
-                for (int j = 0; j < TableroOriginal.GetTam(); j++)
+                for (int i = 0; i < TableroOriginal.GetTam(); i++)
                 {
-                    if (TableroOriginal.Get_CodigoFichaOrg(i, j) == 6 || TableroOriginal.Get_CodigoFichaOrg(i, j) == 7)
+                    for (int j = 0; j < TableroOriginal.GetTam(); j++)
                     {
-                        //TENGO QUE ELIMINAR LAS FICHAS 6 Y 7 DEL TABLERO ORIGINAL, PONGO EN 0 TODO
-                        TableroOriginal.Get_FichaPosicion(i, j).SetNombre(" ");
-                        TableroOriginal.Get_FichaPosicion(i, j).SetCodigo(0);
-                        cont++;
-                    }
-                    if (TableroOriginal.Get_CodigoFichaOrg(i, j) == 0 && cont != 0)
-                    {
-                        Ficha aux = new Ficha("TorreCaballo", 9);
-                        TableroOriginal.Set_CodigoFichaOrg(i, j, aux);
+                        if (TableroOriginal.Get_CodigoFichaOrg(i, j) == 0 && cont == 0)
+                        {
+                            TableroOriginal.Set_CodigoFichaOrg(i, j, ficha);
+                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux);
+                            cont++;
+                        }
                     }
                 }
-            }
-           
-        } 
 
+            }
+        }
         ~Ficha() {;}
     };
   

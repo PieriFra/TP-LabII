@@ -41,7 +41,8 @@ namespace TP_Lab_II
             {
                 for (int j = 0; j < tam; j++)
                 {
-                    return TableroOriginal[k,l]; 
+                    if(k==i && l==j)
+                        return TableroOriginal[k,l]; 
                 }
             }
             return 0; 
@@ -54,10 +55,12 @@ namespace TP_Lab_II
         } 
         public Ficha Get_FichaCodigo(int codigo) //Devuelve la ficha por el codigo que le paso
         {
-            for (int i = 0; i < 9; i++)
+            for (int i=0; i < 9; i++)
             {
-                if (ListaFichas[i].Codigo == codigo)
+                if (ListaFichas[i].Get_Codigo() == codigo)
+                {
                     return ListaFichas[i];
+                }
             }
             return null; 
         } 
@@ -93,14 +96,27 @@ namespace TP_Lab_II
 
                         int codigo = rand.Next(8);
                         Ficha ficha_mover = tableroOriginal.Get_FichaCodigo(codigo);
-                        ficha_mover.CalcularMovimiento(ficha_mover, tableroOriginal);
+                        if(ficha_mover != null)
+                            ficha_mover.CalcularMovimiento(ficha_mover, tableroOriginal);
                         AnalizarTableroAux(tableroOriginal);
                         mov++;
                     }
                 }
 
-                //si en 5 movimientos no encontramos una solución juntamos un caballo y una torre y movemos siempre esa ficha
-                Ficha FichaMagica = tableroOriginal.Get_FichaCodigo(9);
+                //si en 8 movimientos no encontramos una solución juntamos un caballo y una torre y movemos siempre esa ficha
+                for (int i = 0; i < tam; i++)
+                {   for(int j=0; j<tam;j++)
+                    {
+                        if (Get_CodigoFichaOrg(i, j) == 6 || Get_CodigoFichaOrg(i, j) == 7)
+                        {
+                            //TENGO QUE ELIMINAR LAS FICHAS 6 Y 7 DEL TABLERO ORIGINAL, PONGO EN 0 TODO
+                            Get_FichaPosicion(i, j).SetNombre(" ");
+                            Get_FichaPosicion(i, j).SetCodigo(0);
+                        }
+                    }
+                
+                }
+                Ficha FichaMagica = Get_FichaCodigo(9); 
                 FichaMagica.CalcularMovimiento(FichaMagica, tableroOriginal); //realizamos un movimiento
                 AnalizarTableroAux(tableroOriginal);
 
@@ -117,15 +133,15 @@ namespace TP_Lab_II
 
         public void AnalizarTableroAux(Tablero tableroOriginal) //LLena los casilleros que pueden ser atacados
         {
-            int[] pos1 = new int[0];
-            int[] pos2 = new int[0];
-            int[] pos3 = new int[0];
-            int[] pos4 = new int[0];
-            int[] pos5 = new int[0];
-            int[] pos6 = new int[0];
-            int[] pos7 = new int[0];
-            int[] pos8 = new int[0];
-            int[] pos9 = new int[0];
+            int[] pos1 = new int[2];
+            int[] pos2 = new int[2];
+            int[] pos3 = new int[2];
+            int[] pos4 = new int[2];
+            int[] pos5 = new int[2];
+            int[] pos6 = new int[2];
+            int[] pos7 = new int[2];
+            int[] pos8 = new int[2];
+            int[] pos9 = new int[2];
 
             Ficha ficha = new Ficha();
             //reina 
@@ -138,21 +154,21 @@ namespace TP_Lab_II
                     tableroOriginal.TableroAux[i, j] = 1; 
                 }
             }
-            for (int i = tam; i > pos1[0]; i++) //i-- j--
+            for (int i = tam-1; i > pos1[0]; i--) //i-- j--
             {
-                for (int j = tam; j > pos1[1]; j++)
+                for (int j = tam-1; j > pos1[1]; j--)
                 {
                     tableroOriginal.TableroAux[i, j] = 1;
                 }
             }
             for (int i = pos1[0]; i < tam; i++) //i++, j--
             {
-                for (int j = tam; j > pos1[1]; j++)
+                for (int j = tam-1; j > pos1[1]; j--)
                 {
                     tableroOriginal.TableroAux[i, j] = 1;
                 }
             }
-            for (int i = tam; i > pos1[0]; i++) //i-- j++
+            for (int i = tam-1; i > pos1[0]; i--) //i-- j++
             {
                 for (int j = pos1[1]; j < tam; j++)
                 {
@@ -162,10 +178,10 @@ namespace TP_Lab_II
             for (int i = pos1[0]; i < tam; i++) {     //i++
                 tableroOriginal.TableroAux[i, pos1[1] ]= 1; 
             }
-            for (int i = tam; i > pos1[0]; i++) {     //i--
+            for (int i = tam-1; i > pos1[0]; i--) {     //i--
                 tableroOriginal.TableroAux[i, pos1[1]] = 1;
             }
-            for (int j = tam; j > pos1[0]; j++)
+            for (int j = tam-1; j > pos1[0]; j--)
             {     //j--
                 tableroOriginal.TableroAux[pos1[0], j] = 1;
             }
@@ -179,13 +195,13 @@ namespace TP_Lab_II
             pos2 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la ficha
 
             if (pos2[0] + 1 < tam) { tableroOriginal.TableroAux[pos2[0] + 1, pos2[1]] = 2; }
-            if (pos2[0] - 1 < tam) { tableroOriginal.TableroAux[pos2[0] - 1, pos2[1]] = 2; }
+            if (pos2[0] - 1 >0) { tableroOriginal.TableroAux[pos2[0] - 1, pos2[1]] = 2; }
             if (pos2[1] + 1 < tam) { tableroOriginal.TableroAux[pos2[0], pos2[1]+1] = 2; }
-            if (pos2[1] - 1 < tam) { tableroOriginal.TableroAux[pos2[0], pos2[1] - 1] = 2; }
+            if (pos2[1] - 1 > 0) { tableroOriginal.TableroAux[pos2[0], pos2[1] - 1] = 2; }
             if (pos2[1] + 1 < tam && pos2[0] + 1 < tam) { tableroOriginal.TableroAux[pos2[0]+1, pos2[1] + 1] = 2; }
-            if (pos2[1] + 1 < tam && pos2[0] - 1 < tam) { tableroOriginal.TableroAux[pos2[0] - 1, pos2[1] + 1] = 2; }
-            if (pos2[1] -1 < tam && pos2[0] + 1 < tam) { tableroOriginal.TableroAux[pos2[0] + 1, pos2[1] - 1] = 2; }
-            if (pos2[1] - 1 < tam && pos2[0] - 1 < tam) { tableroOriginal.TableroAux[pos2[0] - 1, pos2[1] - 1] = 2; }
+            if (pos2[1] + 1 < tam && pos2[0] - 1 > 0) { tableroOriginal.TableroAux[pos2[0] - 1, pos2[1] + 1] = 2; }
+            if (pos2[1] -1 > 0 && pos2[0] + 1 < tam) { tableroOriginal.TableroAux[pos2[0] + 1, pos2[1] - 1] = 2; }
+            if (pos2[1] - 1 > 0 && pos2[0] - 1 > 0) { tableroOriginal.TableroAux[pos2[0] - 1, pos2[1] - 1] = 2; }
 
             //Alfil A
             ficha = tableroOriginal.Get_FichaCodigo(3); //obtenemos la ficha que queremos 
@@ -197,21 +213,21 @@ namespace TP_Lab_II
                     tableroOriginal.TableroAux[i, j] = 3;
                 }
             }
-            for (int i = tam; i > pos3[0]; i++) //i-- j--
+            for (int i = tam-1; i > pos3[0]; i--) //i-- j--
             {
-                for (int j = tam; j > pos3[1]; j++)
+                for (int j = tam-1; j > pos3[1]; j--)
                 {
                     tableroOriginal.TableroAux[i, j] =3;
                 }
             }
             for (int i = pos3[0]; i < tam; i++) //i++, j--
             {
-                for (int j = tam; j > pos3[1]; j++)
+                for (int j = tam-1; j > pos3[1]; j--)
                 {
                     tableroOriginal.TableroAux[i, j] = 3;
                 }
             }
-            for (int i = tam; i > pos3[0]; i++) //i-- j++
+            for (int i = tam-1; i > pos3[0]; i--) //i-- j++
             {
                 for (int j = pos3[1]; j < tam; j++)
                 {
@@ -229,21 +245,21 @@ namespace TP_Lab_II
                     tableroOriginal.TableroAux[i, j] = 4;
                 }
             }
-            for (int i = tam; i > pos4[0]; i++) //i-- j--
+            for (int i = tam-1; i > pos4[0]; i--) //i-- j--
             {
-                for (int j = tam; j > pos4[1]; j++)
+                for (int j = tam-1; j > pos4[1]; j--)
                 {
                     tableroOriginal.TableroAux[i, j] =4;
                 }
             }
             for (int i = pos4[0]; i < tam; i++) //i++, j--
             {
-                for (int j = tam; j > pos4[1]; j++)
+                for (int j = tam-1; j > pos4[1]; j--)
                 {
                     tableroOriginal.TableroAux[i, j] = 4;
                 }
             }
-            for (int i = tam; i > pos4[0]; i++) //i-- j++
+            for (int i = tam-1; i > pos4[0]; i--) //i-- j++
             {
                 for (int j = pos4[1]; j < tam; j++)
                 {
@@ -255,46 +271,53 @@ namespace TP_Lab_II
             ficha = tableroOriginal.Get_FichaCodigo(5); //obtenemos la ficha que queremos 
             pos5 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
             if (pos5[0] + 2 < tam && pos5[1] + 1 < tam) { tableroOriginal.TableroAux[pos5[0] + 2, pos5[1] + 1] = 5; }
-            if (pos5[0] + 2 < tam && pos5[1] - 1 < tam) { tableroOriginal.TableroAux[pos5[0] + 2, pos5[1] - 1] = 5; }
-            if (pos5[0] - 2 < tam && pos5[1] - 1 < tam) { tableroOriginal.TableroAux[pos5[0] - 2, pos5[1] - 1] = 5; }
-            if (pos5[0] - 2 < tam && pos5[1] + 1 < tam) { tableroOriginal.TableroAux[pos5[0] - 2, pos5[1] + 1] = 5; }
+            if (pos5[0] + 2 < tam && pos5[1] - 1 > 0) { tableroOriginal.TableroAux[pos5[0] + 2, pos5[1] - 1] = 5; }
+            if (pos5[0] - 2 > 0 && pos5[1] - 1 > 0) { tableroOriginal.TableroAux[pos5[0] - 2, pos5[1] - 1] = 5; }
+            if (pos5[0] - 2 > 0 && pos5[1] + 1 < tam) { tableroOriginal.TableroAux[pos5[0] - 2, pos5[1] + 1] = 5; }
             if (pos5[0] + 1 < tam && pos5[1] + 2 < tam) { tableroOriginal.TableroAux[pos5[0] + 1, pos5[1] + 2] = 5; }
-            if (pos5[0] + 1 < tam && pos5[1] - 2 < tam) { tableroOriginal.TableroAux[pos5[0] + 1, pos5[1] - 2] = 5; }
-            if (pos5[0] - 1 < tam && pos5[1] - 2 < tam) { tableroOriginal.TableroAux[pos5[0] - 1, pos5[1] - 2] = 5; }
-            if (pos5[0] - 1 < tam && pos5[1] + 2 < tam) { tableroOriginal.TableroAux[pos5[0] - 1, pos5[1] + 2] = 5; }
+            if (pos5[0] + 1 < tam && pos5[1] - 2 > 0) { tableroOriginal.TableroAux[pos5[0] + 1, pos5[1] - 2] = 5; }
+            if (pos5[0] - 1 > 0 && pos5[1] - 2 > 0) { tableroOriginal.TableroAux[pos5[0] - 1, pos5[1] - 2] = 5; }
+            if (pos5[0] - 1 > 0 && pos5[1] + 2 < tam) { tableroOriginal.TableroAux[pos5[0] - 1, pos5[1] + 2] = 5; }
 
             //Caballo B
             ficha = tableroOriginal.Get_FichaCodigo(6); //obtenemos la ficha que queremos 
-            pos6 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
-            if (pos6[0] + 2 < tam && pos6[1] + 1 < tam) { tableroOriginal.TableroAux[pos6[0] + 2, pos6[1] + 1] = 6; }
-            if (pos6[0] + 2 < tam && pos6[1] - 1 < tam) { tableroOriginal.TableroAux[pos6[0] + 2, pos6[1] - 1] = 6; }
-            if (pos6[0] - 2 < tam && pos6[1] - 1 < tam) { tableroOriginal.TableroAux[pos6[0] - 2, pos6[1] - 1] = 6; }
-            if (pos6[0] - 2 < tam && pos6[1] + 1 < tam) { tableroOriginal.TableroAux[pos6[0] - 2, pos6[1] + 1] = 6; }
-            if (pos6[0] + 1 < tam && pos6[1] + 2 < tam) { tableroOriginal.TableroAux[pos6[0] + 1, pos6[1] + 2] = 6; }
-            if (pos6[0] + 1 < tam && pos6[1] - 2 < tam) { tableroOriginal.TableroAux[pos6[0] + 1, pos6[1] - 2] = 6; }
-            if (pos6[0] - 1 < tam && pos6[1] - 2 < tam) { tableroOriginal.TableroAux[pos6[0] - 1, pos6[1] - 2] = 6; }
-            if (pos6[0] - 1 < tam && pos6[1] + 2 < tam) { tableroOriginal.TableroAux[pos6[0] - 1, pos6[1] + 2] = 6; }
+            if (ficha != null)
+            {
+                pos6 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
+                if (pos6[0] + 2 < tam && pos6[1] + 1 < tam) { tableroOriginal.TableroAux[pos6[0] + 2, pos6[1] + 1] = 6; }
+                if (pos6[0] + 2 < tam && pos6[1] - 1 > 0) { tableroOriginal.TableroAux[pos6[0] + 2, pos6[1] - 1] = 6; }
+                if (pos6[0] - 2 > 0 && pos6[1] - 1 > 0) { tableroOriginal.TableroAux[pos6[0] - 2, pos6[1] - 1] = 6; }
+                if (pos6[0] - 2 > 0 && pos6[1] + 1 < tam) { tableroOriginal.TableroAux[pos6[0] - 2, pos6[1] + 1] = 6; }
+                if (pos6[0] + 1 < tam && pos6[1] + 2 < tam) { tableroOriginal.TableroAux[pos6[0] + 1, pos6[1] + 2] = 6; }
+                if (pos6[0] + 1 < tam && pos6[1] - 2 > 0) { tableroOriginal.TableroAux[pos6[0] + 1, pos6[1] - 2] = 6; }
+                if (pos6[0] - 1 > 0 && pos6[1] - 2 > 0) { tableroOriginal.TableroAux[pos6[0] - 1, pos6[1] - 2] = 6; }
+                if (pos6[0] - 1 > 0 && pos6[1] + 2 < tam) { tableroOriginal.TableroAux[pos6[0] - 1, pos6[1] + 2] = 6; }
+            }
+            
 
             //Torre A
             ficha = tableroOriginal.Get_FichaCodigo(7); //obtenemos la ficha que queremos 
-            pos7 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
-            for (int i = pos7[0]; i < tam; i++)
-            {     //i++
-                tableroOriginal.TableroAux[i, pos7[1]] = 7;
+            if (ficha != null)
+            {
+                pos7 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
+                for (int i = pos7[0]; i < tam; i++)
+                {     //i++
+                    tableroOriginal.TableroAux[i, pos7[1]] = 7;
+                }
+                for (int i = tam - 1; i > pos7[0]; i--)
+                {     //i--
+                    tableroOriginal.TableroAux[i, pos7[1]] = 7;
+                }
+                for (int j = tam - 1; j > pos7[0]; j--)
+                {     //j--
+                    tableroOriginal.TableroAux[pos7[0], j] = 7;
+                }
+                for (int j = pos7[1]; j < tam; j++)
+                {     //j++
+                    tableroOriginal.TableroAux[pos7[0], j] = 7;
+                }
             }
-            for (int i = tam; i > pos7[0]; i++)
-            {     //i--
-                tableroOriginal.TableroAux[i, pos7[1]] = 7;
-            }
-            for (int j = tam; j > pos7[0]; j++)
-            {     //j--
-                tableroOriginal.TableroAux[pos7[0], j] = 7;
-            }
-            for (int j = pos7[1]; j < tam; j++)
-            {     //j++
-                tableroOriginal.TableroAux[pos7[0], j] = 7;
-            }
-
+           
             //Torre B
             ficha = tableroOriginal.Get_FichaCodigo(8); //obtenemos la ficha que queremos 
             pos8 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
@@ -302,11 +325,11 @@ namespace TP_Lab_II
             {     //i++
                 tableroOriginal.TableroAux[i, pos8[1]] = 8;
             }
-            for (int i = tam; i > pos8[0]; i++)
+            for (int i = tam-1; i > pos8[0]; i--)
             {     //i--
                 tableroOriginal.TableroAux[i, pos8[1]] = 8;
             }
-            for (int j = tam; j > pos8[0]; j++)
+            for (int j = tam-1; j > pos8[0]; j--)
             {     //j--
                 tableroOriginal.TableroAux[pos8[0], j] = 8;
             }
@@ -322,25 +345,26 @@ namespace TP_Lab_II
             {     //i++
                 tableroOriginal.TableroAux[i, pos9[1]] = 9;
             }
-            for (int i = tam; i > pos9[0]; i++)
+            for (int i = tam - 1; i > pos9[0]; i--)
             {     //i--
                 tableroOriginal.TableroAux[i, pos9[1]] = 9;
-                for (int j = tam; j > pos9[0]; j++)
-                {     //j--
-                    tableroOriginal.TableroAux[pos9[0], j] = 9;
-                }
-                for (int j = pos9[1]; j < tam; j++)
-                {     //j++
-                    tableroOriginal.TableroAux[pos9[0], j] = 9;
-                }
-                if (pos9[0] + 2 < tam && pos9[1] + 1 < tam) { tableroOriginal.TableroAux[pos9[0] + 2, pos9[1] + 1] = 9; }
-                if (pos9[0] + 2 < tam && pos9[1] - 1 < tam) { tableroOriginal.TableroAux[pos9[0] + 2, pos9[1] - 1] = 9; }
-                if (pos9[0] - 2 < tam && pos9[1] - 1 < tam) { tableroOriginal.TableroAux[pos9[0] - 2, pos9[1] - 1] = 9; }
-                if (pos9[0] - 2 < tam && pos9[1] + 1 < tam) { tableroOriginal.TableroAux[pos9[0] - 2, pos9[1] + 1] = 9; }
-                if (pos9[0] + 1 < tam && pos9[1] + 2 < tam) { tableroOriginal.TableroAux[pos9[0] + 1, pos9[1] + 2] = 9; }
-                if (pos9[0] + 1 < tam && pos9[1] - 2 < tam) { tableroOriginal.TableroAux[pos9[0] + 1, pos9[1] - 2] = 9; }
-                if (pos9[0] - 1 < tam && pos9[1] - 2 < tam) { tableroOriginal.TableroAux[pos9[0] - 1, pos9[1] - 2] = 9; }
-                if (pos9[0] - 1 < tam && pos9[1] + 2 < tam) { tableroOriginal.TableroAux[pos9[0] - 1, pos9[1] + 2] = 9; }
+            }
+            for (int j = tam - 1; j > pos9[0]; j--)
+            {     //j--
+                tableroOriginal.TableroAux[pos9[0], j] = 9;
+            }
+            for (int j = pos9[1]; j < tam; j++)
+            {     //j++
+                tableroOriginal.TableroAux[pos9[0], j] = 9;
+            }
+            if (pos9[0] + 2 < tam && pos9[1] + 1 < tam) { tableroOriginal.TableroAux[pos9[0] + 2, pos9[1] + 1] = 9; }
+            if (pos9[0] + 2 < tam && pos9[1] - 1 > 0) { tableroOriginal.TableroAux[pos9[0] + 2, pos9[1] - 1] = 9; }
+            if (pos9[0] - 2 > 0 && pos9[1] - 1 > 0) { tableroOriginal.TableroAux[pos9[0] - 2, pos9[1] - 1] = 9; }
+            if (pos9[0] - 2 > 0 && pos9[1] + 1 < tam) { tableroOriginal.TableroAux[pos9[0] - 2, pos9[1] + 1] = 9; 
+            if (pos9[0] + 1 < tam && pos9[1] + 2 < tam) { tableroOriginal.TableroAux[pos9[0] + 1, pos9[1] + 2] = 9; }
+            if (pos9[0] + 1 < tam && pos9[1] - 2 > 0) { tableroOriginal.TableroAux[pos9[0] + 1, pos9[1] - 2] = 9; }
+            if (pos9[0] - 1 > 0 && pos9[1] - 2 > 0) { tableroOriginal.TableroAux[pos9[0] - 1, pos9[1] - 2] = 9; }
+            if (pos9[0] - 1 > 0 && pos9[1] + 2 < tam) { tableroOriginal.TableroAux[pos9[0] - 1, pos9[1] + 2] = 9; }
 
                 
             }
