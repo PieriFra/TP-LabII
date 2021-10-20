@@ -70,15 +70,14 @@ namespace TP_Lab_II
                     else
                     {
                         //verificamos que la solucion no se repita
+                        cant_tableros = 1;
                         for (int i = 0; i < ListaResultados.Count; i++)
                         {
                             if (ListaResultados[i] != Aux)
-                            {
-                                ListaResultados.Add(Aux); //si no existía agg la nueva solución 
                                 cant_tableros++;
-                            }
-                                
                         }
+                        if(cant_tableros==ListaResultados.Count +1 )
+                            ListaResultados.Add(Aux);
                     }
                 }
             } while (cant_tableros != n_tableros);
