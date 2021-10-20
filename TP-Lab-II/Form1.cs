@@ -82,15 +82,18 @@ namespace TP_Lab_II
                 }
             } while (cant_tableros != n_tableros);
 
-           /* for(int i=0; i<n_tableros; i++)
-            {
-                Console.WriteLine(ListaResultados[i]);
-            }*/
+            if(ListaResultados.Count==n_tableros)
+                textBox1.Text = Convert.ToString("Tengo 10 soluciones");
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

@@ -30,6 +30,7 @@ namespace TP_Lab_II
         private void InitializeComponent()
         {
             this.CorrerBtn = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CorrerBtn
@@ -43,23 +44,34 @@ namespace TP_Lab_II
             this.CorrerBtn.UseVisualStyleBackColor = true;
             this.CorrerBtn.Click += new System.EventHandler(this.CorrerBtn_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(113, 92);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(307, 22);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 398);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.CorrerBtn);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button CorrerBtn;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
