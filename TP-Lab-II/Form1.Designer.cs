@@ -35,7 +35,7 @@ namespace TP_Lab_II
             // CorrerBtn
             // 
             this.CorrerBtn.Location = new System.Drawing.Point(113, 42);
-            this.CorrerBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CorrerBtn.Margin = new System.Windows.Forms.Padding(4);
             this.CorrerBtn.Name = "CorrerBtn";
             this.CorrerBtn.Size = new System.Drawing.Size(100, 28);
             this.CorrerBtn.TabIndex = 0;
@@ -49,9 +49,10 @@ namespace TP_Lab_II
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 398);
             this.Controls.Add(this.CorrerBtn);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
