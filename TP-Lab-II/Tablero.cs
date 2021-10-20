@@ -134,6 +134,7 @@ namespace TP_Lab_II
 
         public void AnalizarTableroAux(Tablero tableroOriginal) //LLena los casilleros que pueden ser atacados
         {
+            int num = 0;
             int[] pos1 = new int[2];
             int[] pos2 = new int[2];
             int[] pos3 = new int[2];
@@ -148,35 +149,36 @@ namespace TP_Lab_II
             //reina 
             ficha = tableroOriginal.Get_FichaCodigo(1); //obtenemos la ficha que queremos 
             pos1 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la ficha
-            for (int i = pos1[0]; i < tam; i++) //i++ j++
+            for (int i = pos1[0]; i < tam - 1; i++)
             {
-                for (int j = pos1[1]; j < tam; j++)
+                if ((i + 1) < tam)
+                    tableroOriginal.TableroAux[i, i + 1] = 1;
+
+                tableroOriginal.TableroAux[i, i] = 1;
+            }
+            for (int i = tam - 1; i > pos1[0]; i--)
+            {
+                if ((i + 1) < tam)
+                    tableroOriginal.TableroAux[i, i + 1] = 1;
+                tableroOriginal.TableroAux[i, i] = 1;
+            }
+            for (int i = tam - 1; i > pos1[0]; i--)
+            {
+                if (num < tam)
                 {
-                    tableroOriginal.TableroAux[i, j] = 1; 
+                    num = num+ pos1[1] + 1;
+                    tableroOriginal.TableroAux[i, num] = 1;
                 }
             }
-            for (int i = tam-1; i > pos1[0]; i--) //i-- j--
-            {
-                for (int j = tam-1; j > pos1[1]; j--)
-                {
-                    tableroOriginal.TableroAux[i, j] = 1;
-                }
-            }
-            for (int i = pos1[0]; i < tam; i++) //i++, j--
-            {
-                for (int j = tam-1; j > pos1[1]; j--)
-                {
-                    tableroOriginal.TableroAux[i, j] = 1;
-                }
-            }
+
             for (int i = tam-1; i > pos1[0]; i--) //i-- j++
             {
-                for (int j = pos1[1]; j < tam; j++)
+                for (int j = pos1[1]; j < tam-1; j++)
                 {
                     tableroOriginal.TableroAux[i, j] = 1;
                 }
             }
-            for (int i = pos1[0]; i < tam; i++) {     //i++
+            for (int i = pos1[0]; i < tam-1; i++) {     //i++
                 tableroOriginal.TableroAux[i, pos1[1] ]= 1; 
             }
             for (int i = tam-1; i > pos1[0]; i--) {     //i--
@@ -186,7 +188,7 @@ namespace TP_Lab_II
             {     //j--
                 tableroOriginal.TableroAux[pos1[0], j] = 1;
             }
-            for (int j = pos1[1]; j < tam; j++)
+            for (int j = pos1[1]; j < tam-1; j++)
             {     //j++
                 tableroOriginal.TableroAux[pos1[0], j] = 1;
             }
@@ -415,6 +417,7 @@ namespace TP_Lab_II
             }
 
         }
+
 
         ~Tablero() {;}
     }

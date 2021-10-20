@@ -35,10 +35,9 @@ namespace TP_Lab_II
             // 
             // CorrerBtn
             // 
-            this.CorrerBtn.Location = new System.Drawing.Point(113, 42);
-            this.CorrerBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.CorrerBtn.Location = new System.Drawing.Point(85, 34);
             this.CorrerBtn.Name = "CorrerBtn";
-            this.CorrerBtn.Size = new System.Drawing.Size(100, 28);
+            this.CorrerBtn.Size = new System.Drawing.Size(75, 23);
             this.CorrerBtn.TabIndex = 0;
             this.CorrerBtn.Text = "Correr";
             this.CorrerBtn.UseVisualStyleBackColor = true;
@@ -46,20 +45,20 @@ namespace TP_Lab_II
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(113, 92);
+            this.textBox1.Location = new System.Drawing.Point(85, 75);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(307, 22);
+            this.textBox1.Size = new System.Drawing.Size(231, 20);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 398);
+            this.ClientSize = new System.Drawing.Size(378, 323);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.CorrerBtn);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

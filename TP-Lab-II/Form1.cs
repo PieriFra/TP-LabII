@@ -84,6 +84,7 @@ namespace TP_Lab_II
 
             if(ListaResultados.Count==n_tableros)
                 textBox1.Text = Convert.ToString("Tengo 10 soluciones");
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -94,6 +95,11 @@ namespace TP_Lab_II
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
            
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
