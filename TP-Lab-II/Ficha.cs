@@ -53,17 +53,14 @@ namespace TP_Lab_II
             //MUEVO SOLO LA FICHA COMBINADA 
             if (ficha.Get_Codigo() == 9)
             {
-                for (int i = 0; i < TableroOriginal.GetTam(); i++)
+                var Rand = new Random();
+                int PosI = Rand.Next(7);
+                int PosJ = Rand.Next(7);
+                if (TableroOriginal.Get_CodigoFichaOrg(PosI, PosJ) == 0 && cont == 0)
                 {
-                    for (int j = 0; j < TableroOriginal.GetTam(); j++)
-                    {
-                        if (TableroOriginal.Get_CodigoFichaOrg(i, j) == 0 && cont == 0)
-                        {
-                            TableroOriginal.Set_CodigoFichaOrg(i, j, ficha);
-                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux);
-                            cont++;
-                        }
-                    }
+                    TableroOriginal.Set_CodigoFichaOrg(PosI, PosJ, ficha);
+                    TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux);
+                    cont++;
                 }
 
             }

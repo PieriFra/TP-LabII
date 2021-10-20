@@ -83,7 +83,7 @@ namespace TP_Lab_II
 
         public Tablero CalculoSolucion(Tablero tableroOriginal, List<Tablero> ListaResultados, int n_tableros) //devuelve el tablero resultado
         {
-            var rand = new Random(); //verrrrr
+            var rand = new Random(); 
             int mov = 0;
             do
             {
@@ -91,9 +91,6 @@ namespace TP_Lab_II
                 {
                     for (int i = 0; i < 8; i++)
                     {
-                        //Ficha_mover.SetCodigo(rand.Next(9));
-                        //Ficha_mover.CalcularMovimiento(Ficha_mover.Get_Codigo(), tableroOriginal);
-
                         int codigo = rand.Next(8);
                         Ficha ficha_mover = tableroOriginal.Get_FichaCodigo(codigo);
                         if(ficha_mover != null)
@@ -115,14 +112,13 @@ namespace TP_Lab_II
                             //TENGO QUE ELIMINAR LAS FICHAS 6 Y 7 DEL TABLERO ORIGINAL, PONGO EN 0 TODO
                             tableroOriginal.Get_FichaPosicion(i, j).SetNombre(" ");
                             tableroOriginal.Get_FichaPosicion(i, j).SetCodigo(0);
-                            //tableroOriginal.Set_CodigoFichaOrg(i, j, tableroOriginal.Get_FichaPosicion(i, j));
+                            tableroOriginal.Set_CodigoFichaOrg(i, j, tableroOriginal.Get_FichaPosicion(i, j));
                             cont++;
-                        }
-
-                        if (cont == 2)
-                        {
-                            tableroOriginal.Set_CodigoFichaOrg(i, j, FichaMagica);
-                        }
+                            if (cont == 2)
+                            {
+                                tableroOriginal.Set_CodigoFichaOrg(i, j, FichaMagica);
+                            }
+                        } 
                     }
                 
                 }

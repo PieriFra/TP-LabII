@@ -70,7 +70,7 @@ namespace TP_Lab_II
                     else
                     {
                         //verificamos que la solucion no se repita
-                        for (int i = 0; i < n_tableros; i++)
+                        for (int i = 0; i < ListaResultados.Count; i++)
                         {
                             if (ListaResultados[i] != Aux)
                             {
@@ -81,14 +81,12 @@ namespace TP_Lab_II
                         }
                     }
                 }
-                
-
             } while (cant_tableros != n_tableros);
 
-            for(int i=0; i<n_tableros; i++)
+           /* for(int i=0; i<n_tableros; i++)
             {
                 Console.WriteLine(ListaResultados[i]);
-            }
+            }*/
         }
 
         private void Form1_Load(object sender, EventArgs e)
