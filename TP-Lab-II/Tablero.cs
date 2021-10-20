@@ -51,7 +51,7 @@ namespace TP_Lab_II
         public Ficha Get_FichaPosicion(int i, int j) //devuelve una ficha de la lista de la posicion que le paso
         {
             int codigo=TableroOriginal[i, j];
-            return ListaFichas[codigo]; 
+            return ListaFichas[codigo-1]; 
         } 
         public Ficha Get_FichaCodigo(int codigo) //Devuelve la ficha por el codigo que le paso
         {
@@ -107,11 +107,12 @@ namespace TP_Lab_II
                 for (int i = 0; i < tam; i++)
                 {   for(int j=0; j<tam;j++)
                     {
-                        if (Get_CodigoFichaOrg(i, j) == 6 || Get_CodigoFichaOrg(i, j) == 7)
+                        if (tableroOriginal.Get_CodigoFichaOrg(i, j) == 6 || tableroOriginal.Get_CodigoFichaOrg(i, j) == 7)
                         {
                             //TENGO QUE ELIMINAR LAS FICHAS 6 Y 7 DEL TABLERO ORIGINAL, PONGO EN 0 TODO
-                            Get_FichaPosicion(i, j).SetNombre(" ");
-                            Get_FichaPosicion(i, j).SetCodigo(0);
+                            tableroOriginal.Get_FichaPosicion(i, j).SetNombre(" ");
+                            tableroOriginal.Get_FichaPosicion(i, j).SetCodigo(0);
+                            tableroOriginal.Set_CodigoFichaOrg(i, j, tableroOriginal.Get_FichaPosicion(i, j));
                         }
                     }
                 
@@ -360,13 +361,15 @@ namespace TP_Lab_II
             if (pos9[0] + 2 < tam && pos9[1] + 1 < tam) { tableroOriginal.TableroAux[pos9[0] + 2, pos9[1] + 1] = 9; }
             if (pos9[0] + 2 < tam && pos9[1] - 1 > 0) { tableroOriginal.TableroAux[pos9[0] + 2, pos9[1] - 1] = 9; }
             if (pos9[0] - 2 > 0 && pos9[1] - 1 > 0) { tableroOriginal.TableroAux[pos9[0] - 2, pos9[1] - 1] = 9; }
-            if (pos9[0] - 2 > 0 && pos9[1] + 1 < tam) { tableroOriginal.TableroAux[pos9[0] - 2, pos9[1] + 1] = 9; 
-            if (pos9[0] + 1 < tam && pos9[1] + 2 < tam) { tableroOriginal.TableroAux[pos9[0] + 1, pos9[1] + 2] = 9; }
-            if (pos9[0] + 1 < tam && pos9[1] - 2 > 0) { tableroOriginal.TableroAux[pos9[0] + 1, pos9[1] - 2] = 9; }
-            if (pos9[0] - 1 > 0 && pos9[1] - 2 > 0) { tableroOriginal.TableroAux[pos9[0] - 1, pos9[1] - 2] = 9; }
-            if (pos9[0] - 1 > 0 && pos9[1] + 2 < tam) { tableroOriginal.TableroAux[pos9[0] - 1, pos9[1] + 2] = 9; }
+            if (pos9[0] - 2 > 0 && pos9[1] + 1 < tam)
+            {
+                tableroOriginal.TableroAux[pos9[0] - 2, pos9[1] + 1] = 9;
+                if (pos9[0] + 1 < tam && pos9[1] + 2 < tam) { tableroOriginal.TableroAux[pos9[0] + 1, pos9[1] + 2] = 9; }
+                if (pos9[0] + 1 < tam && pos9[1] - 2 > 0) { tableroOriginal.TableroAux[pos9[0] + 1, pos9[1] - 2] = 9; }
+                if (pos9[0] - 1 > 0 && pos9[1] - 2 > 0) { tableroOriginal.TableroAux[pos9[0] - 1, pos9[1] - 2] = 9; }
+                if (pos9[0] - 1 > 0 && pos9[1] + 2 < tam) { tableroOriginal.TableroAux[pos9[0] - 1, pos9[1] + 2] = 9; }
 
-                
+
             }
         }
 
