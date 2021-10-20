@@ -134,7 +134,6 @@ namespace TP_Lab_II
 
         public void AnalizarTableroAux(Tablero tableroOriginal) //LLena los casilleros que pueden ser atacados
         {
-            int num = 0;
             int[] pos1 = new int[2];
             int[] pos2 = new int[2];
             int[] pos3 = new int[2];
@@ -149,34 +148,20 @@ namespace TP_Lab_II
             //reina 
             ficha = tableroOriginal.Get_FichaCodigo(1); //obtenemos la ficha que queremos 
             pos1 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la ficha
-            for (int i = pos1[0]; i < tam - 1; i++)
+            for (int k = 0; k < tam; k++)
             {
-                if ((i + 1) < tam)
-                    tableroOriginal.TableroAux[i, i + 1] = 1;
-
-                tableroOriginal.TableroAux[i, i] = 1;
-            }
-            for (int i = tam - 1; i > pos1[0]; i--)
-            {
-                if ((i + 1) < tam)
-                    tableroOriginal.TableroAux[i, i + 1] = 1;
-                tableroOriginal.TableroAux[i, i] = 1;
-            }
-            for (int i = tam - 1; i > pos1[0]; i--)
-            {
-                if (num < tam)
-                {
-                    num = num+ pos1[1] + 1;
-                    tableroOriginal.TableroAux[i, num] = 1;
-                }
-            }
-
-            for (int i = tam-1; i > pos1[0]; i--) //i-- j++
-            {
-                for (int j = pos1[1]; j < tam-1; j++)
-                {
-                    tableroOriginal.TableroAux[i, j] = 1;
-                }
+                //diagonal derch acendente
+                if (pos1[0] + k < tam  && pos1[1] + 1 < tam)
+                    tableroOriginal.TableroAux[pos1[0] + k, pos1[1] + k] = 1;
+                //diagonal izq decendente 
+                if (pos1[0] - k >0 && pos1[1] - 1 >0 )
+                    tableroOriginal.TableroAux[pos1[0] - k, pos1[1]-  k] = 1;
+                //diagonal izq acendente
+                if (pos1[0] - k > 0 && pos1[1] + k < tam)
+                    tableroOriginal.TableroAux[pos1[0] - k, pos1[1] + k] = 1;
+                //diagonal derch decendente
+                if (pos1[1] - k > 0 && pos1[0] + k < tam)
+                    tableroOriginal.TableroAux[pos1[0] + k, pos1[1] - k] = 1;
             }
             for (int i = pos1[0]; i < tam-1; i++) {     //i++
                 tableroOriginal.TableroAux[i, pos1[1] ]= 1; 
@@ -209,65 +194,39 @@ namespace TP_Lab_II
             //Alfil A
             ficha = tableroOriginal.Get_FichaCodigo(3); //obtenemos la ficha que queremos 
             pos3 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
-            for (int i = pos3[0]; i < tam; i++) //i++ j++
+            for (int k = 0; k < tam; k++)
             {
-                for (int j = pos3[1]; j < tam; j++)
-                {
-                    tableroOriginal.TableroAux[i, j] = 3;
-                }
-            }
-            for (int i = tam-1; i > pos3[0]; i--) //i-- j--
-            {
-                for (int j = tam-1; j > pos3[1]; j--)
-                {
-                    tableroOriginal.TableroAux[i, j] =3;
-                }
-            }
-            for (int i = pos3[0]; i < tam; i++) //i++, j--
-            {
-                for (int j = tam-1; j > pos3[1]; j--)
-                {
-                    tableroOriginal.TableroAux[i, j] = 3;
-                }
-            }
-            for (int i = tam-1; i > pos3[0]; i--) //i-- j++
-            {
-                for (int j = pos3[1]; j < tam; j++)
-                {
-                    tableroOriginal.TableroAux[i, j] = 3;
-                }
+                //diagonal derch acendente
+                if (pos3[0] + k < tam && pos3[1] + 1 < tam)
+                    tableroOriginal.TableroAux[pos3[0] + k, pos3[1] + k] = 3;
+                //diagonal izq decendente 
+                if (pos3[0] - k > 0 && pos3[1] - 1 > 0)
+                    tableroOriginal.TableroAux[pos3[0] - k, pos3[1] - k] = 3;
+                //diagonal izq acendente
+                if (pos3[0] - k > 0 && pos3[1] + k < tam )
+                    tableroOriginal.TableroAux[pos3[0] - k, pos3[1] + k] =3 ;
+                //diagonal derch decendente
+                if (pos3[1] - k > 0 && pos3[0] + k < tam )
+                    tableroOriginal.TableroAux[pos3[0] + k, pos3[1] - k] = 3;
             }
 
             //Alfil B
             ficha = tableroOriginal.Get_FichaCodigo(4); //obtenemos la ficha que queremos 
             pos4 = ficha.CalcularPosicion(ficha, tableroOriginal); //buscamos la posicion de la fich
-            for (int i = pos4[0]; i < tam; i++) //i++ j++
+            for(int k=0;k<tam;k++)
             {
-                for (int j = pos4[1]; j < tam; j++)
-                {
-                    tableroOriginal.TableroAux[i, j] = 4;
-                }
-            }
-            for (int i = tam-1; i > pos4[0]; i--) //i-- j--
-            {
-                for (int j = tam-1; j > pos4[1]; j--)
-                {
-                    tableroOriginal.TableroAux[i, j] =4;
-                }
-            }
-            for (int i = pos4[0]; i < tam; i++) //i++, j--
-            {
-                for (int j = tam-1; j > pos4[1]; j--)
-                {
-                    tableroOriginal.TableroAux[i, j] = 4;
-                }
-            }
-            for (int i = tam-1; i > pos4[0]; i--) //i-- j++
-            {
-                for (int j = pos4[1]; j < tam; j++)
-                {
-                    tableroOriginal.TableroAux[i, j] = 4;
-                }
+                //diagonal derch acendente
+                if (pos4[0] + k < tam && pos4[1] + 1 < tam)
+                    tableroOriginal.TableroAux[pos4[0] + k, pos4[1] + k] = 4;
+                //diagonal izq decendente 
+                if (pos4[0] - k > 0 && pos4[1] - 1 > 0)
+                    tableroOriginal.TableroAux[pos4[0] - k, pos4[1] - k] = 4;
+                //diagonal izq acendente
+                if (pos4[0] - k > 0 && pos4[1] + k < tam)
+                    tableroOriginal.TableroAux[pos4[0] - k, pos4[1] + k] = 4;
+                //diagonal derch decendente
+                if (pos4[1] - k > 0 && pos4[0] + k < tam)
+                    tableroOriginal.TableroAux[pos4[0] + k, pos4[1] - k] = 4;
             }
 
             //Caballo A
