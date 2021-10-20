@@ -62,9 +62,26 @@ namespace TP_Lab_II
                 Aux = TableroOrg.CalculoSolucion(TableroOrg, ListaResultados, n_tableros);
                 if (Aux != null)
                 {
-                    ListaResultados.Add(Aux);
+                    if (ListaResultados.Count == 0)
+                    {
+                        ListaResultados.Add(Aux);
                         cant_tableros++;
+                    }
+                    else
+                    {
+                        //verificamos que la solucion no se repita
+                        for (int i = 0; i < n_tableros; i++)
+                        {
+                            if (ListaResultados[i] != Aux)
+                            {
+                                ListaResultados.Add(Aux); //si no existía agg la nueva solución 
+                                cant_tableros++;
+                            }
+                                
+                        }
+                    }
                 }
+                
 
             } while (cant_tableros == n_tableros);
 

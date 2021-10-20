@@ -123,13 +123,8 @@ namespace TP_Lab_II
 
             } while (VerificarTablero(tableroOriginal.TableroAux) == false); 
 
-            //verificamos que la solucion no se repita
-            for(int i=0; i < n_tableros; i++)
-            {
-                if (ListaResultados[i] != tableroOriginal)
-                    return tableroOriginal; //si no existía retornamos la nueva solución 
-            }
-            return null;
+            
+            return tableroOriginal;
         }
 
         public void AnalizarTableroAux(Tablero tableroOriginal) //LLena los casilleros que pueden ser atacados
