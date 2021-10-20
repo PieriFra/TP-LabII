@@ -50,8 +50,26 @@ namespace TP_Lab_II
             int[] pos_org = CalcularPosicion(ficha, TableroOriginal);
 
 
+            //MUEVO SOLO LA FICHA COMBINADA 
+            if (ficha.Get_Codigo() == 9)
+            {
+                for (int i = 0; i < TableroOriginal.GetTam(); i++)
+                {
+                    for (int j = 0; j < TableroOriginal.GetTam(); j++)
+                    {
+                        if (TableroOriginal.Get_CodigoFichaOrg(i, j) == 0 && cont == 0)
+                        {
+                            TableroOriginal.Set_CodigoFichaOrg(i, j, ficha);
+                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux);
+                            cont++;
+                        }
+                    }
+                }
+
+            }
+
             //Para todas las fichas (menos el alfil) no me importa donde la pongo
-            if (ficha.Get_Codigo() != 3 && ficha.Get_Codigo() != 4)
+            if (ficha.Get_Codigo() != 3 && ficha.Get_Codigo() != 4 && ficha.Get_Codigo() != 9)
             {
                 for (int i = 0; i < TableroOriginal.GetTam(); i++)
                 {
@@ -89,24 +107,7 @@ namespace TP_Lab_II
                 }
             }
 
-            //MUEVO SOLO LA FICHA COMBINADA 
-            cont = 0;
-            if (ficha.Get_Codigo() == 9)
-            {
-                for (int i = 0; i < TableroOriginal.GetTam(); i++)
-                {
-                    for (int j = 0; j < TableroOriginal.GetTam(); j++)
-                    {
-                        if (TableroOriginal.Get_CodigoFichaOrg(i, j) == 0 && cont == 0)
-                        {
-                            TableroOriginal.Set_CodigoFichaOrg(i, j, ficha);
-                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux);
-                            cont++;
-                        }
-                    }
-                }
-
-            }
+            
         }
         ~Ficha() {;}
     };

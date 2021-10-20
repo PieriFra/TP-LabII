@@ -83,7 +83,7 @@ namespace TP_Lab_II
                 }
                 
 
-            } while (cant_tableros == n_tableros);
+            } while (cant_tableros != n_tableros);
 
             for(int i=0; i<n_tableros; i++)
             {
