@@ -103,6 +103,9 @@ namespace TP_Lab_II
                     }
                 }
 
+                int cont = 0;
+                Ficha FichaMagica = Get_FichaCodigo(9);
+
                 //si en 8 movimientos no encontramos una solución juntamos un caballo y una torre y movemos siempre esa ficha
                 for (int i = 0; i < tam; i++)
                 {   for(int j=0; j<tam;j++)
@@ -112,12 +115,18 @@ namespace TP_Lab_II
                             //TENGO QUE ELIMINAR LAS FICHAS 6 Y 7 DEL TABLERO ORIGINAL, PONGO EN 0 TODO
                             tableroOriginal.Get_FichaPosicion(i, j).SetNombre(" ");
                             tableroOriginal.Get_FichaPosicion(i, j).SetCodigo(0);
-                            tableroOriginal.Set_CodigoFichaOrg(i, j, tableroOriginal.Get_FichaPosicion(i, j));
+                            //tableroOriginal.Set_CodigoFichaOrg(i, j, tableroOriginal.Get_FichaPosicion(i, j));
+                            cont++;
+                        }
+
+                        if (cont == 2)
+                        {
+                            tableroOriginal.Set_CodigoFichaOrg(i, j, FichaMagica);
                         }
                     }
                 
                 }
-                Ficha FichaMagica = Get_FichaCodigo(9); 
+
                 FichaMagica.CalcularMovimiento(FichaMagica, tableroOriginal); //realizamos un movimiento
                 AnalizarTableroAux(tableroOriginal);
 
