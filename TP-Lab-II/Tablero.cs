@@ -154,13 +154,13 @@ namespace TP_Lab_II
                 if (pos1[0] + k < tam  && pos1[1] + k < tam)
                     tableroOriginal.TableroAux[pos1[0] + k, pos1[1] + k] = 1;
                 //diagonal izq decendente 
-                if (pos1[0] - k >= 0 && pos1[1] - 1 >= 0 )
+                if (pos1[0] - k >= 0 && pos1[1] - k >= 0 )
                     tableroOriginal.TableroAux[pos1[0] - k, pos1[1]-  k] = 1;
                 //diagonal izq acendente
                 if (pos1[0] - k >= 0 && pos1[1] + k < tam)
                     tableroOriginal.TableroAux[pos1[0] - k, pos1[1] + k] = 1;
                 //diagonal derch decendente
-                if (pos1[0] + k <tam && pos1[1] - k > 0)
+                if (pos1[0] + k <tam && pos1[1] - k >= 0)
                     tableroOriginal.TableroAux[pos1[0] + k, pos1[1] - k] = 1;
             }
             for (int i = pos1[0]; i < tam; i++) {     //i++  horizontal izq
@@ -201,13 +201,13 @@ namespace TP_Lab_II
                 if (pos3[0] + k < tam && pos3[1] + k < tam)
                     tableroOriginal.TableroAux[pos3[0] + k, pos3[1] + k] = 3;
                 //diagonal izq decendente 
-                if (pos3[0] - k >= 0 && pos3[1] - 1 >= 0)
+                if (pos3[0] - k >= 0 && pos3[1] - k >= 0)
                     tableroOriginal.TableroAux[pos3[0] - k, pos3[1] - k] = 3;
                 //diagonal izq acendente
-                if (pos3[0] - k > 0 && pos3[1] + k < tam)
+                if (pos3[0] - k >= 0 && pos3[1] + k < tam)
                     tableroOriginal.TableroAux[pos3[0] - k, pos3[1] + k] = 3;
                 //diagonal derch decendente
-                if (pos3[0] + k < tam && pos3[1] - k > 0)
+                if (pos3[0] + k < tam && pos3[1] - k >= 0)
                     tableroOriginal.TableroAux[pos1[0] + k, pos1[1] - k] = 3;
             }
 
@@ -220,13 +220,13 @@ namespace TP_Lab_II
                 if (pos4[0] + k < tam && pos4[1] + k < tam)
                     tableroOriginal.TableroAux[pos4[0] + k, pos4[1] + k] = 4;
                 //diagonal izq decendente 
-                if (pos4[0] - k >= 0 && pos4[1] - 1 >= 0)
+                if (pos4[0] - k >= 0 && pos4[1] - k >= 0)
                     tableroOriginal.TableroAux[pos4[0] - k, pos4[1] - k] = 4;
                 //diagonal izq acendente
                 if (pos4[0] - k >= 0 && pos4[1] + k < tam)
                     tableroOriginal.TableroAux[pos4[0] - k, pos4[1] + k] = 4;
                 //diagonal derch decendente
-                if (pos4[0] + k < tam && pos4[1] - k > 0)
+                if (pos4[0] + k < tam && pos4[1] - k >= 0)
                     tableroOriginal.TableroAux[pos4[0] + k, pos4[1] - k] = 4;
             }
 
