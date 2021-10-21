@@ -56,10 +56,10 @@ namespace TP_Lab_II
 
                 Tablero TableroOrg = new Tablero(ListaFichas);
                 
-                TableroOrg.CargarTablero(TableroOrg);
+                TableroOrg.CargarTablero();
 
                 Tablero Aux = new Tablero(ListaFichas);
-                Aux = TableroOrg.CalculoSolucion(TableroOrg, ListaResultados, n_tableros);
+                Aux = TableroOrg.CalculoSolucion(ListaResultados, n_tableros);
                 if (Aux != null)
                 {
                     if (ListaResultados.Count == 0)
