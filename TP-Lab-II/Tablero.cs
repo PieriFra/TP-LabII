@@ -85,6 +85,7 @@ namespace TP_Lab_II
         {
             var rand = new Random(); 
             int mov = 0;
+            int contador = 0;
             do
             {
                 if (mov < 8)
@@ -96,7 +97,13 @@ namespace TP_Lab_II
                         if(ficha_mover != null)
                             ficha_mover.CalcularMovimiento(ficha_mover, tableroOriginal);
                         AnalizarTableroAux(tableroOriginal);
+                        if (VerificarTablero(tableroOriginal.TableroAux) == true)
+                        {
+                            i = 8;
+                            mov = 8;
+                        }
                         mov++;
+                   
                     }
                 }
 
@@ -104,23 +111,30 @@ namespace TP_Lab_II
                 Ficha FichaMagica = Get_FichaCodigo(9);
 
                 //si en 8 movimientos no encontramos una solución juntamos un caballo y una torre y movemos siempre esa ficha
-                for (int i = 0; i < tam; i++)
-                {   for(int j=0; j<tam;j++)
+                if (contador != 1)
+                {
+                    for (int i = 0; i < tam; i++)
                     {
-                        if (tableroOriginal.Get_CodigoFichaOrg(i, j) == 6 || tableroOriginal.Get_CodigoFichaOrg(i, j) == 7)
+                        for (int j = 0; j < tam; j++)
                         {
-                            //TENGO QUE ELIMINAR LAS FICHAS 6 Y 7 DEL TABLERO ORIGINAL, PONGO EN 0 TODO
-                            tableroOriginal.Get_FichaPosicion(i, j).SetNombre(" ");
-                            tableroOriginal.Get_FichaPosicion(i, j).SetCodigo(0);
-                            tableroOriginal.Set_CodigoFichaOrg(i, j, tableroOriginal.Get_FichaPosicion(i, j));
-                            cont++;
-                            if (cont == 2)
+                            if (tableroOriginal.Get_CodigoFichaOrg(i, j) == 6 || tableroOriginal.Get_CodigoFichaOrg(i, j) == 7)
                             {
-                                tableroOriginal.Set_CodigoFichaOrg(i, j, FichaMagica);
+                                //TENGO QUE ELIMINAR LAS FICHAS 6 Y 7 DEL TABLERO ORIGINAL, PONGO EN 0 TODO
+                                tableroOriginal.Get_FichaPosicion(i, j).SetNombre(" ");
+                                tableroOriginal.Get_FichaPosicion(i, j).SetCodigo(0);
+                                tableroOriginal.Set_CodigoFichaOrg(i, j, tableroOriginal.Get_FichaPosicion(i, j));
+                                cont++;
+                                if (cont == 2)
+                                {
+                                    tableroOriginal.Set_CodigoFichaOrg(i, j, FichaMagica);
+                                }
+
+                                contador = 1;
                             }
-                        } 
+                        }
+
                     }
-                
+
                 }
 
                 FichaMagica.CalcularMovimiento(FichaMagica, tableroOriginal); //realizamos un movimiento
@@ -134,6 +148,16 @@ namespace TP_Lab_II
 
         public void AnalizarTableroAux(Tablero tableroOriginal) //LLena los casilleros que pueden ser atacados
         {
+            //ponemos el tablero auxiliar en 0
+            for (int i = 0; i < tam; i++)
+            {
+                for (int j = 0; j < tam; j++)
+                {
+                    tableroOriginal.TableroAux[i, j] = 0;
+                }
+
+            }
+              
             int[] pos1 = new int[2];
             int[] pos2 = new int[2];
             int[] pos3 = new int[2];
@@ -208,7 +232,7 @@ namespace TP_Lab_II
                     tableroOriginal.TableroAux[pos3[0] - k, pos3[1] + k] = 3;
                 //diagonal derch decendente
                 if (pos3[0] + k < tam && pos3[1] - k >= 0)
-                    tableroOriginal.TableroAux[pos1[0] + k, pos1[1] - k] = 3;
+                    tableroOriginal.TableroAux[pos3[0] + k, pos3[1] - k] = 3;
             }
 
             //Alfil B
@@ -267,7 +291,7 @@ namespace TP_Lab_II
                 {     //i++
                     tableroOriginal.TableroAux[i, pos7[1]] = 7;
                 }
-                for (int i = tam - 1; i > pos7[0]; i--)
+                for (int i = 0; i <pos7[0]; i++)
                 {     //i--
                     tableroOriginal.TableroAux[i, pos7[1]] = 7;
                 }
@@ -275,7 +299,7 @@ namespace TP_Lab_II
                 {     //j--
                     tableroOriginal.TableroAux[pos7[0], j] = 7;
                 }
-                for (int j = pos7[1]; j < tam; j++)
+                for (int j = 0; j < pos7[1]; j++)
                 {     //j++
                     tableroOriginal.TableroAux[pos7[0], j] = 7;
                 }
@@ -288,15 +312,15 @@ namespace TP_Lab_II
             {     //i++
                 tableroOriginal.TableroAux[i, pos8[1]] = 8;
             }
-            for (int i = tam-1; i > pos8[0]; i--)
+            for (int i = 0; i < pos8[0]; i++)
             {     //i--
                 tableroOriginal.TableroAux[i, pos8[1]] = 8;
             }
-            for (int j = tam-1; j > pos8[0]; j--)
+            for (int j = tam - 1; j > pos8[0]; j--)
             {     //j--
                 tableroOriginal.TableroAux[pos8[0], j] = 8;
             }
-            for (int j = pos8[1]; j < tam; j++)
+            for (int j = 0; j < pos8[1]; j++)
             {     //j++
                 tableroOriginal.TableroAux[pos8[0], j] = 8;
             }
@@ -308,7 +332,7 @@ namespace TP_Lab_II
             {     //i++
                 tableroOriginal.TableroAux[i, pos9[1]] = 9;
             }
-            for (int i = tam - 1; i > pos9[0]; i--)
+            for (int i = 0; i < pos9[0]; i++)
             {     //i--
                 tableroOriginal.TableroAux[i, pos9[1]] = 9;
             }
@@ -316,7 +340,7 @@ namespace TP_Lab_II
             {     //j--
                 tableroOriginal.TableroAux[pos9[0], j] = 9;
             }
-            for (int j = pos9[1]; j < tam; j++)
+            for (int j = 0; j < pos9[1]; j++)
             {     //j++
                 tableroOriginal.TableroAux[pos9[0], j] = 9;
             }
@@ -330,8 +354,6 @@ namespace TP_Lab_II
                 if (pos9[0] + 1 < tam && pos9[1] - 2 > 0) { tableroOriginal.TableroAux[pos9[0] + 1, pos9[1] - 2] = 9; }
                 if (pos9[0] - 1 > 0 && pos9[1] - 2 > 0) { tableroOriginal.TableroAux[pos9[0] - 1, pos9[1] - 2] = 9; }
                 if (pos9[0] - 1 > 0 && pos9[1] + 2 < tam) { tableroOriginal.TableroAux[pos9[0] - 1, pos9[1] + 2] = 9; }
-
-
             }
         }
 
