@@ -92,18 +92,55 @@ namespace TP_Lab_II
                 {
                     for (int i = 0; i < 8; i++)
                     {
-                        int codigo = rand.Next(8);
-                        Ficha ficha_mover = Get_FichaCodigo(codigo);
-                        if(ficha_mover != null)
-                            ficha_mover.CalcularMovimiento(this);
-                        AnalizarTableroAux();
-                        if (VerificarTablero(TableroAux) == true)
+                        Ficha ficha_mover = Get_FichaCodigo(1);
+                        if (GeneraSolucion(ficha_mover) == true)
                         {
-                            i = 8;
                             mov = 8;
+                            break;
+                        }
+                        ficha_mover = Get_FichaCodigo(2);
+                        if (GeneraSolucion(ficha_mover) == true)
+                        {
+                            mov = 8;
+                            break;
+                        }
+                        ficha_mover = Get_FichaCodigo(3);
+                        if (GeneraSolucion(ficha_mover) == true)
+                        {
+                            mov = 8;
+                            break;
+                        }
+                        ficha_mover = Get_FichaCodigo(4);
+                        if (GeneraSolucion(ficha_mover) == true)
+                        {
+                            mov = 8;
+                            break;
+                        }
+                        ficha_mover = Get_FichaCodigo(5);
+                        if (GeneraSolucion(ficha_mover) == true)
+                        {
+                            mov = 8;
+                            break;
+                        }
+                        ficha_mover = Get_FichaCodigo(6);
+                        if (GeneraSolucion(ficha_mover) == true)
+                        {
+                            mov = 8;
+                            break;
+                        }
+                        ficha_mover = Get_FichaCodigo(7);
+                        if (GeneraSolucion(ficha_mover) == true)
+                        {
+                            mov = 8;
+                            break;
+                        }
+                        ficha_mover = Get_FichaCodigo(8);
+                        if (GeneraSolucion(ficha_mover) == true)
+                        {
+                            mov = 8;
+                            break;
                         }
                         mov++;
-                   
                     }
                 }
 
@@ -145,7 +182,15 @@ namespace TP_Lab_II
             
             return this;
         }
-
+        public bool GeneraSolucion (Ficha ficha_mover)
+        {
+            if (ficha_mover != null)
+                ficha_mover.CalcularMovimiento(this);
+            AnalizarTableroAux();
+            if (VerificarTablero(TableroAux) == true)
+                return true;
+            return false;
+        }
         public void MovimientoVH(Ficha ficha)
         {
             int [] pos = ficha.CalcularPosicion( this); //buscamos la posicion de la ficha
