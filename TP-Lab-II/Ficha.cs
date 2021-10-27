@@ -55,17 +55,22 @@ namespace TP_Lab_II
             if (Get_Codigo() != 3 && Get_Codigo() != 4 && pos_org[0] != -1)
             {
                 var Rand = new Random();
-                //generamos una pos aleatoria dentro de los limites del tablero
-                int PosI = Rand.Next(0, 7);
-                int PosJ = Rand.Next(0, 7);
-                //preguntamos si la poscion esta libre y si no se hizo ninguno otro movimiento
-                if (TableroOriginal.Get_CodigoFichaOrg(PosI, PosJ) == 0 && cont == 0)
+                do
                 {
-                    //si esta libre, ponemos la ficha en la nueva pos
-                    TableroOriginal.Set_CodigoFichaOrg(PosI, PosJ, this);
-                    TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                    cont++; //contamos un cambio
-                }
+                    //generamos una pos aleatoria dentro de los limites del tablero
+                    int PosI = Rand.Next(0, 7);
+                    int PosJ = Rand.Next(0, 7);
+                    //preguntamos si la poscion esta libre y si no se hizo ninguno otro movimiento
+                    if (TableroOriginal.Get_CodigoFichaOrg(PosI, PosJ) == 0)
+                    {
+                        //si esta libre, ponemos la ficha en la nueva pos
+                        TableroOriginal.Set_CodigoFichaOrg(PosI, PosJ, this);
+                        TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                        cont++; //contamos un cambio
+                    }
+
+                } while (cont == 0);
+                
             }
             else //caso de un alfil->tiene que respetar sus diagonales
             {
