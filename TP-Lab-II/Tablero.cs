@@ -357,6 +357,7 @@ namespace TP_Lab_II
                     TableroOriginal[7, 7] = 8;
                     break;
             }*/
+            /*
             TableroOriginal[3, 6] = 6; //caballo
             TableroOriginal[2, 2] = 7; //torre
             TableroOriginal[3, 4] = 1; //reina
@@ -364,9 +365,25 @@ namespace TP_Lab_II
             TableroOriginal[3, 3] = 4; //alfil
             TableroOriginal[4, 4] = 2; //rey
             TableroOriginal[4, 3] = 8; //torre
-            TableroOriginal[6, 3] = 5; //caballo
-        }
+            TableroOriginal[6, 3] = 5; //caballo*/
 
+            //nos generamos dos posiciones aleatorias 
+            var rand = new Random();
+            int i = 0;
+            do
+            {
+                int PosI = rand.Next(0, 7);
+                int PosJ = rand.Next(0, 7);
+
+                if (Get_CodigoFichaOrg(PosI, PosJ) == 0)
+                {
+                    TableroOriginal[PosI, PosJ] = i + 1;
+                    i++;
+                }
+
+            } while (i < 8);
+ 
+        }
 
         ~Tablero() {;}
     }
