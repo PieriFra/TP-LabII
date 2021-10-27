@@ -143,7 +143,7 @@ namespace TP_Lab_II
                         mov++;
                     }
                 }
-
+                mov = 0;
                 int cont = 0;
                 Ficha FichaMagica = Get_FichaCodigo(9);
 
@@ -169,17 +169,12 @@ namespace TP_Lab_II
                                 contador = 1;
                             }
                         }
-
                     }
-
                 }
-
                 FichaMagica.CalcularMovimiento(this); //realizamos un movimiento
                 AnalizarTableroAux();
 
             } while (VerificarTablero(TableroAux) == false); 
-
-            
             return this;
         }
         public bool GeneraSolucion (Ficha ficha_mover)
@@ -311,7 +306,7 @@ namespace TP_Lab_II
 
         public void CargarTablero()
         {
-            var rand = new Random();
+            /*var rand = new Random();
             int opcion = rand.Next(3);
 
             switch(opcion)
@@ -347,8 +342,15 @@ namespace TP_Lab_II
                     TableroOriginal[7, 6] = 6;
                     TableroOriginal[7, 7] = 8;
                     break;
-            }
-
+            }*/
+            TableroOriginal[3, 1] = 6;
+            TableroOriginal[2, 5] = 7;
+            TableroOriginal[3, 3] = 1;
+            TableroOriginal[3, 4] = 3;
+            TableroOriginal[3, 5] = 4;
+            TableroOriginal[4, 3] = 2;
+            TableroOriginal[4, 4] = 8;
+            TableroOriginal[6, 4] = 5;
         }
 
 
