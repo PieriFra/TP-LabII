@@ -152,22 +152,26 @@ namespace TP_Lab_II
                     Ficha FichaMagica = Get_FichaCodigo(9);
 
                     //si en 8 movimientos no encontramos una solución juntamos un caballo y una torre y movemos siempre esa ficha
-                    if (contador != 1)
+                    if (contador != 1) //solo eliminamos las fichas una sola vez 
                     {
+                        //recorremos el tablero 
                         for (int i = 0; i < tam; i++)
                         {
                             for (int j = 0; j < tam; j++)
                             {
+                                //buscamos las fichas que queremos eliminar 
                                 if (Get_CodigoFichaOrg(i, j) == 6 || Get_CodigoFichaOrg(i, j) == 7)
                                 {
                                     //TENGO QUE ELIMINAR LAS FICHAS 6 Y 7 DEL TABLERO ORIGINAL, PONGO EN 0 TODO
                                     Get_FichaPosicion(i, j).SetNombre(" ");
                                     Get_FichaPosicion(i, j).SetCodigo(0);
                                     Set_CodigoFichaOrg(i, j, Get_FichaPosicion(i, j));
-                                    cont++;
-                                    if (cont == 2)
+                                    cont++; //para que pase dos veces y elimine las fichas
+
+                                    if (cont == 2) //ya eliminamos las dos fichas 
                                     {
-                                        Set_CodigoFichaOrg(i, j, FichaMagica);
+                                        //en la pos de la ultima ficha que eliminamos agregamos la ficha combinada
+                                        Set_CodigoFichaOrg(i, j, FichaMagica); 
                                     }
 
                                     contador = 1;
@@ -217,16 +221,16 @@ namespace TP_Lab_II
             int[] pos = ficha.CalcularPosicion( this); //buscamos la posicion de la ficha
             for (int k = 0; k < tam; k++)
             {
-                //diagonal derch acendente
+                //diagonal derch decendente
                 if (pos[0] + k < tam && pos[1] + k < tam)
                     TableroAux[pos[0] + k, pos[1] + k] = ficha.Get_Codigo();
-                //diagonal izq decendente 
+                //diagonal izq acendente 
                 if (pos[0] - k >= 0 && pos[1] - k >= 0)
                     TableroAux[pos[0] - k, pos[1] - k] = ficha.Get_Codigo();
-                //diagonal izq acendente
+                //diagonal izq decendente
                 if (pos[0] - k >= 0 && pos[1] + k < tam)
                    TableroAux[pos[0] - k, pos[1] + k] = ficha.Get_Codigo();
-                //diagonal derch decendente
+                //diagonal derch acendente
                 if (pos[0] + k < tam && pos[1] - k >= 0)
                     TableroAux[pos[0] + k, pos[1] - k] = ficha.Get_Codigo();
             }
@@ -353,6 +357,7 @@ namespace TP_Lab_II
                     TableroOriginal[7, 7] = 8;
                     break;
             }*/
+            /*
             TableroOriginal[3, 6] = 6; //caballo
             TableroOriginal[2, 2] = 7; //torre
             TableroOriginal[3, 4] = 1; //reina
@@ -360,9 +365,25 @@ namespace TP_Lab_II
             TableroOriginal[3, 3] = 4; //alfil
             TableroOriginal[4, 4] = 2; //rey
             TableroOriginal[4, 3] = 8; //torre
-            TableroOriginal[6, 3] = 5; //caballo
-        }
+            TableroOriginal[6, 3] = 5; //caballo*/
 
+            //nos generamos dos posiciones aleatorias 
+            var rand = new Random();
+            int i = 0;
+            do
+            {
+                int PosI = rand.Next(0, 7);
+                int PosJ = rand.Next(0, 7);
+
+                if (Get_CodigoFichaOrg(PosI, PosJ) == 0)
+                {
+                    TableroOriginal[PosI, PosJ] = i + 1;
+                    i++;
+                }
+
+            } while (i < 8);
+ 
+        }
 
         ~Tablero() {;}
     }
