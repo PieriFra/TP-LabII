@@ -46,7 +46,7 @@ namespace TP_Lab_II
             ListaFichas.Add(Torre_B);
             ListaFichas.Add(TorreCaballo);
 
-            int n_tableros = 10; //como podriamos declarala como varibale global???
+            int n_tableros = 1; //como podriamos declarala como varibale global???
             List<Tablero> ListaResultados = new List<Tablero>(n_tableros);
 
            
