@@ -82,10 +82,11 @@ namespace TP_Lab_II
         }
 
         public Tablero CalculoSolucion(List<Tablero> ListaResultados, int n_tableros) //devuelve el tablero resultado
-        {
-            var rand = new Random(); 
+        { 
             int mov = 0;
             int contador = 0;
+            bool auxT=false;
+            bool auxT2=false;
             do
             {
                 if (mov < 8)
@@ -143,38 +144,43 @@ namespace TP_Lab_II
                         mov++;
                     }
                 }
-                mov = 0;
-                int cont = 0;
-                Ficha FichaMagica = Get_FichaCodigo(9);
-
-                //si en 8 movimientos no encontramos una solución juntamos un caballo y una torre y movemos siempre esa ficha
-                if (contador != 1)
+                auxT = VerificarTablero(TableroAux);
+                if (auxT == false)
                 {
-                    for (int i = 0; i < tam; i++)
-                    {
-                        for (int j = 0; j < tam; j++)
-                        {
-                            if (Get_CodigoFichaOrg(i, j) == 6 || Get_CodigoFichaOrg(i, j) == 7)
-                            {
-                                //TENGO QUE ELIMINAR LAS FICHAS 6 Y 7 DEL TABLERO ORIGINAL, PONGO EN 0 TODO
-                                Get_FichaPosicion(i, j).SetNombre(" ");
-                                Get_FichaPosicion(i, j).SetCodigo(0);
-                                Set_CodigoFichaOrg(i, j, Get_FichaPosicion(i, j));
-                                cont++;
-                                if (cont == 2)
-                                {
-                                    Set_CodigoFichaOrg(i, j, FichaMagica);
-                                }
+                    mov = 0;
+                    int cont = 0;
+                    Ficha FichaMagica = Get_FichaCodigo(9);
 
-                                contador = 1;
+                    //si en 8 movimientos no encontramos una solución juntamos un caballo y una torre y movemos siempre esa ficha
+                    if (contador != 1)
+                    {
+                        for (int i = 0; i < tam; i++)
+                        {
+                            for (int j = 0; j < tam; j++)
+                            {
+                                if (Get_CodigoFichaOrg(i, j) == 6 || Get_CodigoFichaOrg(i, j) == 7)
+                                {
+                                    //TENGO QUE ELIMINAR LAS FICHAS 6 Y 7 DEL TABLERO ORIGINAL, PONGO EN 0 TODO
+                                    Get_FichaPosicion(i, j).SetNombre(" ");
+                                    Get_FichaPosicion(i, j).SetCodigo(0);
+                                    Set_CodigoFichaOrg(i, j, Get_FichaPosicion(i, j));
+                                    cont++;
+                                    if (cont == 2)
+                                    {
+                                        Set_CodigoFichaOrg(i, j, FichaMagica);
+                                    }
+
+                                    contador = 1;
+                                }
                             }
                         }
                     }
+                    FichaMagica.CalcularMovimiento(this); //realizamos un movimiento
+                    AnalizarTableroAux();
+                    auxT2 = VerificarTablero(TableroAux);
                 }
-                FichaMagica.CalcularMovimiento(this); //realizamos un movimiento
-                AnalizarTableroAux();
 
-            } while (VerificarTablero(TableroAux) == false); 
+            } while (auxT == false && auxT2 == false);
             return this;
         }
         public bool GeneraSolucion (Ficha ficha_mover)
@@ -299,8 +305,12 @@ namespace TP_Lab_II
 
             //TorreCaballo
             ficha = Get_FichaCodigo(9); //obtenemos la ficha que queremos 
-            MovimientoVH(ficha);
-            MovimientoCaballo(ficha);
+            int[] aux = ficha.CalcularPosicion(this);
+            if (aux[0] != -1)
+            {
+                MovimientoVH(ficha);
+                MovimientoCaballo(ficha);
+            }
         }
 
 
@@ -343,14 +353,14 @@ namespace TP_Lab_II
                     TableroOriginal[7, 7] = 8;
                     break;
             }*/
-            TableroOriginal[3, 1] = 6;
-            TableroOriginal[2, 5] = 7;
-            TableroOriginal[3, 3] = 1;
-            TableroOriginal[3, 4] = 3;
-            TableroOriginal[3, 5] = 4;
-            TableroOriginal[4, 3] = 2;
-            TableroOriginal[4, 4] = 8;
-            TableroOriginal[6, 4] = 5;
+            TableroOriginal[3, 6] = 6; //caballo
+            TableroOriginal[2, 2] = 7; //torre
+            TableroOriginal[3, 4] = 1; //reina
+            TableroOriginal[3, 2] = 3; //alfil
+            TableroOriginal[3, 3] = 4; //alfil
+            TableroOriginal[4, 4] = 2; //rey
+            TableroOriginal[4, 3] = 8; //torre
+            TableroOriginal[6, 3] = 5; //caballo
         }
 
 

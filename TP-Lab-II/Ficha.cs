@@ -38,6 +38,8 @@ namespace TP_Lab_II
                     }                   
                 }
             }
+            Posicion[0] = -1;
+            Posicion[1] = -1;
             return Posicion;
         }
 
