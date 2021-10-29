@@ -49,18 +49,19 @@ namespace TP_Lab_II
             int cont = 0;
             Ficha ficha_aux = new Ficha(" ", 0); //ficha aux para colocar la antigua poscion en 0
             int[] pos_org = CalcularPosicion(TableroOriginal); //poscion actual de la ficha
+            var Rand = new Random();
 
-
-            //si la ficha esta en el tablero y ademas no es un alfil:
-            if (Get_Codigo() != 3 && Get_Codigo() != 4 && pos_org[0] != -1)
+            //si la ficha esta en el tablero y ademas no es un alfil ni una torre ni la reina:
+            if (Get_Codigo() != 3 && Get_Codigo() != 4 && pos_org[0] != -1 && Get_Codigo() !=7 && Get_Codigo() != 8 && Get_Codigo() != 1)
             {
-                var Rand = new Random();
+               
                 do
                 {
                     //generamos una pos aleatoria dentro de los limites del tablero
                     int PosI = Rand.Next(0, 7);
                     int PosJ = Rand.Next(0, 7);
-                    //preguntamos si la poscion esta libre y si no se hizo ninguno otro movimiento
+
+                    //preguntamos si la poscion esta libre 
                     if (TableroOriginal.Get_CodigoFichaOrg(PosI, PosJ) == 0)
                     {
                         //si esta libre, ponemos la ficha en la nueva pos
@@ -72,7 +73,9 @@ namespace TP_Lab_II
                 } while (cont == 0);
                 
             }
-            else //caso de un alfil->tiene que respetar sus diagonales
+
+            //caso de un alfil->tiene que respetar sus diagonales
+            if (Get_Codigo() == 3 && Get_Codigo() == 4)
             {
                 //diagonal derch decendente
                 //preguntamos si el movimiento esta dentro de los limites de la matriz y si no se hizo otro movimiento
@@ -102,6 +105,31 @@ namespace TP_Lab_II
                   
                 }
                 
+            }
+
+            //caso de la reina->limitamos sus movimientos entre 2<x<4 & 2<y<4
+            if (Get_Codigo() == 1)
+            {
+
+                cont = 0;
+                do
+                {
+                    //generamos una pos aleatoria dentro de los limites establecidos
+                    int Pos_I = Rand.Next(2, 4);
+                    int Pos_J = Rand.Next(2, 4);
+
+                    //preguntamos si la poscion esta libre 
+                    if (TableroOriginal.Get_CodigoFichaOrg(Pos_I, Pos_J) == 0)
+                    {
+                        //si esta libre, ponemos la ficha en la nueva pos
+                        TableroOriginal.Set_CodigoFichaOrg(Pos_I, Pos_J, this);
+                        TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                        cont++; //contamos un cambio
+                    }
+
+                } while (cont==0);
+               
+
             }
             
             

@@ -367,21 +367,30 @@ namespace TP_Lab_II
             TableroOriginal[4, 3] = 8; //torre
             TableroOriginal[6, 3] = 5; //caballo*/
 
-            //nos generamos dos posiciones aleatorias 
+            //colocamos las torres fijas en las esquinas del tablero y no las movemos -> achicamos el tablero
+            TableroOriginal[0, 0] = 7; //TorreA
+            TableroOriginal[7, 7] = 8; //TorreB
+
+            //colocamos las reina en el "centro" del tablero
+            TableroOriginal[4, 4] = 1; //reina
+
+            //el resto de las fichas las colocamos en posciones aleatorias 
             var rand = new Random();
-            int i = 0;
+            int i = 1;
             do
             {
+                //nos generamos dos posiciones aleatorias
                 int PosI = rand.Next(0, 7);
                 int PosJ = rand.Next(0, 7);
 
+                //ubiacamos el rey, los dos alfiles, y los dos caballos
                 if (Get_CodigoFichaOrg(PosI, PosJ) == 0)
                 {
                     TableroOriginal[PosI, PosJ] = i + 1;
                     i++;
                 }
 
-            } while (i < 8);
+            } while (i < 6); 
  
         }
 
