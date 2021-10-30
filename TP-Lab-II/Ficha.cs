@@ -77,7 +77,7 @@ namespace TP_Lab_II
             }
 
             //caso de un alfil->tiene que respetar sus diagonales
-            if (Get_Codigo() == 3 && Get_Codigo() == 4)
+            if (Get_Codigo() == 3 || Get_Codigo() == 4)
             {
                 //diagonal derch decendente
                 //preguntamos si el movimiento esta dentro de los limites de la matriz y si no se hizo otro movimiento
