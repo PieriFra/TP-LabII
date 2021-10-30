@@ -57,6 +57,7 @@ namespace TP_Lab_II
                 TableroOrg.CargarTablero();
 
                 Tablero Aux = new Tablero(ListaFichas);
+                
                 Aux = TableroOrg.CalculoSolucion(ListaResultados, n_tableros);
                 if (Aux != null)
                 {

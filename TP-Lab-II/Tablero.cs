@@ -129,18 +129,6 @@ namespace TP_Lab_II
                             mov = 8;
                             break;
                         }
-                        ficha_mover = Get_FichaCodigo(7);
-                        if (GeneraSolucion(ficha_mover) == true)
-                        {
-                            mov = 8;
-                            break;
-                        }
-                        ficha_mover = Get_FichaCodigo(8);
-                        if (GeneraSolucion(ficha_mover) == true)
-                        {
-                            mov = 8;
-                            break;
-                        }
                         mov++;
                     }
                 }
@@ -379,9 +367,9 @@ namespace TP_Lab_II
             int i = 1;
             do
             {
-                //nos generamos dos posiciones aleatorias
-                int PosI = rand.Next(0, 7);
-                int PosJ = rand.Next(0, 7);
+                //nos generamos dos posiciones aleatorias, entre el tablero reducido que nos queda de no mover las torres
+                int PosI = rand.Next(1, 6);
+                int PosJ = rand.Next(1, 6);
 
                 //ubiacamos el rey, los dos alfiles, y los dos caballos
                 if (Get_CodigoFichaOrg(PosI, PosJ) == 0)

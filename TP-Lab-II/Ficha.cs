@@ -52,14 +52,16 @@ namespace TP_Lab_II
             var Rand = new Random();
 
             //si la ficha esta en el tablero y ademas no es un alfil ni una torre ni la reina:
-            if (Get_Codigo() != 3 && Get_Codigo() != 4 && pos_org[0] != -1 && Get_Codigo() !=7 && Get_Codigo() != 8 && Get_Codigo() != 1)
-            {
-               
+            //if (Get_Codigo() != 3 && Get_Codigo() != 4 && pos_org[0] != -1 && Get_Codigo() !=7 && Get_Codigo() != 8 && Get_Codigo() != 1)
+            
+            //caso del rey
+            if(Get_Codigo() == 2) //movemos el rey
+            {  
                 do
                 {
                     //generamos una pos aleatoria dentro de los limites del tablero
-                    int PosI = Rand.Next(0, 7);
-                    int PosJ = Rand.Next(0, 7);
+                    int PosI = Rand.Next(1, 6);
+                    int PosJ = Rand.Next(1, 6);
 
                     //preguntamos si la poscion esta libre 
                     if (TableroOriginal.Get_CodigoFichaOrg(PosI, PosJ) == 0)
@@ -132,7 +134,52 @@ namespace TP_Lab_II
 
             }
             
-            
+            //caso del caballo A
+            if(Get_Codigo()==5)
+            {
+                cont = 0;
+                do
+                {
+                    //generamos una pos aleatoria dentro de los limites establecidos
+                    int Pos_I = Rand.Next(2, 6);
+                    int Pos_J = Rand.Next(1, 5);
+
+                    //preguntamos si la poscion esta libre 
+                    if (TableroOriginal.Get_CodigoFichaOrg(Pos_I, Pos_J) == 0)
+                    {
+                        //si esta libre, ponemos la ficha en la nueva pos
+                        TableroOriginal.Set_CodigoFichaOrg(Pos_I, Pos_J, this);
+                        TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                        cont++; //contamos un cambio
+                    }
+
+                } while (cont == 0);
+
+            }
+
+            //caso del caballo B
+            if (Get_Codigo() == 6)
+            {
+                cont = 0;
+                do
+                {
+                    //generamos una pos aleatoria dentro de los limites establecidos
+                    int Pos_I = Rand.Next(1, 5);
+                    int Pos_J = Rand.Next(2, 6);
+
+                    //preguntamos si la poscion esta libre 
+                    if (TableroOriginal.Get_CodigoFichaOrg(Pos_I, Pos_J) == 0)
+                    {
+                        //si esta libre, ponemos la ficha en la nueva pos
+                        TableroOriginal.Set_CodigoFichaOrg(Pos_I, Pos_J, this);
+                        TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                        cont++; //contamos un cambio
+                    }
+
+                } while (cont == 0);
+
+            }
+
         }
 
         ~Ficha() {;}
