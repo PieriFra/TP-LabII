@@ -142,6 +142,9 @@ namespace TP_Lab_II
                     //si en 8 movimientos no encontramos una solución juntamos un caballo y una torre y movemos siempre esa ficha
                     if (contador != 1) //solo eliminamos las fichas una sola vez 
                     {
+                        //nos guardamos la posicion de la torre a eliminar
+                        Ficha torre = Get_FichaCodigo(7);
+                        int[] posTorre = torre.CalcularPosicion(this);
                         //recorremos el tablero 
                         for (int i = 0; i < tam; i++)
                         {
@@ -159,7 +162,8 @@ namespace TP_Lab_II
                                     if (cont == 2) //ya eliminamos las dos fichas 
                                     {
                                         //en la pos de la ultima ficha que eliminamos agregamos la ficha combinada
-                                        Set_CodigoFichaOrg(i, j, FichaMagica); 
+                                        //Set_CodigoFichaOrg(i, j, FichaMagica); 
+                                        Set_CodigoFichaOrg(posTorre[0], posTorre[1], FichaMagica);
                                     }
 
                                     contador = 1;
@@ -180,6 +184,7 @@ namespace TP_Lab_II
             if (ficha_mover != null)
                 ficha_mover.CalcularMovimiento(this);
             AnalizarTableroAux();
+            imprimir(TableroAux);
             if (VerificarTablero(TableroAux) == true)
                 return true;
             return false;
@@ -226,14 +231,33 @@ namespace TP_Lab_II
         public void MovimientoCaballo(Ficha ficha)
         {
            int [] pos = ficha.CalcularPosicion( this); //buscamos la posicion de la fich
-            if (pos[0] + 2 < tam && pos[1] + 1 < tam) { TableroAux[pos[0] + 2, pos[1] + 1] = 5; }
-            if (pos[0] + 2 < tam && pos[1] - 1 >= 0) { TableroAux[pos[0] + 2, pos[1] - 1] = 5; }
-            if (pos[0] - 2 > 0 && pos[1] - 1 > 0) { TableroAux[pos[0] - 2, pos[1] - 1] = 5; }
-            if (pos[0] - 2 > 0 && pos[1] + 1 < tam) { TableroAux[pos[0] - 2, pos[1] + 1] = 5; }
-            if (pos[0] + 1 < tam && pos[1] + 2 < tam) { TableroAux[pos[0] + 1, pos[1] + 2] = 5; }
-            if (pos[0] + 1 < tam && pos[1] - 2 > 0) { TableroAux[pos[0] + 1, pos[1] - 2] = 5; }
-            if (pos[0] - 1 > 0 && pos[1] - 2 > 0) { TableroAux[pos[0] - 1, pos[1] - 2] = 5; }
-            if (pos[0] - 1 > 0 && pos[1] + 2 < tam) { TableroAux[pos[0] - 1, pos[1] + 2] = 5; }
+
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (pos[1] + i < tam)
+                    TableroAux[pos[0], pos[1] + i] = ficha.Get_Codigo();
+                if (pos[0] + i < tam)
+                    TableroAux[pos[0] + i, pos[1]] = ficha.Get_Codigo();
+
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (pos[1] - i >= 0)
+                    TableroAux[pos[0], pos[1] - i] = ficha.Get_Codigo();
+                if (pos[0] - i >= 0)
+                    TableroAux[pos[0] - i, pos[1]] = ficha.Get_Codigo();
+            }
+
+            if (pos[0] + 2 < tam && pos[1] + 1 < tam) { TableroAux[pos[0] + 2, pos[1] + 1] = ficha.Get_Codigo(); }
+            if (pos[0] + 2 < tam && pos[1] - 1 >= 0) { TableroAux[pos[0] + 2, pos[1] - 1] = ficha.Get_Codigo(); }
+            if (pos[0] - 2 >= 0 && pos[1] - 1 >= 0) { TableroAux[pos[0] - 2, pos[1] - 1] = ficha.Get_Codigo(); }
+            if (pos[0] - 2 >= 0 && pos[1] + 1 < tam) { TableroAux[pos[0] - 2, pos[1] + 1] = ficha.Get_Codigo(); }
+            if (pos[0] + 1 < tam && pos[1] + 2 < tam) { TableroAux[pos[0] + 1, pos[1] + 2] = ficha.Get_Codigo(); }
+            if (pos[0] + 1 < tam && pos[1] - 2 >= 0) { TableroAux[pos[0] + 1, pos[1] - 2] = ficha.Get_Codigo(); }
+            if (pos[0] - 1 >= 0 && pos[1] - 2 >= 0) { TableroAux[pos[0] - 1, pos[1] - 2] = ficha.Get_Codigo(); }
+            if (pos[0] - 1 >= 0 && pos[1] + 2 < tam) { TableroAux[pos[0] - 1, pos[1] + 2] = ficha.Get_Codigo(); }
         }
         public void AnalizarTableroAux() //LLena los casilleros que pueden ser atacados
         {
@@ -256,6 +280,7 @@ namespace TP_Lab_II
             ficha = Get_FichaCodigo(2); //obtenemos la ficha que queremos 
             int [] pos = ficha.CalcularPosicion( this); //buscamos la posicion de la ficha
 
+            TableroAux[pos[0], pos[1]] = 2;
             if (pos[0] + 1 < tam) { TableroAux[pos[0] + 1, pos[1]] = 2; }
             if (pos[0] - 1 >0) { TableroAux[pos[0] - 1, pos[1]] = 2; }
             if (pos[1] + 1 < tam) { TableroAux[pos[0], pos[1]+1] = 2; }
@@ -264,6 +289,7 @@ namespace TP_Lab_II
             if (pos[1] + 1 < tam && pos[0] - 1 > 0) { TableroAux[pos[0] - 1, pos[1] + 1] = 2; }
             if (pos[1] -1 > 0 && pos[0] + 1 < tam) { TableroAux[pos[0] + 1, pos[1] - 1] = 2; }
             if (pos[1] - 1 > 0 && pos[0] - 1 > 0) { TableroAux[pos[0] - 1, pos[1] - 1] = 2; }
+
 
             //Alfil A
             ficha = Get_FichaCodigo(3); //obtenemos la ficha que queremos 
@@ -283,14 +309,15 @@ namespace TP_Lab_II
             {
                 MovimientoCaballo(ficha);
             }
-            
+
+
             //Torre A
             ficha = Get_FichaCodigo(7); //obtenemos la ficha que queremos 
             if (ficha != null)
             {
                 MovimientoVH(ficha);
             }
-           
+
             //Torre B
             ficha = Get_FichaCodigo(8); //obtenemos la ficha que queremos 
             MovimientoVH(ficha);
@@ -302,9 +329,10 @@ namespace TP_Lab_II
             {
                 MovimientoVH(ficha);
                 MovimientoCaballo(ficha);
-            }
-        }
 
+            }
+
+        }
 
         public void CargarTablero()
         {
@@ -380,6 +408,21 @@ namespace TP_Lab_II
 
             } while (i < 6); 
  
+        }
+
+        public void imprimir(int[,] tablero)
+        {
+            string text = "\n";
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    text += tablero[i, j].ToString("0") + "|";
+                }
+                text += "\n";
+            }
+            Console.Write(text);
         }
 
         ~Tablero() {;}
