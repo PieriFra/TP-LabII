@@ -53,10 +53,10 @@ namespace TP_Lab_II
 
             //si la ficha esta en el tablero y ademas no es un alfil ni una torre ni la reina:
             //if (Get_Codigo() != 3 && Get_Codigo() != 4 && pos_org[0] != -1 && Get_Codigo() !=7 && Get_Codigo() != 8 && Get_Codigo() != 1)
-            
+
             //caso del rey
-            if(Get_Codigo() == 2) //movemos el rey
-            {  
+            if (Get_Codigo() == 2) //movemos el rey
+            {
                 do
                 {
                     //generamos una pos aleatoria dentro de los limites del tablero
@@ -73,7 +73,7 @@ namespace TP_Lab_II
                     }
 
                 } while (cont == 0);
-                
+
             }
 
             //caso de un alfil->tiene que respetar sus diagonales
@@ -81,7 +81,7 @@ namespace TP_Lab_II
             {
                 //diagonal derch decendente
                 //preguntamos si el movimiento esta dentro de los limites de la matriz y si no se hizo otro movimiento
-                if ( pos_org[0] + 3 < TableroOriginal.GetTam() &&  pos_org[1] + 3 < TableroOriginal.GetTam() && cont == 0)
+                if (pos_org[0] + 3 < TableroOriginal.GetTam() && pos_org[1] + 3 < TableroOriginal.GetTam() && cont == 0)
                 {
                     //preguntamos si la poscion esta libre
                     if (TableroOriginal.Get_CodigoFichaOrg(pos_org[0] + 3, pos_org[1] + 3) == 0)
@@ -90,7 +90,7 @@ namespace TP_Lab_II
                         TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
                         cont++; //contamos un cambio
                     }
-                  
+
                 }
 
                 //diagonal izq acendente 
@@ -104,9 +104,10 @@ namespace TP_Lab_II
                         TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
                         cont++; //contamos un cambio
                     }
-                  
+
                 }
-                
+
+
             }
 
             //caso de la reina->limitamos sus movimientos entre 2<x<4 & 2<y<4
@@ -129,20 +130,20 @@ namespace TP_Lab_II
                         cont++; //contamos un cambio
                     }
 
-                } while (cont==0);
-               
+                } while (cont == 0);
+
 
             }
-            
+
             //caso del caballo A
-            if(Get_Codigo()==5)
+            if (Get_Codigo() == 5 || Get_Codigo() == 6)
             {
                 cont = 0;
                 do
                 {
                     //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(2, 6);
-                    int Pos_J = Rand.Next(1, 5);
+                    int Pos_I = Rand.Next(2, 5);
+                    int Pos_J = Rand.Next(2, 5);
 
                     //preguntamos si la poscion esta libre 
                     if (TableroOriginal.Get_CodigoFichaOrg(Pos_I, Pos_J) == 0)
@@ -156,30 +157,6 @@ namespace TP_Lab_II
                 } while (cont == 0);
 
             }
-
-            //caso del caballo B
-            if (Get_Codigo() == 6)
-            {
-                cont = 0;
-                do
-                {
-                    //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(1, 5);
-                    int Pos_J = Rand.Next(2, 6);
-
-                    //preguntamos si la poscion esta libre 
-                    if (TableroOriginal.Get_CodigoFichaOrg(Pos_I, Pos_J) == 0)
-                    {
-                        //si esta libre, ponemos la ficha en la nueva pos
-                        TableroOriginal.Set_CodigoFichaOrg(Pos_I, Pos_J, this);
-                        TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                        cont++; //contamos un cambio
-                    }
-
-                } while (cont == 0);
-
-            }
-
         }
 
         ~Ficha() {;}

@@ -81,7 +81,7 @@ namespace TP_Lab_II
             return true; 
         }
 
-        public Tablero CalculoSolucion(List<Tablero> ListaResultados, int n_tableros) //devuelve el tablero resultado
+        public Tablero CalculoSolucion(List<Tablero> ListaResultados) //devuelve el tablero resultado
         { 
             int mov = 0;
             int contador = 0;

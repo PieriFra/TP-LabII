@@ -58,7 +58,7 @@ namespace TP_Lab_II
 
                 Tablero Aux = new Tablero(ListaFichas);
                 
-                Aux = TableroOrg.CalculoSolucion(ListaResultados, n_tableros);
+                Aux = TableroOrg.CalculoSolucion(ListaResultados);
                 if (Aux != null)
                 {
                     if (ListaResultados.Count == 0)
