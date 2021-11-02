@@ -443,6 +443,23 @@ namespace TP_Lab_II
             Console.Write(text);
         }
 
+        public bool CompararTableros(Tablero tablero)
+        {
+            //recorremos el tablero original
+            for (int i = 0; i < tam; i++)
+            {  
+                for (int j = 0; j < tam; j++)
+                {
+                    if (tablero.Get_CodigoFichaOrg(i, j) != this.Get_CodigoFichaOrg(i, j))
+                        return true; //si encontramos una posicion donde haya dos fichas distintas, retornamos true
+                }
+            
+            }
+
+            //en caso de que no se encuentre, retornamos false, las soluciones son iguales 
+            return false; 
+        }
+
         ~Tablero() {;}
     }
 }

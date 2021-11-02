@@ -47,7 +47,7 @@ namespace TP_Lab_II
         public void CalcularMovimiento(Tablero TableroOriginal)
         {
             int cont = 0;
-            int[] pos= {};
+            int[] pos = new int[2];
             Ficha ficha_aux = new Ficha(" ", 0); //ficha aux para colocar la antigua poscion en 0
             int[] pos_org = CalcularPosicion(TableroOriginal); //poscion actual de la ficha
             var Rand = new Random();
