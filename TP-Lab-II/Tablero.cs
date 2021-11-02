@@ -360,6 +360,7 @@ namespace TP_Lab_II
                 }
             } while (cont != 1);
 
+            cont = 0;
             do
             {
                 pos_i = rand.Next(2, 5);
@@ -371,6 +372,7 @@ namespace TP_Lab_II
                 }
             } while (cont != 1);
 
+            cont = 0;
             do
             {
                 pos_i = rand.Next(2, 5);
@@ -382,7 +384,6 @@ namespace TP_Lab_II
                 }
             } while (cont != 1);
 
-            imprimir(TableroOriginal);
         }
 
 
