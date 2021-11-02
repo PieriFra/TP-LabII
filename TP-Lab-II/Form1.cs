@@ -46,14 +46,19 @@ namespace TP_Lab_II
             ListaFichas.Add(Torre_B);
             ListaFichas.Add(TorreCaballo);
 
-            int n_tableros = 5; //como podriamos declarala como varibale global???
+            int n_tableros = 7; //como podriamos declarala como varibale global???
             List<Tablero> ListaResultados = new List<Tablero>(n_tableros);
 
             int cant_tableros = 0;
-            Tablero TableroOrg = new Tablero(ListaFichas);
+            
 
             do
             {
+                Tablero TableroOrg = new Tablero(ListaFichas);
+                ListaFichas[5].SetCodigo(6);
+                ListaFichas[5].SetNombre("Caballo B");
+                ListaFichas[6].SetCodigo(7);
+                ListaFichas[6].SetNombre("Torre A");
                 TableroOrg.CargarTablero();
                 Tablero Aux = new Tablero(ListaFichas);
                 Aux = TableroOrg.CalculoSolucion(ListaResultados);
@@ -70,7 +75,7 @@ namespace TP_Lab_II
                         cant_tableros = 1;
                         for (int i = 0; i < ListaResultados.Count; i++)
                         {
-                            if (ListaResultados[i] != Aux)
+                            if (ListaResultados[i].CompararTableros(Aux) == true)
                                 cant_tableros++;
                         }
                         if(cant_tableros==ListaResultados.Count +1 )
