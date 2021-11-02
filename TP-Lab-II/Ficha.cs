@@ -47,29 +47,51 @@ namespace TP_Lab_II
         public void CalcularMovimiento(Tablero TableroOriginal)
         {
             int cont = 0;
+            int[] pos= {};
             Ficha ficha_aux = new Ficha(" ", 0); //ficha aux para colocar la antigua poscion en 0
             int[] pos_org = CalcularPosicion(TableroOriginal); //poscion actual de la ficha
             var Rand = new Random();
 
+            for (int i = 0; i < TableroOriginal.GetTam(); i++)
+            {
+                for (int j = 0; j < TableroOriginal.GetTam(); j++)
+                {
+                    if (TableroOriginal.TableroAux[i, j] == 0)
+                    {
+                        pos[0] = i;
+                        pos[1] = j;
+                    }
+                }
+            }
+
             //caso del rey
             if (Get_Codigo() == 2) //movemos el rey
             {
-                do
+                if (TableroOriginal.Get_CodigoFichaOrg(pos[0], pos[1]) == 0)
                 {
-                    //generamos una pos aleatoria dentro de los limites del tablero
-                    int PosI = Rand.Next(1, 5);
-                    int PosJ = Rand.Next(1, 5);
-
-                    //preguntamos si la poscion esta libre 
-                    if (TableroOriginal.Get_CodigoFichaOrg(PosI, PosJ) == 0)
+                    //si esta libre, ponemos la ficha en la nueva pos
+                    TableroOriginal.Set_CodigoFichaOrg(pos[0],pos[1], this);
+                    TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                }
+                else
+                {
+                    do
                     {
-                        //si esta libre, ponemos la ficha en la nueva pos
-                        TableroOriginal.Set_CodigoFichaOrg(PosI, PosJ, this);
-                        TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                        cont++; //contamos un cambio
-                    }
+                        //generamos una pos aleatoria dentro de los limites del tablero
+                        int PosI = Rand.Next(1, 5);
+                        int PosJ = Rand.Next(1, 5);
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.Get_CodigoFichaOrg(PosI, PosJ) == 0)
+                        {
+                            //si esta libre, ponemos la ficha en la nueva pos
+                            TableroOriginal.Set_CodigoFichaOrg(PosI, PosJ, this);
+                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                            cont++; //contamos un cambio
+                        }
 
-                } while (cont == 0);
+                    } while (cont == 0);
+
+                } 
 
             }
 
@@ -119,6 +141,27 @@ namespace TP_Lab_II
 
             }
 
+            //caso TorreCaballo
+            if (Get_Codigo() == 9)
+            {
+                cont = 0;
+                do
+                {
+                    //generamos una pos aleatoria dentro de los limites establecidos
+                    int Pos_I = Rand.Next(0, 6);
+                    int Pos_J = Rand.Next(0, 6);
+
+                    //preguntamos si la poscion esta libre 
+                    if (TableroOriginal.Get_CodigoFichaOrg(Pos_I, Pos_J) == 0)
+                    {
+                        //si esta libre, ponemos la ficha en la nueva pos
+                        TableroOriginal.Set_CodigoFichaOrg(Pos_I, Pos_J, this);
+                        TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                        cont++; //contamos un cambio
+                    }
+
+                } while (cont == 0);
+            }
         }
 
         /*public void CalcularMovimiento(Tablero TableroOriginal)

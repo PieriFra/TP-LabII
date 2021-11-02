@@ -12,7 +12,7 @@ namespace TP_Lab_II
         private int tam;
         public List<Ficha> ListaFichas;
         private int [,]TableroOriginal;
-        private int [,]TableroAux;
+        public int [,]TableroAux;
 
         //Metodos
         public Tablero(List<Ficha> ListaFichas_)
@@ -173,6 +173,7 @@ namespace TP_Lab_II
                     }
                     FichaMagica.CalcularMovimiento(this); //realizamos un movimiento
                     AnalizarTableroAux();
+                    imprimir(TableroAux);
                     auxT2 = VerificarTablero(TableroAux);
                 }
 

@@ -50,12 +50,11 @@ namespace TP_Lab_II
             List<Tablero> ListaResultados = new List<Tablero>(n_tableros);
 
             int cant_tableros = 0;
+            Tablero TableroOrg = new Tablero(ListaFichas);
+
+            TableroOrg.CargarTablero();
             do
             {
-                Tablero TableroOrg = new Tablero(ListaFichas);
-                
-                TableroOrg.CargarTablero();
-
                 Tablero Aux = new Tablero(ListaFichas);
                 
                 Aux = TableroOrg.CalculoSolucion(ListaResultados);
