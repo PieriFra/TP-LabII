@@ -336,43 +336,59 @@ namespace TP_Lab_II
 
         public void CargarTablero()
         {
-            /*var rand = new Random();
-            int opcion = rand.Next(3);
 
-            switch(opcion)
+            //dejamos los alfiles fijos y las torre fija
+            TableroOriginal[3, 3] = 3; //alfil A
+            TableroOriginal[4, 3] = 4; //alfil B 
+            TableroOriginal[7, 7] = 8; //torre B
+            TableroOriginal[0, 0] = 7; //torre A -> esta torre la comenzamos a mover con la ficha comibinada
+
+            TableroOriginal[4, 5] = 1; //ubicamos la reina en una poscion centrica
+
+            
+            var rand = new Random();
+            int cont = 0;
+            int pos_i = 0;
+            int pos_j = 0;
+            do {
+                pos_i = rand.Next(2, 5);
+                pos_j = rand.Next(2, 5);
+                if (TableroOriginal[pos_i, pos_j] == 0)
+                {
+                    TableroOriginal[pos_i, pos_j] = 5;//caballo A
+                    cont++;
+                }
+            } while (cont != 1);
+
+            do
             {
-                case 0:
-                    TableroOriginal[0, 0] = 7;
-                    TableroOriginal[0, 1] = 5;
-                    TableroOriginal[0, 2] = 3;
-                    TableroOriginal[0, 3] = 1;
-                    TableroOriginal[0, 4] = 2;
-                    TableroOriginal[0, 5] = 4;
-                    TableroOriginal[0, 6] = 6;
-                    TableroOriginal[0, 7] = 8;
+                pos_i = rand.Next(2, 5);
+                pos_j = rand.Next(2, 5);
+                if (TableroOriginal[pos_i, pos_j] == 0)
+                {
+                    TableroOriginal[pos_i, pos_j] = 6;//caballo B
+                    cont++;
+                }
+            } while (cont != 1);
 
-                    break;
-                case 1:
-                    TableroOriginal[3, 0] = 7;
-                    TableroOriginal[3, 1] = 5;
-                    TableroOriginal[3, 2] = 3;
-                    TableroOriginal[3, 3] = 1;
-                    TableroOriginal[3, 4] = 2;
-                    TableroOriginal[3, 5] = 4;
-                    TableroOriginal[3, 6] = 6;
-                    TableroOriginal[3, 7] = 8;
-                    break;
-                case 2:
-                    TableroOriginal[7, 0] = 7;
-                    TableroOriginal[7, 1] = 5;
-                    TableroOriginal[7, 2] = 3;
-                    TableroOriginal[7, 3] = 1;
-                    TableroOriginal[7, 4] = 2;
-                    TableroOriginal[7, 5] = 4;
-                    TableroOriginal[7, 6] = 6;
-                    TableroOriginal[7, 7] = 8;
-                    break;
-            }*/
+            do
+            {
+                pos_i = rand.Next(2, 5);
+                pos_j = rand.Next(2, 5);
+                if (TableroOriginal[pos_i, pos_j] == 0)
+                {
+                    TableroOriginal[pos_i, pos_j] = 2; //rey
+                    cont++;
+                }
+            } while (cont != 1);
+
+            imprimir(TableroOriginal);
+        }
+
+
+        /*
+        public void CargarTablero()
+        {
             /*
             TableroOriginal[3, 6] = 6; //caballo
             TableroOriginal[2, 2] = 7; //torre
@@ -381,10 +397,10 @@ namespace TP_Lab_II
             TableroOriginal[3, 3] = 4; //alfil
             TableroOriginal[4, 4] = 2; //rey
             TableroOriginal[4, 3] = 8; //torre
-            TableroOriginal[6, 3] = 5; //caballo*/
+            TableroOriginal[6, 3] = 5; //caballo
 
-            //colocamos las torres fijas en las esquinas del tablero y no las movemos -> achicamos el tablero
-            TableroOriginal[0, 0] = 7; //TorreA
+        //colocamos las torres fijas en las esquinas del tablero y no las movemos -> achicamos el tablero
+        TableroOriginal[0, 0] = 7; //TorreA
             TableroOriginal[7, 7] = 8; //TorreB
 
             //colocamos las reina en el "centro" del tablero
@@ -408,7 +424,7 @@ namespace TP_Lab_II
 
             } while (i < 6); 
  
-        }
+        }*/
 
         public void imprimir(int[,] tablero)
         {
