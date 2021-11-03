@@ -90,7 +90,7 @@ namespace TP_Lab_II
             } while (cant_tableros != n_tableros);
 
 
-            Form2 form2 = new Form2(this, ListaResultados);
+            Form2 form2 = new Form2(this);
             form2.Show();
             this.Hide();
 
