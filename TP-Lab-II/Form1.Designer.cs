@@ -31,8 +31,8 @@ namespace TP_Lab_II
         {
             this.CorrerBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.Btn_NSoluciones = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_NSoluciones)).BeginInit();
             this.SuspendLayout();
             // 
             // CorrerBtn
@@ -54,30 +54,30 @@ namespace TP_Lab_II
             this.label1.TabIndex = 2;
             this.label1.Text = "Cantidad de Soluciones";
             // 
-            // numericUpDown1
+            // Btn_NSoluciones
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(194, 81);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.Btn_NSoluciones.Location = new System.Drawing.Point(194, 81);
+            this.Btn_NSoluciones.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 3;
+            this.Btn_NSoluciones.Name = "Btn_NSoluciones";
+            this.Btn_NSoluciones.Size = new System.Drawing.Size(120, 20);
+            this.Btn_NSoluciones.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(378, 323);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.Btn_NSoluciones);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CorrerBtn);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_NSoluciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,7 +87,7 @@ namespace TP_Lab_II
 
         private System.Windows.Forms.Button CorrerBtn;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown Btn_NSoluciones;
     }
 }
 

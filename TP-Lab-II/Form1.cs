@@ -46,11 +46,11 @@ namespace TP_Lab_II
             ListaFichas.Add(Torre_B);
             ListaFichas.Add(TorreCaballo);
 
-            int n_tableros = 20; //como podriamos declarala como varibale global???
+            //int n_tableros = 20; //como podriamos declarala como varibale global???
+            int n_tableros= (UInt16)Btn_NSoluciones.Value;
             List<Tablero> ListaResultados = new List<Tablero>(n_tableros);
 
             int cant_tableros = 0;
-
 
             do
             {
@@ -85,17 +85,10 @@ namespace TP_Lab_II
             } while (cant_tableros != n_tableros);
 
 
-            if (ListaResultados.Count == n_tableros)
-            {
-                for (int i = 0; i < ListaResultados.Count; i++)
-                {
-                    ListaResultados[i].imprimir(ListaResultados[i].TableroAux);
-                }
-            }
+            Form2 form2 = new Form2(this);
+            form2.Show();
+            this.Hide();
 
-
-            if (ListaResultados.Count==n_tableros)
-                textBox1.Text = Convert.ToString("Tengo 10 soluciones");
         }
 
         private void Form1_Load(object sender, EventArgs e)
