@@ -12,13 +12,22 @@ namespace TP_Lab_II
 {
     public partial class Form2 : Form
     {
-        Form1 llamado;
-        List<Tablero> tableros_sol;
+       
+       Form1 llamado;
+       Form3 Llamado;
+       List<Tablero> Tableros;
+        
 
-        public Form2(Form1 llamado_, List<Tablero> ListaResul)
+        public Form2(Form3 llamado_)
+        {
+            InitializeComponent();
+            Llamado = llamado_;
+        }
+        public Form2(Form1 llamado_, List<Tablero> ListaResul) 
         {
             InitializeComponent();
             llamado = llamado_;
+            Tableros = ListaResul;
             /*int N = (UInt16)Btn_NResultados.Value;
             for (int i=0; i<N; i++)
             {
@@ -50,7 +59,8 @@ namespace TP_Lab_II
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListViewGroup Resultados = new ListViewGroup("Resultados con 8 fichas: ", HorizontalAlignment.Center);
-            for (int i = 0; i < lista.Count(); i++)
+            
+            for (int i = 0; i < Tableros.Count; i++)
             {
                 listView1.Items.Add(new ListViewItem("i", Resultados));
             }

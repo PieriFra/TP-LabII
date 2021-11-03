@@ -13,6 +13,7 @@ namespace TP_Lab_II
         public List<Ficha> ListaFichas;
         public int [,]TableroOriginal;
         public int [,]TableroAux;
+        
 
         //Metodos
         public Tablero(List<Ficha> ListaFichas_)

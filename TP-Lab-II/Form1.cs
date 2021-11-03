@@ -13,12 +13,13 @@ namespace TP_Lab_II
 {
     public partial class Form1 : Form
     {
-        //public List<Tablero> ListaResultados;
 
+        List<Tablero> ListaResultados;
+        
         public Form1()
         {
-            InitializeComponent();
-           // ListaResultados = new List<Tablero> ();
+           InitializeComponent();
+           ListaResultados = new List<Tablero> ();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,7 +52,8 @@ namespace TP_Lab_II
 
             //int n_tableros = 20; //como podriamos declarala como varibale global???
             int n_tableros= (UInt16)Btn_NSoluciones.Value;
-            List<Tablero> ListaResultados = new List<Tablero>(n_tableros);
+            ListaResultados = new List<Tablero>(n_tableros);
+
 
             int cant_tableros = 0;
 
@@ -113,5 +115,10 @@ namespace TP_Lab_II
         {
 
         }
+
+       /* public List<Tablero> Get_Tablero()
+        {
+            return ListaResultados;
+        }*/
     }
 }
