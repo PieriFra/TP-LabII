@@ -32,7 +32,7 @@ namespace TP_Lab_II
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_Tablero = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // label1
@@ -65,20 +65,20 @@ namespace TP_Lab_II
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // panel1
+            // panel_Tablero
             // 
-            this.panel1.Location = new System.Drawing.Point(23, 51);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(359, 186);
-            this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel_Tablero.Location = new System.Drawing.Point(91, 56);
+            this.panel_Tablero.Name = "panel_Tablero";
+            this.panel_Tablero.Size = new System.Drawing.Size(210, 162);
+            this.panel_Tablero.TabIndex = 3;
+            this.panel_Tablero.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(409, 329);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_Tablero);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -94,6 +94,6 @@ namespace TP_Lab_II
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_Tablero;
     }
 }
