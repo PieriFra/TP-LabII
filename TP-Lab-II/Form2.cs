@@ -12,13 +12,16 @@ namespace TP_Lab_II
 {
     public partial class Form2 : Form
     {
-        Form llamado;
-        public Form2(Form llamado_)
+        Form1 llamado;
+        List<Tablero> tableros_sol;
+
+        public Form2(Form1 llamado_, List<Tablero> ListaResul)
         {
             InitializeComponent();
             llamado = llamado_;
+            tableros_sol = ListaResul;
 
-            for(int i=0; i<2; i++)
+            for(int i=0; i< 0; i++)
             {
                 listBox1.Items.Add(this.Btn_NResultados.Text);
                 //this.Btn_NResultados

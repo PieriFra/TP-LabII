@@ -9,9 +9,9 @@ namespace TP_Lab_II
     class Tablero
     {
         //Atributos
-        private int tam;
+        public int tam;
         public List<Ficha> ListaFichas;
-        private int [,]TableroOriginal;
+        public int [,]TableroOriginal;
         public int [,]TableroAux;
 
         //Metodos

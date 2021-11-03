@@ -13,9 +13,12 @@ namespace TP_Lab_II
 {
     public partial class Form1 : Form
     {
+        //public List<Tablero> ListaResultados;
+
         public Form1()
         {
             InitializeComponent();
+           // ListaResultados = new List<Tablero> ();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -23,7 +26,7 @@ namespace TP_Lab_II
 
         }
 
-        private void CorrerBtn_Click(object sender, EventArgs e)
+        public void CorrerBtn_Click(object sender, EventArgs e)
         {
             Ficha reina = new Ficha("Reina", 1);
             Ficha rey = new Ficha("Rey", 2);
@@ -85,7 +88,7 @@ namespace TP_Lab_II
             } while (cant_tableros != n_tableros);
 
 
-            Form2 form2 = new Form2(this);
+            Form2 form2 = new Form2(this, ListaResultados);
             form2.Show();
             this.Hide();
 
