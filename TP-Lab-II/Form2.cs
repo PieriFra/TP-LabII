@@ -12,8 +12,10 @@ namespace TP_Lab_II
 {
     public partial class Form2 : Form
     {
-        Form llamado;
-        public Form2(Form llamado_)
+        Form1 llamado;
+        List<Tablero> tableros_sol;
+
+        public Form2(Form1 llamado_, List<Tablero> ListaResul)
         {
             InitializeComponent();
             llamado = llamado_;
