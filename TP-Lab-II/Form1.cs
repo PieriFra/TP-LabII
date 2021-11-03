@@ -14,7 +14,7 @@ namespace TP_Lab_II
     public partial class Form1 : Form
     {
 
-        List<Tablero> ListaResultados;
+       List<Tablero> ListaResultados;
         
         public Form1()
         {
@@ -90,10 +90,10 @@ namespace TP_Lab_II
             } while (cant_tableros != n_tableros);
 
 
-            Form2 form2 = new Form2(this);
+            Form2 form2 = new Form2(this, ListaResultados);
             form2.Show();
             this.Hide();
-
+           
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -121,9 +121,11 @@ namespace TP_Lab_II
 
         }
 
-        /* public List<Tablero> Get_Tablero()
-         {
-             return ListaResultados;
-         }*/
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        
     }
 }

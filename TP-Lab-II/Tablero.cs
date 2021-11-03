@@ -105,19 +105,7 @@ namespace TP_Lab_II
                         {
                             mov = 8;
                             break;
-                        }
-                        ficha_mover = Get_FichaCodigo(3);
-                        if (GeneraSolucion(ficha_mover) == true)
-                        {
-                            mov = 8;
-                            break;
-                        }
-                        ficha_mover = Get_FichaCodigo(4);
-                        if (GeneraSolucion(ficha_mover) == true)
-                        {
-                            mov = 8;
-                            break;
-                        }
+                        }                        
                         ficha_mover = Get_FichaCodigo(5);
                         if (GeneraSolucion(ficha_mover) == true)
                         {
@@ -177,7 +165,6 @@ namespace TP_Lab_II
                     imprimir(TableroAux);
                     auxT2 = VerificarTablero(TableroAux);
                 }
-
             } while (auxT == false && auxT2 == false);
             return this;
         }
