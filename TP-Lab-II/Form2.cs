@@ -17,6 +17,16 @@ namespace TP_Lab_II
         {
             InitializeComponent();
             llamado = llamado_;
+
+            for(int i=0; i<2; i++)
+            {
+                listBox1.Items.Add(this.Btn_NResultados.Text);
+                //this.Btn_NResultados
+                //this.textBoxName.Focus();
+                //this.textBoxName.Clear();
+            }
+            listBox1.Items.Add("A");
+            listBox1.SelectionMode = SelectionMode.MultiSimple;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -29,6 +39,11 @@ namespace TP_Lab_II
             Form3 form3 = new Form3(llamado);
             form3.Show();
             this.Close();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
