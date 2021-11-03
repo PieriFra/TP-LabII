@@ -90,7 +90,7 @@ namespace TP_Lab_II
             } while (cant_tableros != n_tableros);
 
 
-            Form2 form2 = new Form2(this, ListaResultados);
+            Form2 form2 = new Form2(this);
             form2.Show();
             this.Hide();
 
@@ -116,9 +116,14 @@ namespace TP_Lab_II
 
         }
 
-       /* public List<Tablero> Get_Tablero()
+        private void label1_Click(object sender, EventArgs e)
         {
-            return ListaResultados;
-        }*/
+
+        }
+
+        /* public List<Tablero> Get_Tablero()
+         {
+             return ListaResultados;
+         }*/
     }
 }

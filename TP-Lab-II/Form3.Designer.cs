@@ -67,7 +67,7 @@ namespace TP_Lab_II
             // 
             // panel_Tablero
             // 
-            this.panel_Tablero.Location = new System.Drawing.Point(91, 56);
+            this.panel_Tablero.Location = new System.Drawing.Point(96, 53);
             this.panel_Tablero.Name = "panel_Tablero";
             this.panel_Tablero.Size = new System.Drawing.Size(210, 162);
             this.panel_Tablero.TabIndex = 3;
