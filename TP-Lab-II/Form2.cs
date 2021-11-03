@@ -42,7 +42,18 @@ namespace TP_Lab_II
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListViewGroup Resultados = new ListViewGroup("Resultados con 8 fichas: ", HorizontalAlignment.Center);
+            for (int i = 0; i < lista.Count(); i++)
+            {
+                listView1.Items.Add(new ListViewItem("i", Resultados));
+            }
+
+        }
+
     }
 }
