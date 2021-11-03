@@ -19,17 +19,15 @@ namespace TP_Lab_II
         {
             InitializeComponent();
             llamado = llamado_;
-            tableros_sol = ListaResul;
-
-            for(int i=0; i< 0; i++)
+            /*int N = (UInt16)Btn_NResultados.Value;
+            for (int i=0; i<N; i++)
             {
-                listBox1.Items.Add(this.Btn_NResultados.Text);
-                //this.Btn_NResultados
-                //this.textBoxName.Focus();
-                //this.textBoxName.Clear();
+                
+                listBox1.Items.Add("Solucion "to_string.Btn_NResultados) ;
+             
             }
-            listBox1.Items.Add("A");
-            listBox1.SelectionMode = SelectionMode.MultiSimple;
+            
+            listBox1.SelectionMode = SelectionMode.MultiSimple;*/
         }
 
         private void label2_Click(object sender, EventArgs e)
