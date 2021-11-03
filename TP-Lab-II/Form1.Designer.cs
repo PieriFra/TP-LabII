@@ -62,9 +62,19 @@ namespace TP_Lab_II
             0,
             0,
             0});
+            this.Btn_NSoluciones.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.Btn_NSoluciones.Name = "Btn_NSoluciones";
             this.Btn_NSoluciones.Size = new System.Drawing.Size(120, 20);
             this.Btn_NSoluciones.TabIndex = 3;
+            this.Btn_NSoluciones.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 

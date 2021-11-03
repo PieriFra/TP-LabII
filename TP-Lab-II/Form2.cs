@@ -23,5 +23,12 @@ namespace TP_Lab_II
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3(llamado);
+            form3.Show();
+            this.Close();
+        }
     }
 }

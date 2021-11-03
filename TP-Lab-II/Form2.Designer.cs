@@ -33,6 +33,7 @@ namespace TP_Lab_II
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.Btn_NResultados = new System.Windows.Forms.NumericUpDown();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_NResultados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,11 +54,12 @@ namespace TP_Lab_II
             this.button1.TabIndex = 1;
             this.button1.Text = "Ver Solucion";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(189, 202);
+            this.label2.Location = new System.Drawing.Point(189, 205);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(185, 13);
             this.label2.TabIndex = 2;
@@ -72,15 +74,34 @@ namespace TP_Lab_II
             0,
             0,
             0});
+            this.Btn_NResultados.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.Btn_NResultados.Name = "Btn_NResultados";
             this.Btn_NResultados.Size = new System.Drawing.Size(120, 20);
             this.Btn_NResultados.TabIndex = 3;
+            this.Btn_NResultados.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(27, 53);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(347, 134);
+            this.listBox1.TabIndex = 4;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(409, 308);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Btn_NResultados);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
@@ -99,5 +120,6 @@ namespace TP_Lab_II
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown Btn_NResultados;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

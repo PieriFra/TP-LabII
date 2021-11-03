@@ -12,9 +12,35 @@ namespace TP_Lab_II
 {
     public partial class Form3 : Form
     {
-        public Form3()
+        Form llamado;
+        public Form3(Form llamado_)
         {
             InitializeComponent();
+            llamado = llamado_;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            llamado.Show();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            Form2 form2 = new Form2(this);
+            form2.Show();
+            this.Close();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
