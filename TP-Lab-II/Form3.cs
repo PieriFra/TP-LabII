@@ -48,16 +48,22 @@ namespace TP_Lab_II
 
             Size _size = new Size(panel_Tablero.Width / 8, panel_Tablero.Height / 8);
             for (int f = 0; f < 8; f++)
+            { 
                 for (int c = 0; c < 8; c++)
                 {
-                    var btn = new Button();
-                    btn.Size = _size;
-                    btn.Location = new Point(c * _size.Width, f * _size.Height);
-                    btn.BackColor = (c + f) % 2 == 0 ? Color.Black : Color.White;
-                    //btn.Click += new EventHandler(this.Button_Click);
-
-                    panel_Tablero.Controls.Add(btn);
+                   var btn = new Button();
+                   btn.Size = _size;
+                   btn.Location = new Point(c * _size.Width, f * _size.Height);
+                   btn.BackColor = (c + f) % 2 == 0 ? Color.BurlyWood : Color.White;
+                   if (c == 1 && f == 1)
+                   {
+                        btn.Text = "R";
+                        btn.BackColor = Color.Red;
+                   }
+                      
+                   panel_Tablero.Controls.Add(btn);
                 }
+            }
         }
     }
 }
