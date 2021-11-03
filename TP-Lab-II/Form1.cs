@@ -116,9 +116,14 @@ namespace TP_Lab_II
 
         }
 
-       /* public List<Tablero> Get_Tablero()
+        private void label1_Click(object sender, EventArgs e)
         {
-            return ListaResultados;
-        }*/
+
+        }
+
+        /* public List<Tablero> Get_Tablero()
+         {
+             return ListaResultados;
+         }*/
     }
 }

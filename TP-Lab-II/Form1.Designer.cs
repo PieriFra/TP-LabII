@@ -53,6 +53,7 @@ namespace TP_Lab_II
             this.label1.Size = new System.Drawing.Size(119, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Cantidad de Soluciones";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Btn_NSoluciones
             // 
