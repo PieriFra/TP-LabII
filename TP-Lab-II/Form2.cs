@@ -29,15 +29,14 @@ namespace TP_Lab_II
             InitializeComponent();
             llamado = llamado_;
             Tableros = ListaResul;
-            /*int N = (UInt16)Btn_NResultados.Value;
-            for (int i=0; i<N; i++)
+
+            //int N = (UInt16)Btn_NResultados.Value;
+            for (int i=1; i<Tableros.Count+1; i++)
             {
-                
-                listBox1.Items.Add("Solucion "to_string.Btn_NResultados) ;
-             
+                listBox1.Items.Add("Solucion: " + Convert.ToString(i));
             }
             
-            listBox1.SelectionMode = SelectionMode.MultiSimple;*/
+           
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -55,22 +54,22 @@ namespace TP_Lab_II
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListViewGroup Resultados = new ListViewGroup("Resultados con 8 fichas: ", HorizontalAlignment.Center);
-            
-            for (int i = 0; i < Tableros.Count; i++)
-            {
-                listView1.Items.Add(new ListViewItem("i", Resultados));
-            }
-
+          
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
