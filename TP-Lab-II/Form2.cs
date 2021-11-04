@@ -29,16 +29,14 @@ namespace TP_Lab_II
             InitializeComponent();
             llamado = llamado_;
             Tableros = ListaResul;
-
-            //int N = (UInt16)Btn_NResultados.Value;
-            for (int i=1; i<Tableros.Count+1; i++)
+            
+            for (int i = 1; i < Tableros.Count + 1; i++)
             {
                 listBox1.Items.Add("Solucion: " + Convert.ToString(i));
             }
-            
-           
+         
         }
-
+      
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -69,6 +67,11 @@ namespace TP_Lab_II
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_NResultados_ValueChanged(object sender, EventArgs e)
         {
 
         }

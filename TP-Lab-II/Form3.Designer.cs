@@ -49,7 +49,7 @@ namespace TP_Lab_II
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(304, 299);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(205, 28);
             this.button1.TabIndex = 1;
@@ -60,7 +60,7 @@ namespace TP_Lab_II
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(304, 335);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(205, 28);
             this.button2.TabIndex = 2;
@@ -71,7 +71,7 @@ namespace TP_Lab_II
             // panel_Tablero
             // 
             this.panel_Tablero.Location = new System.Drawing.Point(128, 65);
-            this.panel_Tablero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_Tablero.Margin = new System.Windows.Forms.Padding(4);
             this.panel_Tablero.Name = "panel_Tablero";
             this.panel_Tablero.Size = new System.Drawing.Size(280, 199);
             this.panel_Tablero.TabIndex = 3;
@@ -87,7 +87,7 @@ namespace TP_Lab_II
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form3";
             this.Text = "Form3";
             this.ResumeLayout(false);
