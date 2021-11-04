@@ -71,6 +71,7 @@ namespace TP_Lab_II
         private void label1_Click(object sender, EventArgs e)
         {
 
+
         }
     }
 }

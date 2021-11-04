@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP_Lab_II
 {
-    class Tablero
+    public class Tablero
     {
         //Atributos
         public int tam;
