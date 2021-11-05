@@ -295,7 +295,7 @@ namespace TP_Lab_II
                 {
                     aux4[0] = pos[0];
                     aux4[1] = i;
-                    i = tam;
+                    i = 0;
                 }
             }
             for (int i = pos[1]; i >= 0; i--)
@@ -313,7 +313,6 @@ namespace TP_Lab_II
                 }
             }
 
-            imprimir(TableroAux);
         }
         public void MovimientoDiagonal(Ficha ficha)
         {
@@ -346,43 +345,56 @@ namespace TP_Lab_II
             aux3[1] = -1;
             aux4[0] = -1;
             aux4[1] = -1;
-            
+
             for (int k = 0; k < tam; k++)
             {
                 if (pos[0] + k < tam && pos[1] + k < tam)
                 {
-                    if (TableroOriginal[pos[0] + k, pos[1] + k] != 0 && TableroOriginal[pos[0] + k, pos[1] + k]!= ficha.Get_Codigo())
+                    if (TableroOriginal[pos[0] + k, pos[1] + k] != 0 && TableroOriginal[pos[0] + k, pos[1] + k] != ficha.Get_Codigo())
                     {
                         aux1[0] = pos[0] + k;
                         aux1[1] = pos[1] + k;
+                        k = tam;
                     }
                 }
-                if (pos[0] - k >= 0 && pos[1] - k >= 0)
+            }
+
+            for (int k = 0; k < tam; k++)
+            { if (pos[0] - k >= 0 && pos[1] - k >= 0)
                 {
-                    if (TableroOriginal[pos[0] - k, pos[1] - k] != 0  && TableroOriginal[pos[0] - k, pos[1] - k] != ficha.Get_Codigo())
+                    if (TableroOriginal[pos[0] - k, pos[1] - k] != 0 && TableroOriginal[pos[0] - k, pos[1] - k] != ficha.Get_Codigo())
                     {
                         aux2[0] = pos[0] - k;
                         aux2[1] = pos[1] - k;
+                        k = tam;
                     }
                 }
-                if (pos[0] - k >= 0 && pos[1] + k < tam)
+            }
+
+            for (int k = 0; k < tam; k++)
+            { if (pos[0] - k >= 0 && pos[1] + k < tam)
                 {
-                    if (TableroOriginal[pos[0] - k, pos[1] + k] != 0  && TableroOriginal[pos[0] - k, pos[1] + k] != ficha.Get_Codigo())
+                    if (TableroOriginal[pos[0] - k, pos[1] + k] != 0 && TableroOriginal[pos[0] - k, pos[1] + k] != ficha.Get_Codigo())
                     {
                         aux3[0] = pos[0] - k;
                         aux3[1] = pos[1] + k;
+                        k = tam;
                     }
                 }
-                if (pos[0] + k < tam && pos[1] - k >= 0)
+            }
+
+            for (int k = 0; k < tam; k++)
+            { if (pos[0] + k < tam && pos[1] - k >= 0)
                 {
                     if (TableroOriginal[pos[0] + k, pos[1] - k] != 0 && TableroOriginal[pos[0] + k, pos[1] - k] != ficha.Get_Codigo())
                     {
                         aux4[0] = pos[0] + k;
                         aux4[1] = pos[1] - k;
+                        k = tam;
                     }
                 }
             }
-                for (int k = 0; k < tam; k++)
+            for (int k = 0; k < tam; k++)
             {
 
                 //diagonal derch decendente
@@ -390,24 +402,25 @@ namespace TP_Lab_II
                 {
                     if (pos[0] + k < tam && pos[1] + k < tam)
                         TableroAux[pos[0] + k, pos[1] + k] = 10;
-                }else
+                }
+                else
                 {
-                    if (pos[0] + k < aux1[0] && pos[1] + k < aux1[1])
+                    if (pos[0] + k <= aux1[0] && pos[1] + k <= aux1[1])
                         TableroAux[pos[0] + k, pos[1] + k] = 10;
-                    if (aux1[0] + k < tam && aux1[1] + k < tam)
+                    if (pos[0] + k >= aux1[0] && pos[1] + k >= aux1[1] && aux1[0] + k < tam && aux1[1] + k < tam)
                         TableroAux[aux1[0] + k, aux1[1] + k] = ficha.Get_Codigo();
                 }
                 //diagonal izq acendente 
                 if (aux2[0] == -1)
                 {
-                    if (pos[0] - k >=0 && pos[1] - k >=0)
+                    if (pos[0] - k >= 0 && pos[1] - k >= 0)
                         TableroAux[pos[0] - k, pos[1] - k] = 10;
                 }
                 else
                 {
-                    if (pos[0] - k > aux2[0] && pos[1] - k > aux2[1])
+                    if (pos[0] - k >= aux2[0] && pos[1] - k >= aux2[1])
                         TableroAux[pos[0] - k, pos[1] - k] = 10;
-                    if (aux2[0] - k >= 0 && aux2[1] - k >= 0)
+                    if (pos[0] - k <= aux2[0] && pos[1] - k <= aux2[1] && aux2[0] - k >= 0 && aux2[1] - k >= 0)
                         TableroAux[aux2[0] - k, aux2[1] - k] = ficha.Get_Codigo();
                 }
                 //diagonal izq decendente
@@ -418,9 +431,9 @@ namespace TP_Lab_II
                 }
                 else
                 {
-                    if (pos[0] - k >= aux3[0] && pos[1] + k < aux3[1])
+                    if (pos[0] - k >= aux3[0] && pos[1] + k <= aux3[1])
                         TableroAux[pos[0] - k, pos[1] + k] = ficha.Get_Codigo();
-                    if (aux3[0] - k >= 0 && aux3[1] + k < tam)
+                    if (pos[0] - k <= aux3[0] && pos[1] + k >= aux3[1] && aux3[0] - k >= 0 && aux3[1] + k < tam)
                         TableroAux[aux3[0] - k, aux3[1] + k] = 10;
                 }
                 //diagonal derch acendente
@@ -431,9 +444,9 @@ namespace TP_Lab_II
                 }
                 else
                 {
-                    if (pos[0] + k < aux4[0] && pos[1] - k >= aux4[1])
+                    if (pos[0] + k <= aux4[0] && pos[1] - k >= aux4[1])
                         TableroAux[pos[0] + k, pos[1] - k] = ficha.Get_Codigo();
-                    if (aux4[0] + k < tam && aux4[1] - k >= 0)
+                    if (pos[0] + k >= aux4[0] && pos[1] - k <= aux4[1] && aux4[0] + k < tam && aux4[1] - k >= 0)
                         TableroAux[aux4[0] + k, aux4[1] - k] = 10;
                 }
             }
@@ -486,6 +499,7 @@ namespace TP_Lab_II
             ficha = Get_FichaCodigo(1); //obtenemos la ficha que queremos 
             MovimientoVH(ficha);
             MovimientoDiagonal(ficha);
+            imprimir(TableroAux);
 
             //rey 
             ficha = Get_FichaCodigo(2); //obtenemos la ficha que queremos 
@@ -606,7 +620,7 @@ namespace TP_Lab_II
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    text += tablero[i, j].ToString("0") + "|";
+                    text += tablero[i, j].ToString("0 ") + "|";
                 }
                 text += "\n";
             }
