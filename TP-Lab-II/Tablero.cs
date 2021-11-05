@@ -181,23 +181,7 @@ namespace TP_Lab_II
         public void MovimientoVH(Ficha ficha)
         {
             int[] pos = ficha.CalcularPosicion(this); //buscamos la posicion de la ficha
-            /*for (int i = pos[0]; i < tam; i++)
-            {     //i++  horizontal izq
-                TableroAux[i, pos[1]] = ficha.Get_Codigo();
-            }
-            for (int i = 0; i < pos[0]; i++)
-            {     //i--   horizontal derch
-                TableroAux[i, pos[1]] = ficha.Get_Codigo();
-            }
-            for (int j = tam - 1; j > pos[0]; j--)
-            {     //j-- vertical superior
-                TableroAux[pos[0], j] = ficha.Get_Codigo();
-            }
-            for (int j = 0; j < pos[1]; j++)
-            {     //j++ vertical inferior
-                TableroAux[pos[0], j] = ficha.Get_Codigo();
-            }*/
-
+           
             int[] aux1 = new int[2];
             int[] aux2 = new int[2];
             int[] aux3 = new int[2];
@@ -231,7 +215,8 @@ namespace TP_Lab_II
                         TableroAux[i, pos[1]] = 10;
                     else
                     {
-                        TableroAux[i, pos[1]] = ficha.Get_Codigo();
+                        if (TableroAux[i, pos[1]] != 10)
+                            TableroAux[i, pos[1]] = ficha.Get_Codigo();
                     }
                 }
             }
@@ -259,7 +244,9 @@ namespace TP_Lab_II
                         TableroAux[i, pos[1]] = 10;
                     }
                     else
-                    { TableroAux[i, pos[1]] = ficha.Get_Codigo(); }
+                    {
+                        if (TableroAux[i, pos[1]] != 10)
+                            TableroAux[i, pos[1]] = ficha.Get_Codigo(); }
                 }
             }
 
@@ -284,7 +271,11 @@ namespace TP_Lab_II
                     if (i <= aux3[1])
                         TableroAux[pos[0], i] = 10;
                     else
-                        TableroAux[pos[0], i] = ficha.Get_Codigo();
+                    { 
+                        if(TableroAux[pos[0], i] !=10)
+                            TableroAux[pos[0], i] = ficha.Get_Codigo();
+                    }
+                       
                 }
             }
 
@@ -309,7 +300,11 @@ namespace TP_Lab_II
                     if (i >= aux4[1])
                         TableroAux[pos[0], i] = 10;
                     else
-                        TableroAux[pos[0], i] = ficha.Get_Codigo();
+                    {
+                        if (TableroAux[pos[0], i] != 10)
+                            TableroAux[pos[0], i] = ficha.Get_Codigo();
+                    }
+                        
                 }
             }
 
@@ -394,7 +389,8 @@ namespace TP_Lab_II
                 {
                     if (pos[0] + k <= aux1[0] && pos[1] + k <= aux1[1] && pos[0] + k < tam && pos[1] + k < tam)
                         TableroAux[pos[0] + k, pos[1] + k] = 10;
-                    if (pos[0] + k >= aux1[0] && pos[1] + k >= aux1[1] && aux1[0] + k < tam && aux1[1] + k < tam)
+                    if (pos[0] + k >= aux1[0] && pos[1] + k >= aux1[1] && aux1[0] + k < tam && aux1[1] + k < tam
+                        && TableroAux[aux1[0]+k, aux1[1]+k] !=10)
                         TableroAux[aux1[0] + k, aux1[1] + k] = ficha.Get_Codigo();
                 }
                 //diagonal izq acendente 
@@ -407,7 +403,8 @@ namespace TP_Lab_II
                 {
                     if (pos[0] - k >= aux2[0] && pos[1] - k >= aux2[1] && pos[0] - k >= 0 && pos[1] - k >= 0)
                         TableroAux[pos[0] - k, pos[1] - k] = 10;
-                    if (pos[0] - k <= aux2[0] && pos[1] - k <= aux2[1] && aux2[0] - k >= 0 && aux2[1] - k >= 0)
+                    if (pos[0] - k <= aux2[0] && pos[1] - k <= aux2[1] && aux2[0] - k >= 0 && aux2[1] - k >= 0
+                        && TableroAux[aux2[0] - k, aux2[1] - k] != 10)
                         TableroAux[aux2[0] - k, aux2[1] - k] = ficha.Get_Codigo();
                 }
                 //diagonal izq decendente
@@ -420,7 +417,8 @@ namespace TP_Lab_II
                 {
                     if (pos[0] + k <= aux4[0] && pos[1] - k >= aux4[1] && pos[0] + k < tam && pos[1] - k >= 0)
                         TableroAux[pos[0] + k, pos[1] - k] = 10;
-                    if (pos[0] + k >= aux4[0] && pos[1] - k <= aux4[1] && aux4[0] + k < tam && aux4[1] - k >= 0)
+                    if (pos[0] + k >= aux4[0] && pos[1] - k <= aux4[1] && aux4[0] + k < tam && aux4[1] - k >= 0
+                        && TableroAux[aux4[0] + k, aux4[1] - k] != 10)
                         TableroAux[aux4[0] + k, aux4[1] - k] = ficha.Get_Codigo();
                 }
                 //diagonal derecha acendente
@@ -433,7 +431,8 @@ namespace TP_Lab_II
                 {
                     if (pos[0] - k <= aux3[0] && pos[1] + k >= aux3[1] && pos[1] + k < tam && pos[0] - k >= 0)
                         TableroAux[pos[0] - k, pos[1] + k] = 10;
-                    if (pos[0] - k > aux3[0] && pos[1] + k < aux3[1] && aux3[1] + k < tam && aux3[0] - k >= 0)
+                    if (pos[0] - k > aux3[0] && pos[1] + k < aux3[1] && aux3[1] + k < tam && aux3[0] - k >= 0
+                        && TableroAux[aux3[0] - k, aux3[1] + k] != 10)
                         TableroAux[aux3[0] - k, aux3[1] + k] = ficha.Get_Codigo();
                 }
             }
@@ -486,14 +485,16 @@ namespace TP_Lab_II
             ficha = Get_FichaCodigo(1); //obtenemos la ficha que queremos 
             MovimientoVH(ficha);
             MovimientoDiagonal(ficha);
-            imprimir(TableroAux);
-
+      
             //rey 
             ficha = Get_FichaCodigo(2); //obtenemos la ficha que queremos 
             int [] pos = ficha.CalcularPosicion( this); //buscamos la posicion de la ficha
 
             TableroAux[pos[0], pos[1]] = 2;
-            if (pos[0] + 1 < tam) { TableroAux[pos[0] + 1, pos[1]] = 2; }
+            if (pos[0] + 1 < tam)
+              if(TableroOriginal[pos])
+            
+            { TableroAux[pos[0] + 1, pos[1]] = 2; }
             if (pos[0] - 1 >0) { TableroAux[pos[0] - 1, pos[1]] = 2; }
             if (pos[1] + 1 < tam) { TableroAux[pos[0], pos[1]+1] = 2; }
             if (pos[1] - 1 > 0) { TableroAux[pos[0], pos[1] - 1] = 2; }
@@ -502,6 +503,7 @@ namespace TP_Lab_II
             if (pos[1] -1 > 0 && pos[0] + 1 < tam) { TableroAux[pos[0] + 1, pos[1] - 1] = 2; }
             if (pos[1] - 1 > 0 && pos[0] - 1 > 0) { TableroAux[pos[0] - 1, pos[1] - 1] = 2; }
 
+            imprimir(TableroAux);
 
             //Alfil A
             ficha = Get_FichaCodigo(3); //obtenemos la ficha que queremos 
