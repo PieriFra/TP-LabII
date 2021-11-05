@@ -70,10 +70,10 @@ namespace TP_Lab_II
             // 
             // panel_Tablero
             // 
-            this.panel_Tablero.Location = new System.Drawing.Point(128, 65);
+            this.panel_Tablero.Location = new System.Drawing.Point(104, 51);
             this.panel_Tablero.Margin = new System.Windows.Forms.Padding(4);
             this.panel_Tablero.Name = "panel_Tablero";
-            this.panel_Tablero.Size = new System.Drawing.Size(280, 199);
+            this.panel_Tablero.Size = new System.Drawing.Size(328, 240);
             this.panel_Tablero.TabIndex = 3;
             this.panel_Tablero.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 

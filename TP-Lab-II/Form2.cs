@@ -44,7 +44,8 @@ namespace TP_Lab_II
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form3 form3 = new Form3(llamado);
+            int aux = (UInt16)Btn_NResultados.Value;
+            Form3 form3 = new Form3(llamado, Tableros[aux-1]);
             form3.Show();
             this.Close();
         }
@@ -73,7 +74,7 @@ namespace TP_Lab_II
 
         private void Btn_NResultados_ValueChanged(object sender, EventArgs e)
         {
-
+            Btn_NResultados.Maximum= (UInt16)Tableros.Count;
         }
     }
 }

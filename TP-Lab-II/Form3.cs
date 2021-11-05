@@ -13,10 +13,12 @@ namespace TP_Lab_II
     public partial class Form3 : Form
     {
         Form llamado;
-        public Form3(Form llamado_)
+        Tablero tablero = null;
+        public Form3(Form llamado_, Tablero _Tablero)
         {
             InitializeComponent();
             llamado = llamado_;
+            tablero = _Tablero;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -48,26 +50,74 @@ namespace TP_Lab_II
 
             Size _size = new Size(panel_Tablero.Width / 8, panel_Tablero.Height / 8);
             for (int f = 0; f < 8; f++)
-            { 
+            {
                 for (int c = 0; c < 8; c++)
                 {
-                   var btn = new Button();
-                   btn.Size = _size;
-                   btn.Location = new Point(c * _size.Width, f * _size.Height);
-                   btn.BackColor = (c + f) % 2 == 0 ? Color.BurlyWood : Color.White;
-                   if (c == 1 && f == 1)
-                   {
+                    var btn = new Button();
+                    btn.Size = _size;
+                    btn.Location = new Point(c * _size.Width, f * _size.Height);
+                    btn.BackColor = (c + f) % 2 == 0 ? Color.BurlyWood : Color.White;
+                    if (tablero.Get_CodigoFichaOrg(f, c) == 1)
+                    {
                         btn.Text = "R";
-                        btn.BackColor = Color.Red;
-                   }
-                      
-                   panel_Tablero.Controls.Add(btn);
+                    }
+                    if (tablero.Get_CodigoFichaOrg(f, c) == 2)
+                    {
+                        btn.Text = "r";
+                    }
+                    if (tablero.Get_CodigoFichaOrg(f, c) == 3)
+                    {
+                        btn.Text = "Aa";
+                    }
+                    if (tablero.Get_CodigoFichaOrg(f, c) == 4)
+                    {
+                        btn.Text = "Ab";
+                    }
+                    if (tablero.Get_CodigoFichaOrg(f, c) == 5)
+                    {
+                        btn.Text = "Ca";
+                    }
+                    if (tablero.Get_CodigoFichaOrg(f, c) == 6)
+                    {
+                        btn.Text = "Cb";
+                    }
+                    if (tablero.Get_CodigoFichaOrg(f, c) == 7)
+                    {
+                        btn.Text = "Ta";
+                    }
+                    if (tablero.Get_CodigoFichaOrg(f, c) == 8)
+                    {
+                        btn.Text = "Tb";
+                    }
+                    if (tablero.Get_CodigoFichaOrg(f, c) == 9)
+                    {
+                        btn.Text = "TC";
+                    }
+                    panel_Tablero.Controls.Add(btn);
+                    tablero.imprimir(tablero.TableroOriginal);
+                    RecorreTablero(btn);
                 }
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+        }
+        private void RecorreTablero(Button btn)
+        {
+
+            for (int f = 0; f < 8; f++)
+            {
+                for (int c = 0; c < 8; c++)
+                {
+                    if (tablero.Get_CodigoFichaOrg(f, c) == 1)
+                    {
+                        if (tablero.TableroOriginal[f, c] == 0)
+
+                            btn.BackColor = Color.Red;
+                    }
+                }
+            }
         }
     }
 }
