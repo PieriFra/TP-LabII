@@ -181,7 +181,7 @@ namespace TP_Lab_II
         public void MovimientoVH(Ficha ficha)
         {
             int [] pos = ficha.CalcularPosicion( this); //buscamos la posicion de la ficha
-            for (int i = pos[0]; i < tam; i++)
+            /*for (int i = pos[0]; i < tam; i++)
             {     //i++  horizontal izq
                 TableroAux[i, pos[1]] = ficha.Get_Codigo();
             }
@@ -196,7 +196,97 @@ namespace TP_Lab_II
             for (int j = 0; j < pos[1]; j++)
             {     //j++ vertical inferior
                 TableroAux[pos[0], j] = ficha.Get_Codigo();
+            }*/
+            
+            int[] aux1 = new int[2];
+            int[] aux2 = new int[2];
+            int[] aux3 = new int[2];
+            int[] aux4 = new int[2];
+            aux1[0] = -1;
+            aux1[1] = -1;
+            aux2[0] = -1;
+            aux2[1] = -1;
+            aux3[0] = -1;
+            aux3[1] = -1;
+            aux4[0] = -1;
+            aux4[1] = -1;
+            imprimir(TableroOriginal);
+            // vertical des
+            for (int i = pos[0]; i < tam; i++)
+            {  
+                if (TableroOriginal[i, pos[1]] != 0 && TableroOriginal[i, pos[1]] != ficha.Get_Codigo())
+                {
+                    aux1[0] = pos[i];
+                    aux1[1] = pos[1];
+                }
             }
+            for (int i = pos[0]; i < tam; i++)
+            {
+                if (aux1[0] == -1)
+                    TableroAux[i, pos[1]] = 10;
+                else
+                {
+                    if (i < aux1[0])
+                        TableroAux[i, pos[1]] = 10;
+                    if (aux1[0] <tam)
+                        TableroAux[i, pos[1]] = ficha.Get_Codigo();
+                }
+            }
+            // vertical superior
+            for (int i = 0; i < pos[0]; i++)
+            {
+                if (TableroOriginal[i, pos[1]] != 0 && TableroOriginal[i, pos[1]] != ficha.Get_Codigo())
+                {
+                    aux2[0] = pos[i];
+                    aux2[1] = pos[1];
+                }
+            }
+            for (int i = 0; i < pos[0]; i++)
+            {
+                if (aux2[0] == -1)
+                {
+                    TableroAux[i, pos[1]] = 10;
+                }
+                else
+                {
+                    if (0 < aux2[0])
+                        TableroAux[i, pos[1]] = 10;
+                    if (aux2[0] < pos[i])
+                        TableroAux[i, pos[1]] = ficha.Get_Codigo();
+                }
+            }
+            //
+            for (int i = tam - 1; i > pos[0]; i--)
+            {
+                if (TableroOriginal[pos[0], i] != 0 && TableroOriginal[pos[0], i] != ficha.Get_Codigo())
+                {
+                    aux3[0] = pos[0];
+                    aux3[1] = pos[i];
+                }
+            }
+            for (int i = tam - 1; i > pos[0]; i--)
+            {
+                if (aux3[0] == -1)
+                {
+                    TableroAux[pos[0], i] = 10;
+                }
+                else
+                {
+                    if (tam-1 < aux3[0])
+                        TableroAux[i, pos[1]] = ficha.Get_Codigo();
+                    if (aux3[0] < pos[i])
+                        TableroAux[i, pos[1]] = 10;
+                }
+            }
+            /*for (int j = tam - 1; j > pos[0]; j--)
+            {     //j-- vertical superior
+                TableroAux[pos[0], j] = ficha.Get_Codigo();
+            }
+            for (int j = 0; j < pos[1]; j++)
+            {     //j++ vertical inferior
+                TableroAux[pos[0], j] = ficha.Get_Codigo();
+            }*/
+            imprimir(TableroAux);
         }
         public void MovimientoDiagonal(Ficha ficha)
         {
@@ -229,7 +319,6 @@ namespace TP_Lab_II
             aux3[1] = -1;
             aux4[0] = -1;
             aux4[1] = -1;
-            imprimir(TableroOriginal);
             
             for (int k = 0; k < tam; k++)
             {
@@ -321,7 +410,7 @@ namespace TP_Lab_II
                         TableroAux[aux4[0] + k, aux4[1] - k] = 10;
                 }
             }
-            imprimir(TableroAux);
+            
         }
         public void MovimientoCaballo(Ficha ficha)
         {
