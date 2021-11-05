@@ -490,18 +490,95 @@ namespace TP_Lab_II
             ficha = Get_FichaCodigo(2); //obtenemos la ficha que queremos 
             int [] pos = ficha.CalcularPosicion( this); //buscamos la posicion de la ficha
 
-            TableroAux[pos[0], pos[1]] = 2;
+            TableroAux[pos[0], pos[1]] = 10;
             if (pos[0] + 1 < tam)
-              if(TableroOriginal[pos])
-            
-            { TableroAux[pos[0] + 1, pos[1]] = 2; }
-            if (pos[0] - 1 >0) { TableroAux[pos[0] - 1, pos[1]] = 2; }
-            if (pos[1] + 1 < tam) { TableroAux[pos[0], pos[1]+1] = 2; }
-            if (pos[1] - 1 > 0) { TableroAux[pos[0], pos[1] - 1] = 2; }
-            if (pos[1] + 1 < tam && pos[0] + 1 < tam) { TableroAux[pos[0]+1, pos[1] + 1] = 2; }
-            if (pos[1] + 1 < tam && pos[0] - 1 > 0) { TableroAux[pos[0] - 1, pos[1] + 1] = 2; }
-            if (pos[1] -1 > 0 && pos[0] + 1 < tam) { TableroAux[pos[0] + 1, pos[1] - 1] = 2; }
-            if (pos[1] - 1 > 0 && pos[0] - 1 > 0) { TableroAux[pos[0] - 1, pos[1] - 1] = 2; }
+            {
+                if (TableroOriginal[pos[0] + 1, pos[1]] != 0)
+                {
+                    TableroAux[pos[0] + 1, pos[1]] = 10;
+                    if (TableroAux[pos[0] + 2, pos[1]] != 10 && pos[0] + 2 <tam)
+                        TableroAux[pos[0] + 2, pos[1]] = 2;
+                }
+                else
+                    TableroAux[pos[0] + 1, pos[1]] = 10;
+            }
+            if (pos[0] - 1 >=0 )
+            {
+                if (TableroOriginal[pos[0] - 1, pos[1]] != 0)
+                {
+                    TableroAux[pos[0] - 1, pos[1]] = 10;
+                    if (TableroAux[pos[0] - 2, pos[1]] != 10 && pos[0] - 2>=0)
+                        TableroAux[pos[0] - 2, pos[1]] = 2;
+                }
+                else
+                    TableroAux[pos[0] + 1, pos[1]] = 10;
+            }
+            if (pos[1] + 1 < tam)
+            {
+                if (TableroOriginal[pos[0], pos[1]+1] != 0)
+                {
+                    TableroAux[pos[0], pos[1]+1] = 10;
+                    if (TableroAux[pos[0], pos[1]+2] != 10 && pos[1] + 2 < tam)
+                        TableroAux[pos[0], pos[1]+2] = 2;
+                }
+                else
+                    TableroAux[pos[0], pos[1]+1] = 10;
+            }
+            if (pos[1] - 1 >=0)
+            {
+                if (TableroOriginal[pos[0], pos[1] - 1] != 0)
+                {
+                    TableroAux[pos[0], pos[1] - 1] = 10;
+                    if (TableroAux[pos[0], pos[1] - 2] != 10 && pos[1] - 2 >=0)
+                        TableroAux[pos[0], pos[1] - 2] = 2;
+                }
+                else
+                    TableroAux[pos[0], pos[1] -1] = 10;
+            }
+            if (pos[1] + 1 < tam && pos[0]+1<tam)
+            {
+                if (TableroOriginal[pos[0]+1, pos[1] + 1] != 0)
+                {
+                    TableroAux[pos[0]+1, pos[1] + 1] = 10;
+                    if (TableroAux[pos[0]+2, pos[1] + 2] != 10 && pos[1] + 2 < tam && pos[0] +2<tam)
+                        TableroAux[pos[0]+2, pos[1] + 2] = 2;
+                }
+                else
+                    TableroAux[pos[0]+1, pos[1] + 1] = 10;
+            }
+            if (pos[1] - 1 >=0 && pos[0] - 1 >=0)
+            {
+                if (TableroOriginal[pos[0] - 1, pos[1] - 1] != 0)
+                {
+                    TableroAux[pos[0] - 1, pos[1] - 1] = 10;
+                    if (TableroAux[pos[0] - 2, pos[1] - 2] != 10 && pos[1] - 2 >=0 && pos[0] - 2 >=0)
+                        TableroAux[pos[0] -2, pos[1] - 2] = 2;
+                }
+                else
+                    TableroAux[pos[0] - 1, pos[1] - 1] = 10;
+            }
+            if (pos[1] - 1 >= 0 && pos[0] + 1 <tam)
+            {
+                if (TableroOriginal[pos[0] + 1, pos[1] - 1] != 0)
+                {
+                    TableroAux[pos[0] + 1, pos[1] - 1] = 10;
+                    if (TableroAux[pos[0] + 2, pos[1] - 2] != 10 && pos[1] - 2 >= 0 && pos[0] + 2 <tam)
+                        TableroAux[pos[0] + 2, pos[1] - 2] = 2;
+                }
+                else
+                    TableroAux[pos[0] + 1, pos[1] - 1] = 10;
+            }
+            if (pos[1] + 1 <tam && pos[0] - 1 >= 0)
+            {
+                if (TableroOriginal[pos[0] - 1, pos[1] + 1] != 0)
+                {
+                    TableroAux[pos[0] - 1, pos[1] + 1] = 10;
+                    if (TableroAux[pos[0] - 2, pos[1] + 2] != 10 && pos[1] + 2 <tam && pos[0] - 2 >= 0)
+                        TableroAux[pos[0] - 2, pos[1] + 2] = 2;
+                }
+                else
+                    TableroAux[pos[0] - 1, pos[1] + 1] = 10;
+            }
 
             imprimir(TableroAux);
 
