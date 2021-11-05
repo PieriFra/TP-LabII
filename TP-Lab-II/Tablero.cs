@@ -620,7 +620,7 @@ namespace TP_Lab_II
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    text += tablero[i, j].ToString("0 ") + "|";
+                    text += tablero[i, j].ToString("00") + "|";
                 }
                 text += "\n";
             }
