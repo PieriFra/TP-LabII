@@ -316,22 +316,22 @@ namespace TP_Lab_II
         }
         public void MovimientoDiagonal(Ficha ficha)
         {
-           /* int[] pos = ficha.CalcularPosicion( this); //buscamos la posicion de la ficha
-             for (int k = 0; k < tam; k++)
-             {
-                 //diagonal derch decendente
-                 if (pos[0] + k < tam && pos[1] + k < tam)
-                     TableroAux[pos[0] + k, pos[1] + k] = ficha.Get_Codigo();
-                 //diagonal izq acendente 
-                 if (pos[0] - k >= 0 && pos[1] - k >= 0)
-                     TableroAux[pos[0] - k, pos[1] - k] = ficha.Get_Codigo();
-                 //diagonal izq decendente
-                 if (pos[0] - k >= 0 && pos[1] + k < tam)
-                    TableroAux[pos[0] - k, pos[1] + k] = ficha.Get_Codigo();
-                 //diagonal derch acendente
-                 if (pos[0] + k < tam && pos[1] - k >= 0)
-                     TableroAux[pos[0] + k, pos[1] - k] = ficha.Get_Codigo();
-             }*/
+            /* int[] pos = ficha.CalcularPosicion( this); //buscamos la posicion de la ficha
+              for (int k = 0; k < tam; k++)
+              {
+                  //diagonal derch decendente
+                  if (pos[0] + k < tam && pos[1] + k < tam)
+                      TableroAux[pos[0] + k, pos[1] + k] = ficha.Get_Codigo();
+                  //diagonal izq acendente 
+                  if (pos[0] - k >= 0 && pos[1] - k >= 0)
+                      TableroAux[pos[0] - k, pos[1] - k] = ficha.Get_Codigo();
+                  //diagonal izq decendente
+                  if (pos[0] - k >= 0 && pos[1] + k < tam)
+                     TableroAux[pos[0] - k, pos[1] + k] = ficha.Get_Codigo();
+                  //diagonal derch acendente
+                  if (pos[0] + k < tam && pos[1] - k >= 0)
+                      TableroAux[pos[0] + k, pos[1] - k] = ficha.Get_Codigo();
+              }*/
             int[] pos = ficha.CalcularPosicion(this); //buscamos la posicion de la ficha
             int[] aux1 = new int[2];
             int[] aux2 = new int[2];
@@ -360,7 +360,8 @@ namespace TP_Lab_II
             }
 
             for (int k = 0; k < tam; k++)
-            { if (pos[0] - k >= 0 && pos[1] - k >= 0)
+            {
+                if (pos[0] - k >= 0 && pos[1] - k >= 0)
                 {
                     if (TableroOriginal[pos[0] - k, pos[1] - k] != 0 && TableroOriginal[pos[0] - k, pos[1] - k] != ficha.Get_Codigo())
                     {
@@ -372,7 +373,8 @@ namespace TP_Lab_II
             }
 
             for (int k = 0; k < tam; k++)
-            { if (pos[0] - k >= 0 && pos[1] + k < tam)
+            {
+                if (pos[0] - k >= 0 && pos[1] + k < tam)
                 {
                     if (TableroOriginal[pos[0] - k, pos[1] + k] != 0 && TableroOriginal[pos[0] - k, pos[1] + k] != ficha.Get_Codigo())
                     {
@@ -384,7 +386,8 @@ namespace TP_Lab_II
             }
 
             for (int k = 0; k < tam; k++)
-            { if (pos[0] + k < tam && pos[1] - k >= 0)
+            {
+                if (pos[0] + k < tam && pos[1] - k >= 0)
                 {
                     if (TableroOriginal[pos[0] + k, pos[1] - k] != 0 && TableroOriginal[pos[0] + k, pos[1] - k] != ficha.Get_Codigo())
                     {
@@ -450,7 +453,7 @@ namespace TP_Lab_II
                         TableroAux[aux4[0] + k, aux4[1] - k] = 10;
                 }
             }
-            
+
         }
         public void MovimientoCaballo(Ficha ficha)
         {
