@@ -432,9 +432,9 @@ namespace TP_Lab_II
                 else
                 {
                     if (pos[0] - k >= aux3[0] && pos[1] + k <= aux3[1])
-                        TableroAux[aux3[0] - k, aux3[1] + k] = 10;
-                    if (pos[0] - k <= aux3[0] && pos[1] + k >= aux3[1] && aux3[0] - k >= 0 && aux3[1] + k < tam)
                         TableroAux[pos[0] - k, pos[1] + k] = ficha.Get_Codigo();
+                    if (pos[0] - k <= aux3[0] && pos[1] + k >= aux3[1] && aux3[0] - k >= 0 && aux3[1] + k < tam)
+                        TableroAux[aux3[0] - k, aux3[1] + k] = 10;
                 }
                 //diagonal derch acendente
                 if (aux4[0] == -1)
