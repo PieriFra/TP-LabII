@@ -511,7 +511,7 @@ namespace TP_Lab_II
                         TableroAux[pos[0] - 2, pos[1]] = 2;
                 }
                 else
-                    TableroAux[pos[0] + 1, pos[1]] = 10;
+                    TableroAux[pos[0] - 1, pos[1]] = 10;
             }
             if (pos[1] + 1 < tam)
             {
@@ -579,8 +579,6 @@ namespace TP_Lab_II
                 else
                     TableroAux[pos[0] - 1, pos[1] + 1] = 10;
             }
-
-            imprimir(TableroAux);
 
             //Alfil A
             ficha = Get_FichaCodigo(3); //obtenemos la ficha que queremos 
