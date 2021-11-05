@@ -229,13 +229,15 @@ namespace TP_Lab_II
                 {
                     if (i <= aux1[0])
                         TableroAux[i, pos[1]] = 10;
-                    if (aux1[0] <tam)
+                    else
+                    {
                         TableroAux[i, pos[1]] = ficha.Get_Codigo();
+                    }
                 }
             }
-            imprimir(TableroAux);
+            
             // vertical superior
-            for (int i = pos[0]; i <= 0; i--)
+            for (int i = pos[0]; i >= 0; i--)
             {
                 if (TableroOriginal[i, pos[1]] != 0 && TableroOriginal[i, pos[1]] != ficha.Get_Codigo())
                 {
@@ -244,7 +246,7 @@ namespace TP_Lab_II
                     i = tam;
                 }
             }
-            for (int i = pos[0]; i <= 0; i--)
+            for (int i = pos[0]; i >= 0; i--)
             {
                 if (aux2[0] == -1)
                 {
@@ -253,14 +255,16 @@ namespace TP_Lab_II
                 else
                 {
                     if (i >= aux2[0])
+                    {
                         TableroAux[i, pos[1]] = 10;
-                    if (aux2[0] > 0)
-                        TableroAux[i, pos[1]] = ficha.Get_Codigo();
+                    }
+                    else
+                    { TableroAux[i, pos[1]] = ficha.Get_Codigo(); }
                 }
             }
-            imprimir(TableroAux);
+            
             // horizontal derecha
-            for (int i = pos[0]; i < tam ; i++)
+            for (int i = pos[1]; i < tam ; i++)
             {
                 if (TableroOriginal[pos[0], i] != 0 && TableroOriginal[pos[0], i] != ficha.Get_Codigo())
                 {
@@ -269,7 +273,7 @@ namespace TP_Lab_II
                     i = tam;
                 }
             }
-            for (int i = pos[0]; i < tam ; i++)
+            for (int i = pos[1]; i < tam ; i++)
             {
                 if (aux3[1] == -1)
                 {
@@ -279,13 +283,13 @@ namespace TP_Lab_II
                 {
                     if (i <= aux3[1])
                         TableroAux[pos[0], i] = 10;
-                    if (aux3[1] < tam)
+                    else
                         TableroAux[pos[0], i] = ficha.Get_Codigo();
                 }
             }
-            imprimir(TableroAux);
+           
             // horizontal izq
-            for (int i = pos[1]; i <= 0; i--)
+            for (int i = pos[1]; i >= 0; i--)
             {
                 if (TableroOriginal[pos[0], i] != 0 && TableroOriginal[pos[0], i] != ficha.Get_Codigo())
                 {
@@ -294,7 +298,7 @@ namespace TP_Lab_II
                     i = tam;
                 }
             }
-            for (int i = pos[1]; i <= 0; i--)
+            for (int i = pos[1]; i >= 0; i--)
             {
                 if (aux4[1] == -1)
                 {
@@ -304,7 +308,7 @@ namespace TP_Lab_II
                 {
                     if (i >= aux4[1])
                         TableroAux[pos[0], i] = 10;
-                    if (aux4[1] > 0)
+                    else
                         TableroAux[pos[0], i] = ficha.Get_Codigo();
                 }
             }
