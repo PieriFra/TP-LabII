@@ -179,7 +179,6 @@ namespace TP_Lab_II
         public void MovimientoVH(Ficha ficha)
         {
             int[] pos = ficha.CalcularPosicion(this); //buscamos la posicion de la ficha
-           
             int[] aux1 = new int[2];
             int[] aux2 = new int[2];
             int[] aux3 = new int[2];
