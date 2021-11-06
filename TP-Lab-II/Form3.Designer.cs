@@ -50,22 +50,24 @@ namespace TP_Lab_II
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.Pink;
             this.button1.Location = new System.Drawing.Point(361, 298);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(154, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "Ver otra solucion.";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.Pink;
             this.button2.Location = new System.Drawing.Point(361, 327);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(154, 23);
             this.button2.TabIndex = 2;
             this.button2.Text = "Calcular nuevas soluciones.";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel_Tablero
@@ -79,6 +81,7 @@ namespace TP_Lab_II
             // lable_Ataques
             // 
             this.lable_Ataques.AutoSize = true;
+            this.lable_Ataques.BackColor = System.Drawing.Color.PaleTurquoise;
             this.lable_Ataques.ForeColor = System.Drawing.Color.Red;
             this.lable_Ataques.Location = new System.Drawing.Point(373, 79);
             this.lable_Ataques.Name = "lable_Ataques";
@@ -90,8 +93,9 @@ namespace TP_Lab_II
             // label_AtqLeve
             // 
             this.label_AtqLeve.AutoSize = true;
-            this.label_AtqLeve.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label_AtqLeve.Location = new System.Drawing.Point(373, 104);
+            this.label_AtqLeve.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.label_AtqLeve.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label_AtqLeve.Location = new System.Drawing.Point(373, 92);
             this.label_AtqLeve.Name = "label_AtqLeve";
             this.label_AtqLeve.Size = new System.Drawing.Size(78, 13);
             this.label_AtqLeve.TabIndex = 6;
@@ -101,7 +105,7 @@ namespace TP_Lab_II
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(373, 130);
+            this.label2.Location = new System.Drawing.Point(373, 117);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 117);
             this.label2.TabIndex = 7;
@@ -114,6 +118,7 @@ namespace TP_Lab_II
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(549, 409);
             this.ControlBox = false;
             this.Controls.Add(this.label2);
