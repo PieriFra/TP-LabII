@@ -50,7 +50,6 @@ namespace TP_Lab_II
             ListaFichas.Add(Torre_B);
             ListaFichas.Add(TorreCaballo);
 
-            //int n_tableros = 20; //como podriamos declarala como varibale global???
             int n_tableros= (UInt16)Btn_NSoluciones.Value;
             ListaResultados = new List<Tablero>(n_tableros);
 
@@ -126,6 +125,10 @@ namespace TP_Lab_II
             this.Close();
         }
 
-        
+        private void Btn_MCosto_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("El costo del algoritmo es: ", "COSTO ALGORITMO", MessageBoxButtons.OK);
+
+        }
     }
 }

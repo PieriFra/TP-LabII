@@ -33,12 +33,13 @@ namespace TP_Lab_II
             this.label1 = new System.Windows.Forms.Label();
             this.Btn_NSoluciones = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
+            this.Btn_MCosto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Btn_NSoluciones)).BeginInit();
             this.SuspendLayout();
             // 
             // CorrerBtn
             // 
-            this.CorrerBtn.Location = new System.Drawing.Point(194, 162);
+            this.CorrerBtn.Location = new System.Drawing.Point(194, 143);
             this.CorrerBtn.Name = "CorrerBtn";
             this.CorrerBtn.Size = new System.Drawing.Size(121, 23);
             this.CorrerBtn.TabIndex = 0;
@@ -49,7 +50,7 @@ namespace TP_Lab_II
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 88);
+            this.label1.Location = new System.Drawing.Point(40, 83);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 13);
             this.label1.TabIndex = 2;
@@ -80,7 +81,7 @@ namespace TP_Lab_II
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(194, 207);
+            this.button1.Location = new System.Drawing.Point(194, 226);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(56, 19);
@@ -89,12 +90,23 @@ namespace TP_Lab_II
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // Btn_MCosto
+            // 
+            this.Btn_MCosto.Location = new System.Drawing.Point(197, 173);
+            this.Btn_MCosto.Name = "Btn_MCosto";
+            this.Btn_MCosto.Size = new System.Drawing.Size(116, 22);
+            this.Btn_MCosto.TabIndex = 5;
+            this.Btn_MCosto.Text = "Costo Algoritmo";
+            this.Btn_MCosto.UseVisualStyleBackColor = true;
+            this.Btn_MCosto.Click += new System.EventHandler(this.Btn_MCosto_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 311);
             this.ControlBox = false;
+            this.Controls.Add(this.Btn_MCosto);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Btn_NSoluciones);
             this.Controls.Add(this.label1);
@@ -114,6 +126,7 @@ namespace TP_Lab_II
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown Btn_NSoluciones;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Btn_MCosto;
     }
 }
 
