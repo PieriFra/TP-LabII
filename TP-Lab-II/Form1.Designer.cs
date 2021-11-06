@@ -82,7 +82,7 @@ namespace TP_Lab_II
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(194, 226);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(56, 19);
             this.button1.TabIndex = 4;
@@ -105,7 +105,6 @@ namespace TP_Lab_II
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 311);
-            this.ControlBox = false;
             this.Controls.Add(this.Btn_MCosto);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Btn_NSoluciones);

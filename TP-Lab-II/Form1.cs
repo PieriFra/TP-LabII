@@ -122,12 +122,13 @@ namespace TP_Lab_II
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
 
         private void Btn_MCosto_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("El costo del algoritmo es: ", "COSTO ALGORITMO", MessageBoxButtons.OK);
+            DialogResult result = MessageBox.Show("La cota inferior del algoritmo es Ω(n), especificamente Ω(88n + 2116). " + 
+                "La cota superior del algoritmo sera O(n), pero con mayor numero de constantes y valores, ya que se deben ejecutar mas lineas de codigo, es decir mas asiganciones, mas llamados a funciones, mas operaciones, etc.", "COSTO ALGORITMO", MessageBoxButtons.OK);
 
         }
     }
