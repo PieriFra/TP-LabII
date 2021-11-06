@@ -40,20 +40,18 @@ namespace TP_Lab_II
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(24, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 17);
+            this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Resultados: ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(399, 349);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(299, 284);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "Ver Solucion";
             this.button1.UseVisualStyleBackColor = true;
@@ -62,18 +60,16 @@ namespace TP_Lab_II
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(250, 288);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(188, 234);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(249, 17);
+            this.label2.Size = new System.Drawing.Size(185, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Eliga la solucion que quiere visualizar.";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Btn_NResultados
             // 
-            this.Btn_NResultados.Location = new System.Drawing.Point(435, 319);
-            this.Btn_NResultados.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_NResultados.Location = new System.Drawing.Point(326, 259);
             this.Btn_NResultados.Maximum = new decimal(new int[] {
             20,
             0,
@@ -85,7 +81,7 @@ namespace TP_Lab_II
             0,
             0});
             this.Btn_NResultados.Name = "Btn_NResultados";
-            this.Btn_NResultados.Size = new System.Drawing.Size(64, 22);
+            this.Btn_NResultados.Size = new System.Drawing.Size(48, 20);
             this.Btn_NResultados.TabIndex = 3;
             this.Btn_NResultados.Value = new decimal(new int[] {
             1,
@@ -97,26 +93,23 @@ namespace TP_Lab_II
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(35, 62);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.listBox1.Location = new System.Drawing.Point(26, 50);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(261, 196);
+            this.listBox1.Size = new System.Drawing.Size(197, 160);
             this.listBox1.TabIndex = 4;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 403);
+            this.ClientSize = new System.Drawing.Size(399, 311);
             this.ControlBox = false;
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Btn_NResultados);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form2";
             this.Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)(this.Btn_NResultados)).EndInit();
