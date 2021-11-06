@@ -39,7 +39,7 @@ namespace TP_Lab_II
             // CorrerBtn
             // 
             this.CorrerBtn.Location = new System.Drawing.Point(259, 199);
-            this.CorrerBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CorrerBtn.Margin = new System.Windows.Forms.Padding(4);
             this.CorrerBtn.Name = "CorrerBtn";
             this.CorrerBtn.Size = new System.Drawing.Size(161, 28);
             this.CorrerBtn.TabIndex = 0;
@@ -61,7 +61,7 @@ namespace TP_Lab_II
             // Btn_NSoluciones
             // 
             this.Btn_NSoluciones.Location = new System.Drawing.Point(259, 100);
-            this.Btn_NSoluciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_NSoluciones.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_NSoluciones.Maximum = new decimal(new int[] {
             20,
             0,
@@ -95,13 +95,13 @@ namespace TP_Lab_II
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 398);
+            this.ClientSize = new System.Drawing.Size(532, 403);
             this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Btn_NSoluciones);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CorrerBtn);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
