@@ -92,9 +92,9 @@ namespace TP_Lab_II
             // 
             // Btn_MCosto
             // 
-            this.Btn_MCosto.Location = new System.Drawing.Point(197, 173);
+            this.Btn_MCosto.Location = new System.Drawing.Point(194, 173);
             this.Btn_MCosto.Name = "Btn_MCosto";
-            this.Btn_MCosto.Size = new System.Drawing.Size(116, 22);
+            this.Btn_MCosto.Size = new System.Drawing.Size(121, 22);
             this.Btn_MCosto.TabIndex = 5;
             this.Btn_MCosto.Text = "Costo Algoritmo";
             this.Btn_MCosto.UseVisualStyleBackColor = true;
@@ -105,6 +105,7 @@ namespace TP_Lab_II
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 311);
+            this.ControlBox = false;
             this.Controls.Add(this.Btn_MCosto);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Btn_NSoluciones);
