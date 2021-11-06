@@ -110,12 +110,10 @@ namespace TP_Lab_II
             {
                 for (int c = 0; c < 8; c++)
                 {
-                    if (tablero.Get_CodigoFichaOrg(f, c) == 1)
-                    {
-                        if (tablero.TableroOriginal[f, c] == 0)
-
-                            btn.BackColor = Color.Red;
-                    }
+                    if (tablero.TableroAux[f, c] == 10)
+                        btn.BackColor = Color.Red;
+                    else
+                        btn.BackColor = Color.LightGreen;
                 }
             }
         }
