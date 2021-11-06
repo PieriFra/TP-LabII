@@ -779,7 +779,6 @@ namespace TP_Lab_II
             {
                 MovimientoVH(ficha);
                 MovimientoCaballo(ficha);
-
             }
         }
 
