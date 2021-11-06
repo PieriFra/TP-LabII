@@ -547,7 +547,7 @@ namespace TP_Lab_II
 
             if (pos[0] + 2 < tam && pos[1] + 1 < tam)
             {
-                if (TableroAux[pos[0] + 2, pos[1] + 1] != 0)
+                if (TableroOriginal[pos[0] + 2, pos[1] + 1] != 0)
                 {
                     TableroAux[pos[0] + 2, pos[1] + 1] = 10;
                     if (pos[1] + 2 < tam && TableroAux[pos[0] + 2, pos[1] + 2] != 10)
@@ -558,7 +558,7 @@ namespace TP_Lab_II
             }
             if (pos[0] + 2 < tam && pos[1] - 1 >= 0)
             {   
-                if(TableroAux[pos[0] + 2, pos[1] - 1] !=0 )
+                if(TableroOriginal[pos[0] + 2, pos[1] - 1] !=0 )
                 {
                     TableroAux[pos[0] + 2, pos[1] - 1] = 10;
                     if (pos[1] - 2 >= 0 && TableroAux[pos[0] + 2, pos[1] - 2] != 10)
@@ -569,7 +569,7 @@ namespace TP_Lab_II
             }
             if (pos[0] - 2 >= 0 && pos[1] - 1 >= 0)
             {
-                if (TableroAux[pos[0] - 2, pos[1] - 1] != 0)
+                if (TableroOriginal[pos[0] - 2, pos[1] - 1] != 0)
                 {
                     TableroAux[pos[0] - 2, pos[1] - 1] = 10;
                     if (pos[1] - 2 >= 0 && TableroAux[pos[0] - 2, pos[1] - 2] != 10)
@@ -580,7 +580,7 @@ namespace TP_Lab_II
             }
             if (pos[0] - 2 >= 0 && pos[1] + 1 < tam)
             {
-                if (TableroAux[pos[0] - 2, pos[1] + 1] != 0)
+                if (TableroOriginal[pos[0] - 2, pos[1] + 1] != 0)
                 {
                     TableroAux[pos[0] - 2, pos[1] + 1] = 10;
                     if (pos[1] + 2 < tam && TableroAux[pos[0] - 2, pos[1] + 2] != 10)
@@ -591,7 +591,7 @@ namespace TP_Lab_II
             }
             if (pos[0] + 1 < tam && pos[1] + 2 < tam)
             {
-                if (TableroAux[pos[0] + 1, pos[1] + 2] != 0)
+                if (TableroOriginal[pos[0] + 1, pos[1] + 2] != 0)
                 {
                     TableroAux[pos[0] + 1, pos[1] + 2] = 10;
                     if (pos[0] + 2 < tam && TableroAux[pos[0] + 2, pos[1] + 2] != 10)
@@ -602,7 +602,7 @@ namespace TP_Lab_II
             }
             if (pos[0] + 1 < tam && pos[1] - 2 >= 0)
             {
-                if (TableroAux[pos[0] + 1, pos[1] - 2] != 0)
+                if (TableroOriginal[pos[0] + 1, pos[1] - 2] != 0)
                 {
                     TableroAux[pos[0] + 1, pos[1] - 2] = 10;
                     if (pos[0] + 2 < tam && TableroAux[pos[0] + 2, pos[1] - 2] != 10)
@@ -613,7 +613,7 @@ namespace TP_Lab_II
             }
             if (pos[0] - 1 >= 0 && pos[1] - 2 >= 0)
             {
-                if (TableroAux[pos[0] - 1, pos[1] - 2] != 0)
+                if (TableroOriginal[pos[0] - 1, pos[1] - 2] != 0)
                 {
                     TableroAux[pos[0] - 1, pos[1] - 2] = 10;
                     if (pos[0] - 2 >= 0 && TableroAux[pos[0] - 2, pos[1] - 2] != 10)
@@ -624,7 +624,7 @@ namespace TP_Lab_II
             }
             if (pos[0] - 1 >= 0 && pos[1] + 2 < tam)
             {
-                if (TableroAux[pos[0] - 1, pos[1] + 2] != 0)
+                if (TableroOriginal[pos[0] - 1, pos[1] + 2] != 0)
                 {
                     TableroAux[pos[0] - 1, pos[1] + 2] = 10;
                     if (pos[0] - 2 >= 0 && TableroAux[pos[0] - 2, pos[1] + 2] != 10)
@@ -633,9 +633,6 @@ namespace TP_Lab_II
                 else
                     TableroAux[pos[0] - 1, pos[1] + 2] = 10;
             }
-
-            imprimir(TableroAux);
-
         }
         public void AnalizarTableroAux() //LLena los casilleros que pueden ser atacados
         {
@@ -788,7 +785,6 @@ namespace TP_Lab_II
                 MovimientoCaballo(ficha);
 
             }
-
         }
 
         public void CargarTablero()
