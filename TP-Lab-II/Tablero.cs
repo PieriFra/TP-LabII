@@ -780,9 +780,6 @@ namespace TP_Lab_II
                 MovimientoCaballo(ficha);
 
             }
-
-            imprimir(TableroOriginal);
-            imprimir(TableroAux);
         }
 
         public void CargarTablero()
@@ -836,8 +833,6 @@ namespace TP_Lab_II
             } while (cont != 1);
 
         }
-
-
         public void imprimir(int[,] tablero)
         {
             string text = "\n";

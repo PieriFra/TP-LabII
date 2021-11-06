@@ -7,7 +7,8 @@ using System.Threading.Tasks;
  
 namespace TP_Lab_II
 {
-    public class Ficha
+    public 
+    class Ficha
     {
         //Atributos
         public string Nombre;
