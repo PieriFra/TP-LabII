@@ -162,7 +162,6 @@ namespace TP_Lab_II
                     }
                     FichaMagica.CalcularMovimiento(this); //realizamos un movimiento
                     AnalizarTableroAux();
-                    imprimir(TableroAux);
                     auxT2 = VerificarTablero(TableroAux);
                 }
             } while (auxT == false && auxT2 == false);
@@ -173,7 +172,6 @@ namespace TP_Lab_II
             if (ficha_mover != null)
                 ficha_mover.CalcularMovimiento(this);
             AnalizarTableroAux();
-            imprimir(TableroAux);
             if (VerificarTablero(TableroAux) == true)
                 return true;
             return false;
@@ -194,8 +192,7 @@ namespace TP_Lab_II
             aux3[1] = -1;
             aux4[0] = -1;
             aux4[1] = -1;
-            imprimir(TableroOriginal);
-            // vertical des
+           // vertical des
             for (int i = pos[0]; i < tam; i++)
             {
                 if (TableroOriginal[i, pos[1]] != 0 && TableroOriginal[i, pos[1]] != ficha.Get_Codigo())
@@ -752,18 +749,17 @@ namespace TP_Lab_II
             //Alfil B
             ficha = Get_FichaCodigo(4); //obtenemos la ficha que queremos 
             MovimientoDiagonal(ficha);
-
+            
             //Caballo A
             ficha = Get_FichaCodigo(5); //obtenemos la ficha que queremos 
             MovimientoCaballo(ficha);
-
+        
             //Caballo B
             ficha = Get_FichaCodigo(6); //obtenemos la ficha que queremos 
             if (ficha != null)
             {
                 MovimientoCaballo(ficha);
             }
-
 
             //Torre A
             ficha = Get_FichaCodigo(7); //obtenemos la ficha que queremos 
@@ -785,6 +781,9 @@ namespace TP_Lab_II
                 MovimientoCaballo(ficha);
 
             }
+
+            imprimir(TableroOriginal);
+            imprimir(TableroAux);
         }
 
         public void CargarTablero()
