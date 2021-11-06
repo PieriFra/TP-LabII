@@ -19,10 +19,15 @@ namespace TP_Lab_II
         
 
      
-        public Form2(Form3 llamado_)
+        public Form2(Form3 llamado_, List<Tablero> ListaTablero)
         {
             InitializeComponent();
             Llamado = llamado_;
+            Tableros = ListaTablero;
+            for (int i = 1; i < Tableros.Count + 1; i++)
+            {
+                listBox1.Items.Add("Solucion: " + Convert.ToString(i));
+            }
         }
         public Form2(Form1 llamado_, List<Tablero> ListaResul) 
         {
@@ -45,7 +50,7 @@ namespace TP_Lab_II
         private void button1_Click(object sender, EventArgs e)
         {
             int aux = (UInt16)Btn_NResultados.Value;
-            Form3 form3 = new Form3(llamado, Tableros[aux-1]);
+            Form3 form3 = new Form3(llamado, Tableros[aux-1], Tableros);
             form3.Show();
             this.Close();
         }

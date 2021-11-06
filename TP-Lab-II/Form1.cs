@@ -14,7 +14,7 @@ namespace TP_Lab_II
     public partial class Form1 : Form
     {
 
-       List<Tablero> ListaResultados;
+        List<Tablero> ListaResultados;
         
         public Form1()
         {

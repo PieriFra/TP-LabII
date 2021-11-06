@@ -14,11 +14,13 @@ namespace TP_Lab_II
     {
         Form llamado;
         Tablero tablero = null;
-        public Form3(Form llamado_, Tablero _Tablero)
+        List<Tablero> tableros_ = null;
+        public Form3(Form llamado_, Tablero _Tablero, List<Tablero>ListaTableros)
         {
             InitializeComponent();
             llamado = llamado_;
             tablero = _Tablero;
+            tableros_ = ListaTableros;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -28,14 +30,15 @@ namespace TP_Lab_II
 
         private void button2_Click(object sender, EventArgs e)
         {
-            llamado.Show();
+            Form1 form1 = new Form1();
+            form1.Show();
             this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Form2 form2 = new Form2(this);
+            Form2 form2 = new Form2(this, tableros_);
             form2.Show();
             this.Close();
         }
