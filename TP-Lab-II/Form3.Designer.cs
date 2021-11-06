@@ -35,25 +35,24 @@ namespace TP_Lab_II
             this.panel_Tablero = new System.Windows.Forms.Panel();
             this.lable_Ataques = new System.Windows.Forms.Label();
             this.label_AtqLeve = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(187, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(140, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 17);
+            this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tablero Solucion:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(481, 202);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(361, 298);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(205, 28);
+            this.button1.Size = new System.Drawing.Size(154, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "Ver otra solucion.";
             this.button1.UseVisualStyleBackColor = true;
@@ -61,10 +60,9 @@ namespace TP_Lab_II
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(481, 238);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(361, 327);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(205, 28);
+            this.button2.Size = new System.Drawing.Size(154, 23);
             this.button2.TabIndex = 2;
             this.button2.Text = "Calcular nuevas soluciones.";
             this.button2.UseVisualStyleBackColor = true;
@@ -72,10 +70,9 @@ namespace TP_Lab_II
             // 
             // panel_Tablero
             // 
-            this.panel_Tablero.Location = new System.Drawing.Point(77, 60);
-            this.panel_Tablero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_Tablero.Location = new System.Drawing.Point(58, 49);
             this.panel_Tablero.Name = "panel_Tablero";
-            this.panel_Tablero.Size = new System.Drawing.Size(365, 313);
+            this.panel_Tablero.Size = new System.Drawing.Size(274, 254);
             this.panel_Tablero.TabIndex = 3;
             this.panel_Tablero.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
@@ -83,37 +80,49 @@ namespace TP_Lab_II
             // 
             this.lable_Ataques.AutoSize = true;
             this.lable_Ataques.ForeColor = System.Drawing.Color.Red;
-            this.lable_Ataques.Location = new System.Drawing.Point(497, 97);
-            this.lable_Ataques.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lable_Ataques.Location = new System.Drawing.Point(373, 79);
             this.lable_Ataques.Name = "lable_Ataques";
-            this.lable_Ataques.Size = new System.Drawing.Size(110, 17);
+            this.lable_Ataques.Size = new System.Drawing.Size(83, 13);
             this.lable_Ataques.TabIndex = 5;
             this.lable_Ataques.Text = "Ataques Fatales";
+            this.lable_Ataques.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_AtqLeve
             // 
             this.label_AtqLeve.AutoSize = true;
             this.label_AtqLeve.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label_AtqLeve.Location = new System.Drawing.Point(497, 128);
-            this.label_AtqLeve.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_AtqLeve.Location = new System.Drawing.Point(373, 104);
             this.label_AtqLeve.Name = "label_AtqLeve";
-            this.label_AtqLeve.Size = new System.Drawing.Size(102, 17);
+            this.label_AtqLeve.Size = new System.Drawing.Size(78, 13);
             this.label_AtqLeve.TabIndex = 6;
             this.label_AtqLeve.Text = "Ataques Leves";
+            this.label_AtqLeve.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(373, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 117);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "R: Reina.\r\nr: Rey.\r\nAa: Alfil \"A\".\r\nAb: Alfil \"B\".\r\nCa: Caballo \"A\".\r\nCb: Caballo" +
+    " \"B\".\r\nTa: Torre \"A\".\r\nTb: Torre \"B\".\r\nTC: Torre-Caballo \r\n";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Form3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 503);
+            this.ClientSize = new System.Drawing.Size(549, 409);
             this.ControlBox = false;
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label_AtqLeve);
             this.Controls.Add(this.lable_Ataques);
             this.Controls.Add(this.panel_Tablero);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form3";
             this.Text = "Form3";
             this.ResumeLayout(false);
@@ -129,5 +138,6 @@ namespace TP_Lab_II
         private System.Windows.Forms.Panel panel_Tablero;
         private System.Windows.Forms.Label lable_Ataques;
         private System.Windows.Forms.Label label_AtqLeve;
+        private System.Windows.Forms.Label label2;
     }
 }
