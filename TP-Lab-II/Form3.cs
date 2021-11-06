@@ -93,29 +93,22 @@ namespace TP_Lab_II
                     {
                         btn.Text = "TC";
                     }
+
+                    if (tablero.TableroAux[f, c] == 10)
+                        btn.BackColor = Color.Red;
+                    else
+                        btn.BackColor = Color.LightGreen;
                     panel_Tablero.Controls.Add(btn);
-                    tablero.imprimir(tablero.TableroOriginal);
-                    RecorreTablero(btn);
+
                 }
+                tablero.imprimir(tablero.TableroOriginal);
+                tablero.imprimir(tablero.TableroAux);
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
         }
-        private void RecorreTablero(Button btn)
-        {
-
-            for (int f = 0; f < 8; f++)
-            {
-                for (int c = 0; c < 8; c++)
-                {
-                    if (tablero.TableroAux[f, c] == 10)
-                        btn.BackColor = Color.Red;
-                    else
-                        btn.BackColor = Color.LightGreen;
-                }
-            }
-        }
+        
     }
 }
