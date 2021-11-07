@@ -122,7 +122,7 @@ namespace TP_Lab_II
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //this.Close();
+            Application.Exit();
         }
 
         private void Btn_MCosto_Click(object sender, EventArgs e)
