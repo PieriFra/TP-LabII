@@ -121,7 +121,9 @@ namespace TP_Lab_II
                         mov++;
                     }
                 }
+                imprimir(TableroAux);
                 auxT = VerificarTablero(TableroAux);
+
                 if (auxT == false)
                 {
                     mov = 0;
