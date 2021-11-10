@@ -436,7 +436,8 @@ namespace TP_Lab_II
         public void MovimientoCaballo(Ficha ficha)
         {
             int[] pos = ficha.CalcularPosicion(this); //buscamos la posicion de la fich
-
+            
+            TableroAux[pos[0], pos[1]] = 10;
             if (pos[0] + 2 < tam && pos[1] + 1 < tam)
             {
                 if (TableroOriginal[pos[0] + 2, pos[1] + 1] != 0)
@@ -540,7 +541,8 @@ namespace TP_Lab_II
             }
             Ficha ficha = new Ficha();
 
-            //reina 
+            //reina 		[3, 3]	3	int
+
             ficha = Get_FichaCodigo(1); //obtenemos la ficha que queremos 
             MovimientoVH(ficha);
             MovimientoDiagonal(ficha);
@@ -677,6 +679,7 @@ namespace TP_Lab_II
                 MovimientoVH(ficha);
                 MovimientoCaballo(ficha);
             }
+            imprimir(TableroAux);
         }
 
         public void CargarTablero()

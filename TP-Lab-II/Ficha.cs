@@ -96,10 +96,10 @@ namespace TP_Lab_II
 
             }
 
-            //caso de la reina->limitamos sus movimientos entre 2<x<4 & 2<y<4
+            //caso de la reina->limitamos sus movimientos entre 2<x<5 & 2<y<5
             if (Get_Codigo() == 1)
             {
-
+                /*
                 cont = 0;
                 do
                 {
@@ -117,10 +117,67 @@ namespace TP_Lab_II
                     }
 
                 } while (cont == 0);
-            }
+                */
+                cont = 0;
+                do
+                {
+                    //generamos una pos aleatoria dentro de los limites establecidos
+                    int AUX = Rand.Next(1, 4);
+                    if (AUX == 1)
+                    {
+                        if (TableroOriginal.TableroOriginal[2, 3] == 0)
+                        {
+                            TableroOriginal.Set_CodigoFichaOrg(2, 3, this);
+                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                            cont++; //contamos un cambio
+                        }
+                    }
+                    if (AUX == 2)
+                    {
+                        if (TableroOriginal.TableroOriginal[3, 5] == 0)
+                        {
+                            TableroOriginal.Set_CodigoFichaOrg(3, 5, this);
+                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                            cont++; //contamos un cambio
+                        }
+                    }
+                    if (AUX == 3)
+                    {
+                        if (TableroOriginal.TableroOriginal[4, 5] == 0)
+                        {
+                            TableroOriginal.Set_CodigoFichaOrg(4, 5, this);
+                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                            cont++; //contamos un cambio
+                        }
+                    }
+                    if (AUX == 4)
+                    {
+                        if (TableroOriginal.TableroOriginal[5, 3] == 0)
+                        {
+                            TableroOriginal.Set_CodigoFichaOrg(5, 3, this);
+                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                            cont++; //contamos un cambio
+                        }
+                    }
+                    if (TableroOriginal.TableroOriginal[5, 3] == 0 && TableroOriginal.TableroOriginal[4, 5] == 0 && TableroOriginal.TableroOriginal[3, 5] == 0 && TableroOriginal.TableroOriginal[2, 3] == 0)
+                    {
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        int Pos_I = Rand.Next(1, 6);
+                        int Pos_J = Rand.Next(1, 6);
 
-            // caso del caballo A
-            if (Get_Codigo() == 5 || Get_Codigo() == 6)
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.Get_CodigoFichaOrg(Pos_I, Pos_J) == 0)
+                        {
+                            //si esta libre, ponemos la ficha en la nueva pos
+                            TableroOriginal.Set_CodigoFichaOrg(Pos_I, Pos_J, this);
+                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                            cont++; //contamos un cambio
+                        }
+                    }
+                } while (cont == 0);
+            }
+                // caso del caballo A
+                if (Get_Codigo() == 5 || Get_Codigo() == 6)
             {
                 for (int i = 0; i < TableroOriginal.GetTam(); i++)
                 {
@@ -146,8 +203,8 @@ namespace TP_Lab_II
                     do
                     {
                         //generamos una pos aleatoria dentro de los limites establecidos
-                        int Pos_I = Rand.Next(2, 5);
-                        int Pos_J = Rand.Next(2, 5);
+                        int Pos_I = Rand.Next(1, 5);
+                        int Pos_J = Rand.Next(1, 5);
 
                         //preguntamos si la poscion esta libre 
                         if (TableroOriginal.Get_CodigoFichaOrg(Pos_I, Pos_J) == 0)
