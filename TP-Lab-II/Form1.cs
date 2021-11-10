@@ -131,5 +131,10 @@ namespace TP_Lab_II
                 "La cota superior del algoritmo sera O(n), pero con mayor numero de constantes y valores, ya que se deben ejecutar mas lineas de codigo, es decir mas asiganciones, mas llamados a funciones, mas operaciones, etc.", "COSTO ALGORITMO", MessageBoxButtons.OK);
 
         }
+
+        private void Btn_NSoluciones_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
