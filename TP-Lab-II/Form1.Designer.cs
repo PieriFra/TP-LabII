@@ -81,6 +81,7 @@ namespace TP_Lab_II
             0,
             0,
             0});
+            this.Btn_NSoluciones.ValueChanged += new System.EventHandler(this.Btn_NSoluciones_ValueChanged);
             // 
             // button1
             // 

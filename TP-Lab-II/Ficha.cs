@@ -122,24 +122,45 @@ namespace TP_Lab_II
             // caso del caballo A
             if (Get_Codigo() == 5 || Get_Codigo() == 6)
             {
-                cont = 0;
-                do
+                for (int i = 0; i < TableroOriginal.GetTam(); i++)
                 {
-                    //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(2, 5);
-                    int Pos_J = Rand.Next(2, 5);
-
-                    //preguntamos si la poscion esta libre 
-                    if (TableroOriginal.Get_CodigoFichaOrg(Pos_I, Pos_J) == 0)
+                    for (int j = 0; j < TableroOriginal.GetTam(); j++)
                     {
-                        //si esta libre, ponemos la ficha en la nueva pos
-                        TableroOriginal.Set_CodigoFichaOrg(Pos_I, Pos_J, this);
-                        TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                        cont++; //contamos un cambio
+                        if (TableroOriginal.TableroAux[i, j] == 0)
+                        {
+                            pos[0] = i;
+                            pos[1] = j;
+                        }
                     }
+                }
 
-                } while (cont == 0);
+                if (TableroOriginal.Get_CodigoFichaOrg(pos[0], pos[1]) == 0)
+                {
+                    //si esta libre, ponemos la ficha en la nueva pos
+                    TableroOriginal.Set_CodigoFichaOrg(pos[0], pos[1], this);
+                    TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                }
+                else
+                {
+                    cont = 0;
+                    do
+                    {
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        int Pos_I = Rand.Next(2, 5);
+                        int Pos_J = Rand.Next(2, 5);
 
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.Get_CodigoFichaOrg(Pos_I, Pos_J) == 0)
+                        {
+                            //si esta libre, ponemos la ficha en la nueva pos
+                            TableroOriginal.Set_CodigoFichaOrg(Pos_I, Pos_J, this);
+                            TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                            cont++; //contamos un cambio
+                        }
+
+                    } while (cont == 0);
+                }
+               
             }
 
             //caso TorreCaballo
