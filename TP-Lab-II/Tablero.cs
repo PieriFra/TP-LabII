@@ -788,8 +788,8 @@ namespace TP_Lab_II
 
             do
             {
-                pos_i = rand.Next(2, 5);
-                pos_j = rand.Next(2, 5);
+                pos_i = rand.Next(1, 5);
+                pos_j = rand.Next(1, 5);
                 if (TableroOriginal[pos_i, pos_j] == 0)
                 {
                     TableroOriginal[pos_i, pos_j] = 7; //torre A
