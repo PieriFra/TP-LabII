@@ -344,8 +344,8 @@ namespace TP_Lab_II
                 do
                 {
                     //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(1, 6);
-                    int Pos_J = Rand.Next(1, 6);
+                    int Pos_I = Rand.Next(0, 7);
+                    int Pos_J = Rand.Next(0, 7);
 
                     //preguntamos si la poscion esta libre 
                     if (TableroOriginal.Get_CodigoFichaOrg(Pos_I, Pos_J) == 0)
@@ -359,7 +359,28 @@ namespace TP_Lab_II
                 } while (cont == 0);
 
             }
+            //caso torre B
+            if (Get_Codigo() == 8)
+            {
+                cont = 0;
+                do
+                {
+                    //generamos una pos aleatoria dentro de los limites establecidos
+                    int Pos_I = Rand.Next(0, 7);
+                    int Pos_J = Rand.Next(0, 7);
 
+                    //preguntamos si la poscion esta libre 
+                    if (TableroOriginal.Get_CodigoFichaOrg(Pos_I, Pos_J) == 0)
+                    {
+                        //si esta libre, ponemos la ficha en la nueva pos
+                        TableroOriginal.Set_CodigoFichaOrg(Pos_I, Pos_J, this);
+                        TableroOriginal.Set_CodigoFichaOrg(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
+                        cont++; //contamos un cambio
+                    }
+
+                } while (cont == 0);
+
+            }
             //caso del rey
             if (Get_Codigo() == 2) //movemos el rey
             {

@@ -100,6 +100,12 @@ namespace TP_Lab_II
                             mov = 8;
                             break;
                         }
+                        ficha_mover = Get_FichaCodigo(8);
+                        if (GeneraSolucion(ficha_mover) == true)
+                        {
+                            mov = 8;
+                            break;
+                        }
                         ficha_mover = Get_FichaCodigo(2);
                         if (GeneraSolucion(ficha_mover) == true)
                         {
@@ -740,10 +746,9 @@ namespace TP_Lab_II
         {
 
             //dejamos los alfiles fijos y las torre fija
-            TableroOriginal[3, 4] = 3; //alfil A
-            TableroOriginal[4, 2] = 4; //alfil B 
-            TableroOriginal[7, 7] = 8; //torre B
-            TableroOriginal[0, 0] = 1; //reina
+            TableroOriginal[2,3] = 3; //alfil A
+            TableroOriginal[3,3] = 4; //alfil B 
+            TableroOriginal[4,3] = 1; //reina
 
             
             var rand = new Random();
@@ -793,6 +798,17 @@ namespace TP_Lab_II
                 if (TableroOriginal[pos_i, pos_j] == 0)
                 {
                     TableroOriginal[pos_i, pos_j] = 7; //torre A
+                    cont++;
+                }
+            } while (cont != 1);
+
+            do
+            {
+                pos_i = rand.Next(0, 7);
+                pos_j = rand.Next(0, 7);
+                if (TableroOriginal[pos_i, pos_j] == 0)
+                {
+                    TableroOriginal[pos_i, pos_j] = 7; //torre B
                     cont++;
                 }
             } while (cont != 1);
