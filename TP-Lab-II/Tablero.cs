@@ -94,7 +94,7 @@ namespace TP_Lab_II
                 {
                     for (int i = 0; i < 8; i++)
                     {
-                        Ficha ficha_mover = Get_FichaCodigo(1);
+                        Ficha ficha_mover = Get_FichaCodigo(7);
                         if (GeneraSolucion(ficha_mover) == true)
                         {
                             mov = 8;
