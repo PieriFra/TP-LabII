@@ -789,8 +789,8 @@ namespace TP_Lab_II
                     cont++;
                 }
             } while (cont != 1);
+            
             cont = 0;
-
             do
             {
                 pos_i = rand.Next(1, 5);
@@ -801,14 +801,15 @@ namespace TP_Lab_II
                     cont++;
                 }
             } while (cont != 1);
-
+           
+            cont = 0;
             do
             {
                 pos_i = rand.Next(0, 7);
                 pos_j = rand.Next(0, 7);
                 if (TableroOriginal[pos_i, pos_j] == 0)
                 {
-                    TableroOriginal[pos_i, pos_j] = 7; //torre B
+                    TableroOriginal[pos_i, pos_j] = 8; //torre B
                     cont++;
                 }
             } while (cont != 1);
