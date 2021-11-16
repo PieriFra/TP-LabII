@@ -684,7 +684,7 @@ namespace TP_Lab_II
             imprimir(TableroAux);
         }
 
-        public void CargarTablero()
+        /*public void CargarTablero()
         {
 
             //dejamos los alfiles fijos y las torre fija
@@ -730,6 +730,69 @@ namespace TP_Lab_II
                 if (TableroOriginal[pos_i, pos_j] == 0)
                 {
                     TableroOriginal[pos_i, pos_j] = 2; //rey
+                    cont++;
+                }
+            } while (cont != 1);
+
+        }*/
+
+        public void CargarTablero()
+        {
+
+            //dejamos los alfiles fijos y las torre fija
+            TableroOriginal[3, 4] = 3; //alfil A
+            TableroOriginal[4, 2] = 4; //alfil B 
+            TableroOriginal[7, 7] = 8; //torre B
+            TableroOriginal[0, 0] = 1; //reina
+
+            
+            var rand = new Random();
+            int cont = 0;
+            int pos_i = 0;
+            int pos_j = 0;
+            do
+            {
+                pos_i = rand.Next(2, 5);
+                pos_j = rand.Next(2, 5);
+                if (TableroOriginal[pos_i, pos_j] == 0)
+                {
+                    TableroOriginal[pos_i, pos_j] = 5;//caballo A
+                    cont++;
+                }
+            } while (cont != 1);
+
+            cont = 0;
+            do
+            {
+                pos_i = rand.Next(2, 5);
+                pos_j = rand.Next(2, 5);
+                if (TableroOriginal[pos_i, pos_j] == 0)
+                {
+                    TableroOriginal[pos_i, pos_j] = 6;//caballo B
+                    cont++;
+                }
+            } while (cont != 1);
+
+            cont = 0;
+            do
+            {
+                pos_i = rand.Next(2, 5);
+                pos_j = rand.Next(2, 5);
+                if (TableroOriginal[pos_i, pos_j] == 0)
+                {
+                    TableroOriginal[pos_i, pos_j] = 2; //rey
+                    cont++;
+                }
+            } while (cont != 1);
+            cont = 0;
+
+            do
+            {
+                pos_i = rand.Next(2, 5);
+                pos_j = rand.Next(2, 5);
+                if (TableroOriginal[pos_i, pos_j] == 0)
+                {
+                    TableroOriginal[pos_i, pos_j] = 7; //torre A
                     cont++;
                 }
             } while (cont != 1);
