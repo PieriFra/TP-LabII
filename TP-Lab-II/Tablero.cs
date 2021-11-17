@@ -129,9 +129,8 @@ namespace TP_Lab_II
                 }
                 imprimir(TableroAux);
                 auxT = VerificarTablero(TableroAux);
-                mov = 0;
-
-                /*if (auxT == false)
+               
+                if (auxT == false)
                 {
                     mov = 0;
                     int cont = 0;
@@ -172,7 +171,7 @@ namespace TP_Lab_II
                     FichaMagica.CalcularMovimiento(this); //realizamos un movimiento
                     AnalizarTableroAux();
                     auxT2 = VerificarTablero(TableroAux);
-                }*/
+                }
             } while (auxT == false && auxT2 == false);
             return this;
         }
