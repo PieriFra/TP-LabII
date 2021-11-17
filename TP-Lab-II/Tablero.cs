@@ -38,6 +38,9 @@ namespace TP_Lab_II
         public int[,] GetTableroOrig() { return TableroOriginal; } //devuelve el tableroOriginal completo
         public int Get_CodigoFichaOrg(int k, int l) //devuelve el codigo de la ficha
         {
+            return TableroOriginal[k, l];
+
+            /*
             for (int i = 0; i < tam; i++)
             {
                 for (int j = 0; j < tam; j++)
@@ -47,6 +50,7 @@ namespace TP_Lab_II
                 }
             }
             return 0;
+            */
         }
         public int GetTam() { return tam; } //devuelve el tamanio 
         public Ficha Get_FichaPosicion(int i, int j) //devuelve una ficha de la lista de la posicion que le paso
@@ -746,10 +750,8 @@ namespace TP_Lab_II
         {
 
             //dejamos los alfiles fijos y las torre fija
-            TableroOriginal[2,3] = 3; //alfil A
-            TableroOriginal[3,3] = 4; //alfil B 
-            TableroOriginal[4,3] = 1; //reina
-
+            TableroOriginal[0,0] = 7; //torre A
+            TableroOriginal[7,7] = 8; //torre B
             
             var rand = new Random();
             int cont = 0;
@@ -793,26 +795,40 @@ namespace TP_Lab_II
             cont = 0;
             do
             {
-                pos_i = rand.Next(1, 5);
-                pos_j = rand.Next(1, 5);
+                pos_i = rand.Next(3, 4);
+                pos_j = rand.Next(3, 4);
                 if (TableroOriginal[pos_i, pos_j] == 0)
                 {
-                    TableroOriginal[pos_i, pos_j] = 7; //torre A
+                    TableroOriginal[pos_i, pos_j] = 1; //reina
                     cont++;
                 }
             } while (cont != 1);
-           
+
             cont = 0;
             do
             {
-                pos_i = rand.Next(0, 7);
-                pos_j = rand.Next(0, 7);
+                pos_i = rand.Next(2, 5);
+                pos_j = rand.Next(2, 5);
                 if (TableroOriginal[pos_i, pos_j] == 0)
                 {
-                    TableroOriginal[pos_i, pos_j] = 8; //torre B
+                    TableroOriginal[pos_i, pos_j] = 3; //alfil A
                     cont++;
                 }
             } while (cont != 1);
+
+            cont = 0;
+            do
+            {
+                pos_i = rand.Next(2, 5);
+                pos_j = rand.Next(2, 5);
+                if (TableroOriginal[pos_i, pos_j] == 0)
+                {
+                    TableroOriginal[pos_i, pos_j] = 4; //alfil B
+                    cont++;
+                }
+            } while (cont != 1);
+
+
 
         }
         public void imprimir(int[,] tablero)
