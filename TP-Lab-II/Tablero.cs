@@ -39,18 +39,6 @@ namespace TP_Lab_II
         public int Get_CodigoFichaOrg(int k, int l) //devuelve el codigo de la ficha
         {
             return TableroOriginal[k, l];
-
-            /*
-            for (int i = 0; i < tam; i++)
-            {
-                for (int j = 0; j < tam; j++)
-                {
-                    if (k == i && l == j)
-                        return TableroOriginal[k, l];
-                }
-            }
-            return 0;
-            */
         }
         public int GetTam() { return tam; } //devuelve el tamanio 
         public Ficha Get_FichaPosicion(int i, int j) //devuelve una ficha de la lista de la posicion que le paso
@@ -69,7 +57,6 @@ namespace TP_Lab_II
             }
             return null;
         }
-
         public bool VerificarTablero(int[,] tableroAux) //verifica que todas las posciones del tablero esten siendo atacadas
         {
             for (int i = 0; i < tam; i++)
@@ -85,7 +72,6 @@ namespace TP_Lab_II
            estan siendo atacadas y retorna true*/
             return true;
         }
-
         public Tablero CalculoSolucion(List<Tablero> ListaResultados) //devuelve el tablero resultado
         {
             int mov = 0;
@@ -98,13 +84,20 @@ namespace TP_Lab_II
                 {
                     for (int i = 0; i < 8; i++)
                     {
-                        Ficha ficha_mover = Get_FichaCodigo(7);
+                        Ficha ficha_mover = null;
+                        ficha_mover = Get_FichaCodigo(1);
                         if (GeneraSolucion(ficha_mover) == true)
                         {
                             mov = 8;
                             break;
                         }
-                        ficha_mover = Get_FichaCodigo(8);
+                        ficha_mover = Get_FichaCodigo(3);
+                        if (GeneraSolucion(ficha_mover) == true)
+                        {
+                            mov = 8;
+                            break;
+                        }
+                        ficha_mover = Get_FichaCodigo(4);
                         if (GeneraSolucion(ficha_mover) == true)
                         {
                             mov = 8;
@@ -116,6 +109,9 @@ namespace TP_Lab_II
                             mov = 8;
                             break;
                         }
+
+                        AnalizarTableroAux();
+                        imprimir(TableroAux);
                         ficha_mover = Get_FichaCodigo(5);
                         if (GeneraSolucion(ficha_mover) == true)
                         {
@@ -133,8 +129,9 @@ namespace TP_Lab_II
                 }
                 imprimir(TableroAux);
                 auxT = VerificarTablero(TableroAux);
+                mov = 0;
 
-                if (auxT == false)
+                /*if (auxT == false)
                 {
                     mov = 0;
                     int cont = 0;
@@ -175,7 +172,7 @@ namespace TP_Lab_II
                     FichaMagica.CalcularMovimiento(this); //realizamos un movimiento
                     AnalizarTableroAux();
                     auxT2 = VerificarTablero(TableroAux);
-                }
+                }*/
             } while (auxT == false && auxT2 == false);
             return this;
         }
@@ -540,7 +537,6 @@ namespace TP_Lab_II
             }
 
         }
-
         public void AnalizarTableroAux() //LLena los casilleros que pueden ser atacados
         {
             //ponemos el tablero auxiliar en 0
@@ -798,8 +794,8 @@ namespace TP_Lab_II
             cont = 0;
             do
             {
-                pos_i = rand.Next(3, 4);
-                pos_j = rand.Next(3, 4);
+                pos_i = rand.Next(3, 5);
+                pos_j = rand.Next(3, 5);
                 if (TableroOriginal[pos_i, pos_j] == 0)
                 {
                     TableroOriginal[pos_i, pos_j] = 1; //reina
