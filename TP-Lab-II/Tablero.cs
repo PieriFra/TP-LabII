@@ -752,7 +752,10 @@ namespace TP_Lab_II
             //dejamos los alfiles fijos y las torre fija
             TableroOriginal[0,0] = 7; //torre A
             TableroOriginal[7,7] = 8; //torre B
-            
+            TableroOriginal[2, 3] = 3; //alfil B
+            TableroOriginal[3, 3] = 4; //alfil B
+
+
             var rand = new Random();
             int cont = 0;
             int pos_i = 0;
@@ -803,32 +806,6 @@ namespace TP_Lab_II
                     cont++;
                 }
             } while (cont != 1);
-
-            cont = 0;
-            do
-            {
-                pos_i = rand.Next(2, 5);
-                pos_j = rand.Next(2, 5);
-                if (TableroOriginal[pos_i, pos_j] == 0)
-                {
-                    TableroOriginal[pos_i, pos_j] = 3; //alfil A
-                    cont++;
-                }
-            } while (cont != 1);
-
-            cont = 0;
-            do
-            {
-                pos_i = rand.Next(2, 5);
-                pos_j = rand.Next(2, 5);
-                if (TableroOriginal[pos_i, pos_j] == 0)
-                {
-                    TableroOriginal[pos_i, pos_j] = 4; //alfil B
-                    cont++;
-                }
-            } while (cont != 1);
-
-
 
         }
         public void imprimir(int[,] tablero)
