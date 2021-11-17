@@ -66,7 +66,7 @@ namespace TP_Lab_II
         public Tablero CalculoSolucion(List<Tablero> ListaResultados) //devuelve el tablero resultado
         {
             int mov = 0;
-            //int contador = 0;
+            int contador = 0;
             bool auxT = false;
             bool auxT2 = false;
             do
@@ -118,7 +118,7 @@ namespace TP_Lab_II
                 auxT = VerificarTablero(TableroAux);
                 mov = 0;
 
-                /*if (auxT == false)
+               /* if (auxT == false)
                 {
                     mov = 0;
                     int cont = 0;
@@ -136,19 +136,21 @@ namespace TP_Lab_II
                             for (int j = 0; j < tam; j++)
                             {
                                 //buscamos las fichas que queremos eliminar 
-                                if (TableroOriginal(i, j) == 6 || TableroOriginal(i, j) == 7)
+                                if (TableroOriginal[i, j] == 6 || TableroOriginal[i, j] == 7)
                                 {
                                     //TENGO QUE ELIMINAR LAS FICHAS 6 Y 7 DEL TABLERO ORIGINAL, PONGO EN 0 TODO
-                                    Get_FichaPosicion(i, j).SetNombre(" ");
-                                    Get_FichaPosicion(i, j).SetCodigo(0);
-                                    Set_CodigoFichaOrg(i, j, Get_FichaPosicion(i, j));
+                                    ListaFichas[5].Codigo=0;
+                                    ListaFichas[5].Nombre = "";
+                                    ListaFichas[6].Codigo = 0;
+                                    ListaFichas[6].Nombre = "";
+                                    TableroOriginal[i, j]=0;
                                     cont++; //para que pase dos veces y elimine las fichas
 
                                     if (cont == 2) //ya eliminamos las dos fichas 
                                     {
                                         //en la pos de la ultima ficha que eliminamos agregamos la ficha combinada
                                         //Set_CodigoFichaOrg(i, j, FichaMagica); 
-                                        Set_CodigoFichaOrg(posTorre[0], posTorre[1], FichaMagica);
+                                        TableroOriginal[posTorre[0], posTorre[1]]= FichaMagica.Codigo;
                                     }
 
                                     contador = 1;
@@ -159,6 +161,7 @@ namespace TP_Lab_II
                     FichaMagica.CalcularMovimiento(this); //realizamos un movimiento
                     AnalizarTableroAux();
                     auxT2 = VerificarTablero(TableroAux);
+               
                 }*/
             } while (auxT == false && auxT2 == false);
             return this;

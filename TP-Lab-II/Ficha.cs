@@ -190,7 +190,7 @@ namespace TP_Lab_II
                 {
                     //generamos una pos aleatoria dentro de los limites establecidos
                     int Pos_I = Rand.Next(0, 7);
-                    int Pos_J = Rand.Next(0, 7);
+                    int Pos_J = Rand.Next(0, 4);
 
                     //preguntamos si la poscion esta libre 
                     if (TableroOriginal.TableroOriginal[Pos_I, Pos_J] == 0)
