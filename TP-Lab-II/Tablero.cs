@@ -31,21 +31,12 @@ namespace TP_Lab_II
                 }
             }
         }
-        public void Set_CodigoFichaOrg(int I, int J, Ficha ficha)//Cambia el codigo en la posicion que le paso
-        {
-            TableroOriginal[I, J] = ficha.Get_Codigo();
-        }
-        public int[,] GetTableroOrig() { return TableroOriginal; } //devuelve el tableroOriginal completo
-        public int Get_CodigoFichaOrg(int k, int l) //devuelve el codigo de la ficha
-        {
-            return TableroOriginal[k, l];
-        }
-        public int GetTam() { return tam; } //devuelve el tamanio 
-        public Ficha Get_FichaPosicion(int i, int j) //devuelve una ficha de la lista de la posicion que le paso
+       
+        /*public Ficha Get_FichaPosicion(int i, int j) //devuelve una ficha de la lista de la posicion que le paso
         {
             int codigo = TableroOriginal[i, j];
             return ListaFichas[codigo - 1];
-        }
+        }*/
         public Ficha Get_FichaCodigo(int codigo) //Devuelve la ficha por el codigo que le paso
         {
             for (int i = 0; i < 9; i++)
@@ -75,7 +66,7 @@ namespace TP_Lab_II
         public Tablero CalculoSolucion(List<Tablero> ListaResultados) //devuelve el tablero resultado
         {
             int mov = 0;
-            int contador = 0;
+            //int contador = 0;
             bool auxT = false;
             bool auxT2 = false;
             do
@@ -146,7 +137,7 @@ namespace TP_Lab_II
                             for (int j = 0; j < tam; j++)
                             {
                                 //buscamos las fichas que queremos eliminar 
-                                if (Get_CodigoFichaOrg(i, j) == 6 || Get_CodigoFichaOrg(i, j) == 7)
+                                if (TableroOriginal(i, j) == 6 || TableroOriginal(i, j) == 7)
                                 {
                                     //TENGO QUE ELIMINAR LAS FICHAS 6 Y 7 DEL TABLERO ORIGINAL, PONGO EN 0 TODO
                                     Get_FichaPosicion(i, j).SetNombre(" ");
@@ -823,7 +814,7 @@ namespace TP_Lab_II
             {  
                 for (int j = 0; j < tam; j++)
                 {
-                    if (tablero.Get_CodigoFichaOrg(i, j) != this.Get_CodigoFichaOrg(i, j))
+                    if (tablero.TableroOriginal[i,j] != this.TableroOriginal[i, j])
                         return true; //si encontramos una posicion donde haya dos fichas distintas, retornamos true
                 }
             

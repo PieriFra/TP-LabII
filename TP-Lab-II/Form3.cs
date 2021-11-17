@@ -60,39 +60,39 @@ namespace TP_Lab_II
                     btn.Size = _size;
                     btn.Location = new Point(c * _size.Width, f * _size.Height);
                     btn.BackColor = (c + f) % 2 == 0 ? Color.BurlyWood : Color.White;
-                    if (tablero.Get_CodigoFichaOrg(f, c) == 1)
+                    if (tablero.TableroOriginal[f, c] == 1)
                     {
                         btn.Text = "R";
                     }
-                    if (tablero.Get_CodigoFichaOrg(f, c) == 2)
+                    if (tablero.TableroOriginal[f,c] == 2)
                     {
                         btn.Text = "r";
                     }
-                    if (tablero.Get_CodigoFichaOrg(f, c) == 3)
+                    if (tablero.TableroOriginal[f,c] == 3)
                     {
                         btn.Text = "Aa";
                     }
-                    if (tablero.Get_CodigoFichaOrg(f, c) == 4)
+                    if (tablero.TableroOriginal[f,c] == 4)
                     {
                         btn.Text = "Ab";
                     }
-                    if (tablero.Get_CodigoFichaOrg(f, c) == 5)
+                    if (tablero.TableroOriginal[f,c] == 5)
                     {
                         btn.Text = "Ca";
                     }
-                    if (tablero.Get_CodigoFichaOrg(f, c) == 6)
+                    if (tablero.TableroOriginal[f,c] == 6)
                     {
                         btn.Text = "Cb";
                     }
-                    if (tablero.Get_CodigoFichaOrg(f, c) == 7)
+                    if (tablero.TableroOriginal[f,c] == 7)
                     {
                         btn.Text = "Ta";
                     }
-                    if (tablero.Get_CodigoFichaOrg(f, c) == 8)
+                    if (tablero.TableroOriginal[f,c] == 8)
                     {
                         btn.Text = "Tb";
                     }
-                    if (tablero.Get_CodigoFichaOrg(f, c) == 9)
+                    if (tablero.TableroOriginal[f,c] == 9)
                     {
                         btn.Text = "TC";
                     }
