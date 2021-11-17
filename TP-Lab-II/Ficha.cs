@@ -91,8 +91,8 @@ namespace TP_Lab_II
                 } while (cont == 0);
             }
 
-            // caso del caballo A
-            if (this.Codigo == 5)
+            // caso del caballo A y caballo B
+            if (this.Codigo == 5 || this.Codigo == 6)
             {
                
                 cont = 0;
@@ -178,29 +178,6 @@ namespace TP_Lab_II
 
                 } while (cont == 0);
 
-            }
-
-            // caso del caballo B
-            if (this.Codigo == 6)
-            {
-                cont = 0;
-                TableroOriginal.TableroOriginal[pos_org[0], pos_org[1]] =ficha_aux.Codigo; //ponemos en 0 la posicion que ocupa
-                Rand = new Random();
-                do
-                {
-                    //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(1, 7);
-                    int Pos_J = Rand.Next(1, 7);
-
-                    //preguntamos si la poscion esta libre 
-                    if (TableroOriginal.TableroOriginal[Pos_I, Pos_J] == 0)
-                    {
-                        //si esta libre, ponemos la ficha en la nueva pos
-                        TableroOriginal.TableroOriginal[Pos_I, Pos_J] =this.Codigo;
-                        cont++; //contamos un cambio
-                    }
-
-                } while (cont == 0);
             }
 
             //caso TorreCaballo

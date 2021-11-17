@@ -115,7 +115,6 @@ namespace TP_Lab_II
                         mov++;
                     }
                 }
-                imprimir(TableroAux);
                 auxT = VerificarTablero(TableroAux);
                 mov = 0;
 
@@ -177,17 +176,9 @@ namespace TP_Lab_II
         {
             int[] pos = ficha.CalcularPosicion(this); //buscamos la posicion de la ficha
             int[] aux1 = new int[2];
-            int[] aux2 = new int[2];
-            int[] aux3 = new int[2];
-            int[] aux4 = new int[2];
             aux1[0] = -1;
             aux1[1] = -1;
-            aux2[0] = -1;
-            aux2[1] = -1;
-            aux3[0] = -1;
-            aux3[1] = -1;
-            aux4[0] = -1;
-            aux4[1] = -1;
+         
            // vertical des
             for (int i = pos[0]; i < tam; i++)
             {
@@ -219,20 +210,20 @@ namespace TP_Lab_II
             {
                 if (TableroOriginal[i, pos[1]] != 0 && TableroOriginal[i, pos[1]] != ficha.Codigo)
                 {
-                    aux2[0] = i;
-                    aux2[1] = pos[1];
+                   aux1[0] = i;
+                   aux1[1] = pos[1];
                     i = 0;
                 }
             }
             for (int i = pos[0]; i >= 0; i--)
             {
-                if (aux2[0] == -1)
+                if (aux1[0] == -1)
                 {
                     TableroAux[i, pos[1]] = 10;
                 }
                 else
                 {
-                    if (i >= aux2[0])
+                    if (i >=aux1[0])
                     {
                         TableroAux[i, pos[1]] = 10;
                     }
@@ -248,20 +239,20 @@ namespace TP_Lab_II
             {
                 if (TableroOriginal[pos[0], i] != 0 && TableroOriginal[pos[0], i] != ficha.Codigo)
                 {
-                    aux3[0] = pos[0];
-                    aux3[1] = i;
+                   aux1[0] = pos[0];
+                   aux1[1] = i;
                     i = tam;
                 }
             }
             for (int i = pos[1]; i < tam; i++)
             {
-                if (aux3[1] == -1)
+                if (aux1[1] == -1)
                 {
                     TableroAux[pos[0], i] = 10;
                 }
                 else
                 {
-                    if (i <= aux3[1])
+                    if (i <=aux1[1])
                         TableroAux[pos[0], i] = 10;
                     else
                     { 
@@ -277,20 +268,20 @@ namespace TP_Lab_II
             {
                 if (TableroOriginal[pos[0], i] != 0 && TableroOriginal[pos[0], i] != ficha.Codigo)
                 {
-                    aux4[0] = pos[0];
-                    aux4[1] = i;
+                    aux1[0] = pos[0];
+                    aux1[1] = i;
                     i = 0;
                 }
             }
             for (int i = pos[1]; i >= 0; i--)
             {
-                if (aux4[1] == -1)
+                if (aux1[1] == -1)
                 {
                     TableroAux[pos[0], i] = 10;
                 }
                 else
                 {
-                    if (i >= aux4[1])
+                    if (i >= aux1[1])
                         TableroAux[pos[0], i] = 10;
                     else
                     {
@@ -337,8 +328,8 @@ namespace TP_Lab_II
                 {
                     if (TableroOriginal[pos[0] - k, pos[1] - k] != 0 && TableroOriginal[pos[0] - k, pos[1] - k] != ficha.Codigo)
                     {
-                        aux2[0] = pos[0] - k;
-                        aux2[1] = pos[1] - k;
+                       aux2[0] = pos[0] - k;
+                       aux2[1] = pos[1] - k;
                         k = tam;
                     }
                 }
@@ -394,11 +385,11 @@ namespace TP_Lab_II
                 }
                 else
                 {
-                    if (pos[0] - k >= aux2[0] && pos[1] - k >= aux2[1] && pos[0] - k >= 0 && pos[1] - k >= 0)
+                    if (pos[0] - k >=aux2[0] && pos[1] - k >=aux2[1] && pos[0] - k >= 0 && pos[1] - k >= 0)
                         TableroAux[pos[0] - k, pos[1] - k] = 10;
-                    if (pos[0] - k <= aux2[0] && pos[1] - k <= aux2[1] && aux2[0] - k >= 0 && aux2[1] - k >= 0
-                        && TableroAux[aux2[0] - k, aux2[1] - k] != 10)
-                        TableroAux[aux2[0] - k, aux2[1] - k] = ficha.Codigo;
+                    if (pos[0] - k <=aux2[0] && pos[1] - k <=aux2[1] &&aux2[0] - k >= 0 &&aux2[1] - k >= 0
+                        && TableroAux[aux2[0] - k,aux2[1] - k] != 10)
+                        TableroAux[aux2[0] - k,aux2[1] - k] = ficha.Codigo;
                 }
                 //diagonal izq decendente
                 if (aux4[0] == -1)
@@ -432,7 +423,7 @@ namespace TP_Lab_II
         }
         public void MovimientoCaballo(Ficha ficha)
         {
-            int[] pos = ficha.CalcularPosicion(this); //buscamos la posicion de la fich
+            int[] pos = ficha.CalcularPosicion(this); //buscamos la posicion de la ficha
             
             TableroAux[pos[0], pos[1]] = 10;
             if (pos[0] + 2 < tam && pos[1] + 1 < tam)
@@ -537,8 +528,7 @@ namespace TP_Lab_II
             }
             Ficha ficha = new Ficha();
 
-            //reina 		[3, 3]	3	int
-
+            //reina
             ficha = Get_FichaCodigo(1); //obtenemos la ficha que queremos 
             MovimientoVH(ficha);
             MovimientoDiagonal(ficha);
@@ -675,60 +665,7 @@ namespace TP_Lab_II
                 MovimientoVH(ficha);
                 MovimientoCaballo(ficha);
             }
-            imprimir(TableroAux);
         }
-
-        /*public void CargarTablero()
-        {
-
-            //dejamos los alfiles fijos y las torre fija
-            TableroOriginal[3, 3] = 3; //alfil A
-            TableroOriginal[4, 3] = 4; //alfil B 
-            TableroOriginal[7, 7] = 8; //torre B
-            TableroOriginal[0, 0] = 7; //torre A -> esta torre la comenzamos a mover con la ficha comibinada
-
-            TableroOriginal[4, 5] = 1; //ubicamos la reina en una poscion centrica
-
-            
-            var rand = new Random();
-            int cont = 0;
-            int pos_i = 0;
-            int pos_j = 0;
-            do {
-                pos_i = rand.Next(2, 5);
-                pos_j = rand.Next(2, 5);
-                if (TableroOriginal[pos_i, pos_j] == 0)
-                {
-                    TableroOriginal[pos_i, pos_j] = 5;//caballo A
-                    cont++;
-                }
-            } while (cont != 1);
-
-            cont = 0;
-            do
-            {
-                pos_i = rand.Next(2, 5);
-                pos_j = rand.Next(2, 5);
-                if (TableroOriginal[pos_i, pos_j] == 0)
-                {
-                    TableroOriginal[pos_i, pos_j] = 6;//caballo B
-                    cont++;
-                }
-            } while (cont != 1);
-
-            cont = 0;
-            do
-            {
-                pos_i = rand.Next(2, 5);
-                pos_j = rand.Next(2, 5);
-                if (TableroOriginal[pos_i, pos_j] == 0)
-                {
-                    TableroOriginal[pos_i, pos_j] = 2; //rey
-                    cont++;
-                }
-            } while (cont != 1);
-
-        }*/
 
         public void CargarTablero()
         {

@@ -104,8 +104,7 @@ namespace TP_Lab_II
                     panel_Tablero.Controls.Add(btn);
 
                 }
-                tablero.imprimir(tablero.TableroOriginal);
-                tablero.imprimir(tablero.TableroAux);
+               
             }
         }
 
