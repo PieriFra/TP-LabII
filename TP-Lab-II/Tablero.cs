@@ -109,9 +109,6 @@ namespace TP_Lab_II
                             mov = 8;
                             break;
                         }
-
-                        AnalizarTableroAux();
-                        imprimir(TableroAux);
                         ficha_mover = Get_FichaCodigo(5);
                         if (GeneraSolucion(ficha_mover) == true)
                         {
@@ -129,8 +126,9 @@ namespace TP_Lab_II
                 }
                 imprimir(TableroAux);
                 auxT = VerificarTablero(TableroAux);
-               
-                if (auxT == false)
+                mov = 0;
+
+                /*if (auxT == false)
                 {
                     mov = 0;
                     int cont = 0;
@@ -171,7 +169,7 @@ namespace TP_Lab_II
                     FichaMagica.CalcularMovimiento(this); //realizamos un movimiento
                     AnalizarTableroAux();
                     auxT2 = VerificarTablero(TableroAux);
-                }
+                }*/
             } while (auxT == false && auxT2 == false);
             return this;
         }
