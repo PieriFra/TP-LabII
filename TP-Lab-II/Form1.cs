@@ -59,10 +59,10 @@ namespace TP_Lab_II
             do
             {
                 Tablero TableroOrg = new Tablero(ListaFichas);
-                ListaFichas[5].SetCodigo(6);
-                ListaFichas[5].SetNombre("Caballo B");
-                ListaFichas[6].SetCodigo(7);
-                ListaFichas[6].SetNombre("Torre A");
+                ListaFichas[5].Codigo=6;
+                ListaFichas[5].Nombre="Caballo B";
+                ListaFichas[6].Codigo=7;
+                ListaFichas[6].Nombre="Torre A";
                 TableroOrg.CargarTablero();
                 Tablero Aux = new Tablero(ListaFichas);
                 Aux = TableroOrg.CalculoSolucion(ListaResultados);

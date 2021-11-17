@@ -17,10 +17,6 @@ namespace TP_Lab_II
         //Metodos
         public Ficha() { Nombre = " "; Codigo = 0; } 
         public Ficha(string Nombre_, int Codigo_) { Nombre = Nombre_; Codigo = Codigo_; }
-        public string Get_Nombre() { return Nombre; }
-        public int Get_Codigo() { return Codigo; }
-        public void SetCodigo(int codigo) { Codigo=codigo; }
-        public void SetNombre(string nombre) { Nombre=nombre; }
 
         //Devuelve la posición (i,j) de la ficha 
         public int [] CalcularPosicion(Tablero TableroOriginal) 
@@ -44,279 +40,6 @@ namespace TP_Lab_II
             return Posicion;
         }
 
-        //Mueve una ficha
-        /*public void CalcularMovimiento(Tablero TableroOriginal)
-        {
-            int cont = 0;
-            int[] pos = new int[2];
-            Ficha ficha_aux = new Ficha(" ", 0); //ficha aux para colocar la antigua poscion en 0
-            int[] pos_org = CalcularPosicion(TableroOriginal); //poscion actual de la ficha
-            var Rand = new Random();
-
-            for (int i = 0; i < TableroOriginal.tam; i++)
-            {
-                for (int j = 0; j < TableroOriginal.tam; j++)
-                {
-                    if (TableroOriginal.TableroAux[i, j] == 0)
-                    {
-                        pos[0] = i;
-                        pos[1] = j;
-                    }
-                }
-            }
-
-            //caso del rey
-            if (Get_Codigo() == 2) //movemos el rey
-            {
-                if (TableroOriginal.TableroOriginal(pos[0], pos[1]) == 0)
-                {
-                    //si esta libre, ponemos la ficha en la nueva pos
-                    TableroOriginal.TableroOriginal(pos[0],pos[1], this);
-                    TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                }
-                else
-                {
-                    do
-                    {
-                        //generamos una pos aleatoria dentro de los limites del tablero
-                        int PosI = Rand.Next(1, 5);
-                        int PosJ = Rand.Next(1, 5);
-                        //preguntamos si la poscion esta libre 
-                        if (TableroOriginal.TableroOriginal(PosI, PosJ) == 0)
-                        {
-                            //si esta libre, ponemos la ficha en la nueva pos
-                            TableroOriginal.TableroOriginal(PosI, PosJ, this);
-                            TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                            cont++; //contamos un cambio
-                        }
-
-                    } while (cont == 0);
-
-                }
-                /*do
-                {
-                    //generamos una pos aleatoria dentro de los limites del tablero
-                    int PosI = Rand.Next(1, 5);
-                    int PosJ = Rand.Next(1, 5);
-                    //preguntamos si la poscion esta libre 
-                    if (TableroOriginal.TableroOriginal(PosI, PosJ) == 0)
-                    {
-                        //si esta libre, ponemos la ficha en la nueva pos
-                        TableroOriginal.TableroOriginal(PosI, PosJ, this);
-                        TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                        cont++; //contamos un cambio
-                    }
-
-                } while (cont == 0);
-            }
-
-            //caso de la reina->limitamos sus movimientos entre 2<x<5 & 2<y<5
-            if (Get_Codigo() == 1)
-            {
-                /*
-                cont = 0;
-                do
-                {
-                    //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(2, 5);
-                    int Pos_J = Rand.Next(2, 5);
-
-                    //preguntamos si la poscion esta libre 
-                    if (TableroOriginal.TableroOriginal(Pos_I, Pos_J) == 0)
-                    {
-                        //si esta libre, ponemos la ficha en la nueva pos
-                        TableroOriginal.TableroOriginal(Pos_I, Pos_J, this);
-                        TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                        cont++; //contamos un cambio
-                    }
-
-                } while (cont == 0);
-                
-                cont = 0;
-                do
-                {
-                    //generamos una pos aleatoria dentro de los limites establecidos
-                    int AUX = Rand.Next(1, 4);
-                    if (AUX == 1)
-                    {
-                        if (TableroOriginal.TableroOriginal[2, 3] == 0)
-                        {
-                            TableroOriginal.TableroOriginal(2, 3, this);
-                            TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                            cont++; //contamos un cambio
-                        }
-                    }
-                    if (AUX == 2)
-                    {
-                        if (TableroOriginal.TableroOriginal[3, 5] == 0)
-                        {
-                            TableroOriginal.TableroOriginal(3, 5, this);
-                            TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                            cont++; //contamos un cambio
-                        }
-                    }
-                    if (AUX == 3)
-                    {
-                        if (TableroOriginal.TableroOriginal[4, 5] == 0)
-                        {
-                            TableroOriginal.TableroOriginal(4, 5, this);
-                            TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                            cont++; //contamos un cambio
-                        }
-                    }
-                    if (AUX == 4)
-                    {
-                        if (TableroOriginal.TableroOriginal[5, 3] == 0)
-                        {
-                            TableroOriginal.TableroOriginal(5, 3, this);
-                            TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                            cont++; //contamos un cambio
-                        }
-                    }
-                    if (TableroOriginal.TableroOriginal[5, 3] == 0 && TableroOriginal.TableroOriginal[4, 5] == 0 && TableroOriginal.TableroOriginal[3, 5] == 0 && TableroOriginal.TableroOriginal[2, 3] == 0)
-                    {
-                        //generamos una pos aleatoria dentro de los limites establecidos
-                        int Pos_I = Rand.Next(1, 6);
-                        int Pos_J = Rand.Next(1, 6);
-
-                        //preguntamos si la poscion esta libre 
-                        if (TableroOriginal.TableroOriginal(Pos_I, Pos_J) == 0)
-                        {
-                            //si esta libre, ponemos la ficha en la nueva pos
-                            TableroOriginal.TableroOriginal(Pos_I, Pos_J, this);
-                            TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                            cont++; //contamos un cambio
-                        }
-                    }
-                } while (cont == 0);
-            }
-            // caso del caballo A
-            if (Get_Codigo() == 5)
-            {
-                for (int i = 0; i < TableroOriginal.tam; i++)
-                {
-                    for (int j = 0; j < TableroOriginal.tam; j++)
-                    {
-                        if (TableroOriginal.TableroAux[i, j] == 0)
-                        {
-                            pos[0] = i;
-                            pos[1] = j;
-                        }
-                    }
-                }
-
-                if (TableroOriginal.TableroOriginal(pos[0], pos[1]) == 0)
-                {
-                    //si esta libre, ponemos la ficha en la nueva pos
-                    TableroOriginal.TableroOriginal(pos[0], pos[1], this);
-                    TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                }
-                else
-                {
-                    cont = 0;
-                    do
-                    {
-                        //generamos una pos aleatoria dentro de los limites establecidos
-                        int Pos_I = Rand.Next(1, 5);
-                        int Pos_J = Rand.Next(1, 2);
-
-                        //preguntamos si la poscion esta libre 
-                        if (TableroOriginal.TableroOriginal(Pos_I, Pos_J) == 0)
-                        {
-                            //si esta libre, ponemos la ficha en la nueva pos
-                            TableroOriginal.TableroOriginal(Pos_I, Pos_J, this);
-                            TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                            cont++; //contamos un cambio
-                        }
-
-                    } while (cont == 0);
-                }
-                /*cont = 0;
-                do
-                {
-                    //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(2, 4);
-                    //int Pos_J = Rand.Next(1, 2);
-
-                    //preguntamos si la poscion esta libre 
-                    if (TableroOriginal.TableroOriginal(Pos_I, 2) == 0)
-                    {
-                        //si esta libre, ponemos la ficha en la nueva pos
-                        TableroOriginal.TableroOriginal(Pos_I, 2, this);
-                        TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                        cont++; //contamos un cambio
-                    }
-
-                } while (cont == 0);
-
-            }
-
-            // caso del caballo B
-            if (Get_Codigo() == 6)
-            {
-                for (int i = 0; i < TableroOriginal.tam; i++)
-                {
-                    for (int j = 0; j < TableroOriginal.tam; j++)
-                    {
-                        if (TableroOriginal.TableroAux[i, j] == 0)
-                        {
-                            pos[0] = i;
-                            pos[1] = j;
-                        }
-                    }
-                }
-
-                if (TableroOriginal.TableroOriginal(pos[0], pos[1]) == 0)
-                {
-                    //si esta libre, ponemos la ficha en la nueva pos
-                    TableroOriginal.TableroOriginal(pos[0], pos[1], this);
-                    TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                }
-                else
-                {
-                    cont = 0;
-                    do
-                    {
-                        //generamos una pos aleatoria dentro de los limites establecidos
-                        int Pos_I = Rand.Next(2, 4);
-                        //int Pos_J = Rand.Next(4, 5);
-
-                        //preguntamos si la poscion esta libre 
-                        if (TableroOriginal.TableroOriginal(Pos_I, 5) == 0)
-                        {
-                            //si esta libre, ponemos la ficha en la nueva pos
-                            TableroOriginal.TableroOriginal(Pos_I, 5, this);
-                            TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                            cont++; //contamos un cambio
-                        }
-
-                    } while (cont == 0);
-                }
-            }
-
-            //caso TorreCaballo
-            if (Get_Codigo() == 9)
-            {
-                cont = 0;
-                do
-                {
-                    //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(0, 6);
-                    int Pos_J = Rand.Next(0, 6);
-
-                    //preguntamos si la poscion esta libre 
-                    if (TableroOriginal.TableroOriginal(Pos_I, Pos_J) == 0)
-                    {
-                        //si esta libre, ponemos la ficha en la nueva pos
-                        TableroOriginal.TableroOriginal(Pos_I, Pos_J, this);
-                        TableroOriginal.TableroOriginal(pos_org[0], pos_org[1], ficha_aux); //ponemos en 0 la posicion que ocupaba antes
-                        cont++; //contamos un cambio
-                    }
-
-                } while (cont == 0);
-            }
-        }*/
-
         public void CalcularMovimiento(Tablero TableroOriginal)
         {
             int cont = 0;
@@ -326,7 +49,7 @@ namespace TP_Lab_II
             var Rand = new Random();
 
             //caso del rey
-            if (Get_Codigo() == 2) //movemos el rey
+            if (this.Codigo == 2) //movemos el rey
             {
                 TableroOriginal.TableroOriginal[pos_org[0], pos_org[1]] =ficha_aux.Codigo; //ponemos en 0 la posicion que ocupa
                 Rand = new Random();
@@ -347,7 +70,7 @@ namespace TP_Lab_II
             }
 
             //caso reina
-            if (Get_Codigo() == 1) 
+            if (this.Codigo == 1) 
             {
                 cont = 0;
                 Rand = new Random();
@@ -369,7 +92,7 @@ namespace TP_Lab_II
             }
 
             // caso del caballo A
-            if (Get_Codigo() == 5)
+            if (this.Codigo == 5)
             {
                
                 cont = 0;
@@ -394,7 +117,7 @@ namespace TP_Lab_II
             }
 
             //alfil A - casilla blanca
-            if (Get_Codigo() == 3)
+            if (this.Codigo == 3)
             {
                 cont = 0;
                 TableroOriginal.TableroOriginal[pos_org[0], pos_org[1]]= ficha_aux.Codigo; //ponemos en 0 la posicion que ocupa
@@ -425,7 +148,7 @@ namespace TP_Lab_II
             }
 
             //alfil B - casilla negra
-            if (Get_Codigo() == 4)
+            if (this.Codigo == 4)
             {
                 cont = 0;
                 TableroOriginal.TableroOriginal[pos_org[0], pos_org[1]] =ficha_aux.Codigo; //ponemos en 0 la posicion que ocupa
@@ -458,7 +181,7 @@ namespace TP_Lab_II
             }
 
             // caso del caballo B
-            if (Get_Codigo() == 6)
+            if (this.Codigo == 6)
             {
                 cont = 0;
                 TableroOriginal.TableroOriginal[pos_org[0], pos_org[1]] =ficha_aux.Codigo; //ponemos en 0 la posicion que ocupa
@@ -481,7 +204,7 @@ namespace TP_Lab_II
             }
 
             //caso TorreCaballo
-            if (Get_Codigo() == 9)
+            if (this.Codigo == 9)
             {
                 cont = 0;
                 TableroOriginal.TableroOriginal[pos_org[0], pos_org[1]] =ficha_aux.Codigo; //ponemos en 0 la posicion que ocupa
