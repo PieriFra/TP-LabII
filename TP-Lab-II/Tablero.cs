@@ -117,8 +117,8 @@ namespace TP_Lab_II
                 }
                 auxT = VerificarTablero(TableroAux);
                 mov = 0;
-
-               /* if (auxT == false)
+               /*
+               if (auxT == false)
                 {
                     mov = 0;
                     int cont = 0;
@@ -128,8 +128,9 @@ namespace TP_Lab_II
                     if (contador != 1) //solo eliminamos las fichas una sola vez 
                     {
                         //nos guardamos la posicion de la torre a eliminar
-                        Ficha torre = Get_FichaCodigo(7);
-                        int[] posTorre = torre.CalcularPosicion(this);
+                        Ficha ficha_ = Get_FichaCodigo(7);
+                        int[] posTorre = ficha_.CalcularPosicion(this);
+                      
                         //recorremos el tablero 
                         for (int i = 0; i < tam; i++)
                         {
@@ -150,16 +151,18 @@ namespace TP_Lab_II
                                     {
                                         //en la pos de la ultima ficha que eliminamos agregamos la ficha combinada
                                         //Set_CodigoFichaOrg(i, j, FichaMagica); 
-                                        TableroOriginal[posTorre[0], posTorre[1]]= FichaMagica.Codigo;
+                                        TableroOriginal[posTorre[0], posTorre[0]] = FichaMagica.Codigo;
                                     }
 
                                     contador = 1;
                                 }
                             }
                         }
+
                     }
                     FichaMagica.CalcularMovimiento(this); //realizamos un movimiento
                     AnalizarTableroAux();
+                    imprimir(TableroAux);
                     auxT2 = VerificarTablero(TableroAux);
                
                 }*/

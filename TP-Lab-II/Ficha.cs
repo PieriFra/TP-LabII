@@ -186,21 +186,25 @@ namespace TP_Lab_II
                 cont = 0;
                 TableroOriginal.TableroOriginal[pos_org[0], pos_org[1]] =ficha_aux.Codigo; //ponemos en 0 la posicion que ocupa
                 Rand = new Random();
+
                 do
                 {
                     //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(0, 7);
-                    int Pos_J = Rand.Next(0, 4);
+                    int Pos_I = Rand.Next(3, 5);
+                    int Pos_J = Rand.Next(3, 5);
 
                     //preguntamos si la poscion esta libre 
                     if (TableroOriginal.TableroOriginal[Pos_I, Pos_J] == 0)
                     {
                         //si esta libre, ponemos la ficha en la nueva pos
-                        TableroOriginal.TableroOriginal[Pos_I, Pos_J]= this.Codigo;
+                        TableroOriginal.TableroOriginal[Pos_I, Pos_J] = this.Codigo;
                         cont++; //contamos un cambio
                     }
 
                 } while (cont == 0);
+                
+             
+               
             }
         }
         ~Ficha() {;}
