@@ -213,17 +213,17 @@ namespace TP_Lab_II
             Ficha ficha_aux = new Ficha(" ", 0); //ficha aux para colocar la antigua poscion en 0
             int[] pos_org = CalcularPosicion(TableroOriginal); //poscion actual de la ficha
             var Rand = new Random();
-
+            
             //caso del rey
-            if (this.Codigo == 2) //movemos el rey
+            /*if (this.Codigo == 2) //movemos el rey
             {
                 TableroOriginal.TableroOriginal[pos_org[0], pos_org[1]] = ficha_aux.Codigo; //ponemos en 0 la posicion que ocupa
                 Rand = new Random();
                 do
                 {
                     //generamos una pos aleatoria dentro de los limites del tablero
-                    int PosI = Rand.Next(2, 6);
-                    int PosJ = Rand.Next(2, 6);
+                    int PosI = Rand.Next(1, 7);
+                    int PosJ = Rand.Next(1, 7);
                     //preguntamos si la poscion esta libre 
                     if (TableroOriginal.TableroOriginal[PosI, PosJ] == 0)
                     {
@@ -233,10 +233,10 @@ namespace TP_Lab_II
                     }
 
                 } while (cont == 0);
-            }
+            }*/
 
             //caso reina
-            if (this.Codigo == 1)
+            /*if (this.Codigo == 1)
             {
                 cont = 0;
                 Rand = new Random();
@@ -255,10 +255,10 @@ namespace TP_Lab_II
                     }
 
                 } while (cont == 0);
-            }
+            }*/
 
-            // caso del caballo A y caballo B
-            if (this.Codigo == 5 || this.Codigo == 6)
+            // caso del caballo A 
+            if (this.Codigo == 5)
             {
 
                 cont = 0;
@@ -267,8 +267,8 @@ namespace TP_Lab_II
                 do
                 {
                     //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(0, 7);
-                    int Pos_J = Rand.Next(0, 7);
+                    int Pos_I = Rand.Next(1, 7);
+                    int Pos_J = Rand.Next(1, 7);
 
                     //preguntamos si la poscion esta libre 
                     if (TableroOriginal.TableroOriginal[Pos_I, Pos_J] == 0)
@@ -283,7 +283,7 @@ namespace TP_Lab_II
             }
 
             //alfil A - casilla blanca
-            if (this.Codigo == 3)
+            /*if (this.Codigo == 3)
             {
                 cont = 0;
                 TableroOriginal.TableroOriginal[pos_org[0], pos_org[1]] = ficha_aux.Codigo; //ponemos en 0 la posicion que ocupa
@@ -291,8 +291,8 @@ namespace TP_Lab_II
                 do
                 {
                     //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(2, 6);
-                    int Pos_J = Rand.Next(2, 6);
+                    int Pos_I = Rand.Next(3, 5);
+                    int Pos_J = Rand.Next(3, 5);
 
                     //preguntamos si la poscion esta libre 
                     if (TableroOriginal.TableroOriginal[Pos_I, Pos_J] == 0)
@@ -311,7 +311,7 @@ namespace TP_Lab_II
                         }
                     }
                 } while (cont == 0);
-            }
+            }*/
 
             //alfil B - casilla negra
             if (this.Codigo == 4)
@@ -322,8 +322,8 @@ namespace TP_Lab_II
                 do
                 {
                     //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(3, 5);
-                    int Pos_J = Rand.Next(3, 5);
+                    int Pos_I = Rand.Next(2, 6);
+                    int Pos_J = Rand.Next(2, 6);
 
                     //preguntamos si la poscion esta libre 
                     if (TableroOriginal.TableroOriginal[Pos_I, Pos_J] == 0)
@@ -353,11 +353,12 @@ namespace TP_Lab_II
                 TableroOriginal.TableroOriginal[pos_org[0], pos_org[1]] = ficha_aux.Codigo; //ponemos en 0 la posicion que ocupa
                 Rand = new Random();
 
+
                 do
                 {
                     //generamos una pos aleatoria dentro de los limites establecidos
-                    int Pos_I = Rand.Next(0, 7);
-                    int Pos_J = Rand.Next(0, 7);
+                    int Pos_I = Rand.Next(1, 7);
+                    int Pos_J = Rand.Next(1, 7);
 
                     //preguntamos si la poscion esta libre 
                     if (TableroOriginal.TableroOriginal[Pos_I, Pos_J] == 0)
@@ -369,8 +370,7 @@ namespace TP_Lab_II
 
                 } while (cont == 0);
 
-
-
+                
             }
         }
 

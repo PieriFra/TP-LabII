@@ -73,7 +73,7 @@ namespace TP_Lab_II
             {
                 if (mov < 8)
                 {
-                    for (int i = 0; i < 8; i++)
+                    for (int i = 0; i < 20; i++)
                     {
                         Ficha ficha_mover = null;
                         ficha_mover = Get_FichaCodigo(1);
@@ -131,9 +131,21 @@ namespace TP_Lab_II
                     if (contador != 1) //solo eliminamos las fichas una sola vez 
                     {
                         //nos guardamos la posicion de la torre a eliminar
-                        Ficha ficha_ = Get_FichaCodigo(7);
+                        Ficha ficha_ = Get_FichaCodigo(6);
+                        Ficha ficha = Get_FichaCodigo(1);
                         int[] posTorre = ficha_.CalcularPosicion(this);
-                      
+                        int[] pos = ficha.CalcularPosicion(this);
+                        TableroOriginal[pos[0], pos[1]] = 0;
+                        ficha = Get_FichaCodigo(3);
+                        pos = ficha.CalcularPosicion(this);
+                        TableroOriginal[pos[0], pos[1]] = 0;
+                        ficha = Get_FichaCodigo(8);
+                        pos = ficha.CalcularPosicion(this);
+                        TableroOriginal[pos[0], pos[1]] = 0;
+                        ficha = Get_FichaCodigo(2);
+                        pos = ficha.CalcularPosicion(this);
+                        TableroOriginal[pos[0], pos[1]] = 0;
+
                         //recorremos el tablero 
                         for (int i = 0; i < tam; i++)
                         {
@@ -162,25 +174,47 @@ namespace TP_Lab_II
                             }
                         }
 
+                        TableroOriginal[4, 3] = 1;
+                        TableroOriginal[3, 3] = 3;
+                        TableroOriginal[4, 4] = 2;
+                        TableroOriginal[3, 4] = 8;
+
                     }
 
-                    if (GeneraSolucion(FichaMagica) == true)
-                    {
-                        auxT2 = true;
-                    }
+                    imprimir(TableroAux);
+                    auxT2 = GeneraSolucion(FichaMagica);
                 }
+
+
+
+
             } while (auxT == false && auxT2 == false);
             return this;
         }
         public bool GeneraSolucion(Ficha ficha_mover)
         {
+            Ficha ficha = Get_FichaCodigo(9);
+            int[] pos = ficha.CalcularPosicion(this);
+            if (pos[0] != -1) //esta en el tablero
+            {
+                if (ficha_mover != null)
+                    ficha_mover.CalcularMovimiento2(this);
+                AnalizarTableroAux();
+                if (VerificarTablero(TableroAux) == true)
+                    return true;
+                return false;
+            }
+            else {
+                //cuando la ficha combinada no esta en el tablero
+                if (ficha_mover != null)
+                    ficha_mover.CalcularMovimiento(this);
+                AnalizarTableroAux();
+                if (VerificarTablero(TableroAux) == true)
+                    return true;
+                return false;
 
-            if (ficha_mover != null)
-                ficha_mover.CalcularMovimiento(this);
-            AnalizarTableroAux();
-            if (VerificarTablero(TableroAux) == true)
-                return true;
-            return false;
+            }
+         
         }
         public void MovimientoVH(Ficha ficha)
         {
