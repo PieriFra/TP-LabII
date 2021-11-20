@@ -313,12 +313,42 @@ namespace TP_Lab_II
                 } while (cont == 0);
             }*/
 
-            //alfil B - casilla negra
+            //alfil B - casilla negra //
+            //fila 2 y 5 - columna  2 y 5   
             if (this.Codigo == 4)
             {
                 cont = 0;
                 TableroOriginal.TableroOriginal[pos_org[0], pos_org[1]] = ficha_aux.Codigo; //ponemos en 0 la posicion que ocupa
                 Rand = new Random();
+                int op = Rand.Next(1,5);
+
+                if (op == 1) //col 2
+                {
+                    do
+                    {
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        int Pos_I = Rand.Next(2, 6);
+                        //int Pos_J = Rand.Next(2, 6);
+
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.TableroOriginal[Pos_I, 2] == 0)
+                        {
+                            if (Pos_I % 2 == 0 && Pos_J % 2 == 0)
+                            {
+                                //si esta libre, ponemos la ficha en la nueva pos
+                                TableroOriginal.TableroOriginal[Pos_I, Pos_J] = this.Codigo;
+                                cont++; //contamos un cambio
+                            }
+                            if (Pos_I % 2 != 0 && Pos_J % 2 != 0)
+                            {
+                                //si esta libre, ponemos la ficha en la nueva pos
+                                TableroOriginal.TableroOriginal[Pos_I, Pos_J] = this.Codigo;
+                                cont++; //contamos un cambio
+                            }
+                        }
+
+                    } while (cont == 0);
+                }
                 do
                 {
                     //generamos una pos aleatoria dentro de los limites establecidos
