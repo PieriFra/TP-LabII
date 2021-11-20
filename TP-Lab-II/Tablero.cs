@@ -115,9 +115,12 @@ namespace TP_Lab_II
                         mov++;
                     }
                 }
+
+
+
                 auxT = VerificarTablero(TableroAux);
-                mov = 0;
-               /*
+               //mov = 0;
+              
                if (auxT == false)
                 {
                     mov = 0;
@@ -160,17 +163,18 @@ namespace TP_Lab_II
                         }
 
                     }
-                    FichaMagica.CalcularMovimiento(this); //realizamos un movimiento
-                    AnalizarTableroAux();
-                    imprimir(TableroAux);
-                    auxT2 = VerificarTablero(TableroAux);
-               
-                }*/
+
+                    if (GeneraSolucion(FichaMagica) == true)
+                    {
+                        auxT2 = true;
+                    }
+                }
             } while (auxT == false && auxT2 == false);
             return this;
         }
         public bool GeneraSolucion(Ficha ficha_mover)
         {
+
             if (ficha_mover != null)
                 ficha_mover.CalcularMovimiento(this);
             AnalizarTableroAux();
