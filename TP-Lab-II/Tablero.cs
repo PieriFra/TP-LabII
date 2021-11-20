@@ -211,8 +211,8 @@ namespace TP_Lab_II
 
                     }
 
-                    imprimir(TableroAux);
                     auxT2 = GeneraSolucion(FichaMagica);
+                    imprimir(TableroAux);
                 }
 
 
