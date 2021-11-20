@@ -127,8 +127,10 @@ namespace TP_Lab_II
 
         private void Btn_MCosto_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("La cota inferior del algoritmo es Ω(n), especificamente Ω(88n + 2116). " + 
-                "La cota superior del algoritmo sera O(n), pero con mayor numero de constantes y valores, ya que se deben ejecutar mas lineas de codigo, es decir mas asiganciones, mas llamados a funciones, mas operaciones, etc.", "COSTO ALGORITMO", MessageBoxButtons.OK);
+            DialogResult result = MessageBox.Show("La cota inferior del algoritmo es Ω(n), especificamente Ω(88n + 2116). " 
+                + "La cota superior del algoritmo sera O(n), pero con mayor numero de constantes y valores, ya que se deben ejecutar mas lineas de codigo, es decir mas asiganciones, mas llamados a funciones, mas operaciones, etc." 
+                + "El valor obtenido para la cota inferior, se logro contando en cada caso la cantidad de asignaciones, operaciones logicas, llamadas a funcion, bucles y ciclos. Como hace referencia su nombre, consideramos la situacion mas optima, es decir la que se logra" + "en menos cantidad de lineas." 
+                + "Logramos obtener una cota lineal, ya que los unicos ciclos dobles que tenemos, se utilizan para recorrer el tablero, a los cuales los consideramos como una constante.", "COSTO ALGORITMO", MessageBoxButtons.OK);
 
         }
 

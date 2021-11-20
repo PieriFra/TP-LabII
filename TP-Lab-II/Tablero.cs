@@ -119,9 +119,9 @@ namespace TP_Lab_II
 
 
                 auxT = VerificarTablero(TableroAux);
-               //mov = 0;
+                mov = 0;
               
-               if (auxT == false)
+               /*if (auxT == false)
                 {
                     mov = 0;
                     int cont = 0;
@@ -213,7 +213,7 @@ namespace TP_Lab_II
 
                     auxT2 = GeneraSolucion(FichaMagica);
                     imprimir(TableroAux);
-                }
+                }*/
 
 
 

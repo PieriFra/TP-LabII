@@ -64,7 +64,7 @@ namespace TP_Lab_II
             this.Btn_NSoluciones.BackColor = System.Drawing.Color.White;
             this.Btn_NSoluciones.Location = new System.Drawing.Point(194, 81);
             this.Btn_NSoluciones.Maximum = new decimal(new int[] {
-            20,
+            10,
             0,
             0,
             0});
