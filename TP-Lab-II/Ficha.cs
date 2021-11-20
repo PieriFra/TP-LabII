@@ -39,7 +39,6 @@ namespace TP_Lab_II
             Posicion[1] = -1;
             return Posicion;
         }
-
         public void CalcularMovimiento(Tablero TableroOriginal)
         {
             int cont = 0;
@@ -204,8 +203,6 @@ namespace TP_Lab_II
 
             }*/
         }
-
-
         public void CalcularMovimiento2(Tablero TableroOriginal)
         {
             int cont = 0;

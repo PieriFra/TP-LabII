@@ -31,12 +31,6 @@ namespace TP_Lab_II
                 }
             }
         }
-       
-        /*public Ficha Get_FichaPosicion(int i, int j) //devuelve una ficha de la lista de la posicion que le paso
-        {
-            int codigo = TableroOriginal[i, j];
-            return ListaFichas[codigo - 1];
-        }*/
         public Ficha Get_FichaCodigo(int codigo) //Devuelve la ficha por el codigo que le paso
         {
             for (int i = 0; i < 9; i++)
@@ -66,7 +60,7 @@ namespace TP_Lab_II
         public Tablero CalculoSolucion(List<Tablero> ListaResultados) //devuelve el tablero resultado
         {
             int mov = 0;
-            int contador = 0;
+           // int contador = 0;
             bool auxT = false;
             bool auxT2 = false;
             do
@@ -740,7 +734,6 @@ namespace TP_Lab_II
                 MovimientoCaballo(ficha);
             }
         }
-
         public void CargarTablero()
         {
 
@@ -817,7 +810,6 @@ namespace TP_Lab_II
             }
             Console.Write(text);
         }
-
         public bool CompararTableros(Tablero tablero)
         {
             //recorremos el tablero original
