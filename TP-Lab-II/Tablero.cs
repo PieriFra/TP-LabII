@@ -199,7 +199,7 @@ namespace TP_Lab_II
                             TableroOriginal[2, 3] = codigo;
                             TableroOriginal[3, 3] = 3;
                         }
-                        TableroOriginal[3, 4] = 8;
+                        
                         if (TableroOriginal[3, 4] == 0)
                             TableroOriginal[3, 4] = 8;
                         else
