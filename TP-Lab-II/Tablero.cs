@@ -166,7 +166,7 @@ namespace TP_Lab_II
                                     {
                                         //en la pos de la ultima ficha que eliminamos agregamos la ficha combinada
                                         //Set_CodigoFichaOrg(i, j, FichaMagica); 
-                                        TableroOriginal[posTorre[0], posTorre[0]] = FichaMagica.Codigo;
+                                        TableroOriginal[posTorre[0], posTorre[1]] = FichaMagica.Codigo;
                                     }
 
                                     contador = 1;
