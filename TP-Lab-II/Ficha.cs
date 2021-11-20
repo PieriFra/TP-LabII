@@ -266,7 +266,64 @@ namespace TP_Lab_II
                 Rand = new Random();
                 do
                 {
-                    //generamos una pos aleatoria dentro de los limites establecidos
+                    int op = Rand.Next(1, 5);
+                    if(op==1) //col 1 
+                    {
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        int Pos_I = Rand.Next(1, 7);
+                        //int Pos_J = Rand.Next(1, 7);
+
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.TableroOriginal[Pos_I, 1] == 0)
+                        {
+                            //si esta libre, ponemos la ficha en la nueva pos
+                            TableroOriginal.TableroOriginal[Pos_I, 1] = this.Codigo;
+                            cont++; //contamos un cambio
+                        }
+                    }
+                    if (op == 2) //col 6
+                    {
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        int Pos_I = Rand.Next(1, 7);
+                        //int Pos_J = Rand.Next(1, 7);
+
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.TableroOriginal[Pos_I, 6] == 0)
+                        {
+                            //si esta libre, ponemos la ficha en la nueva pos
+                            TableroOriginal.TableroOriginal[Pos_I, 6] = this.Codigo;
+                            cont++; //contamos un cambio
+                        }
+                    }
+                    if (op == 3) //fila 6
+                    {
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        //int Pos_I = Rand.Next(1, 7);
+                        int Pos_J = Rand.Next(1, 7);
+
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.TableroOriginal[6, Pos_J] == 0)
+                        {
+                            //si esta libre, ponemos la ficha en la nueva pos
+                            TableroOriginal.TableroOriginal[6, Pos_J] = this.Codigo;
+                            cont++; //contamos un cambio
+                        }
+                    }
+                    if (op == 4) //fila 6
+                    {
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        //int Pos_I = Rand.Next(1, 7);
+                        int Pos_J = Rand.Next(1, 7);
+
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.TableroOriginal[1, Pos_J] == 0)
+                        {
+                            //si esta libre, ponemos la ficha en la nueva pos
+                            TableroOriginal.TableroOriginal[1, Pos_J] = this.Codigo;
+                            cont++; //contamos un cambio
+                        }
+                    }
+                    /*generamos una pos aleatoria dentro de los limites establecidos
                     int Pos_I = Rand.Next(1, 7);
                     int Pos_J = Rand.Next(1, 7);
 
@@ -276,7 +333,7 @@ namespace TP_Lab_II
                         //si esta libre, ponemos la ficha en la nueva pos
                         TableroOriginal.TableroOriginal[Pos_I, Pos_J] = this.Codigo;
                         cont++; //contamos un cambio
-                    }
+                    }*/
 
                 } while (cont == 0);
 
@@ -320,11 +377,12 @@ namespace TP_Lab_II
                 cont = 0;
                 TableroOriginal.TableroOriginal[pos_org[0], pos_org[1]] = ficha_aux.Codigo; //ponemos en 0 la posicion que ocupa
                 Rand = new Random();
-                int op = Rand.Next(1,5);
-
-                if (op == 1) //col 2
+                
+                do
                 {
-                    do
+                    int op = Rand.Next(1, 5);
+
+                    if (op == 1) //col 2
                     {
                         //generamos una pos aleatoria dentro de los limites establecidos
                         int Pos_I = Rand.Next(2, 6);
@@ -333,23 +391,81 @@ namespace TP_Lab_II
                         //preguntamos si la poscion esta libre 
                         if (TableroOriginal.TableroOriginal[Pos_I, 2] == 0)
                         {
-                            if (Pos_I % 2 == 0 && Pos_J % 2 == 0)
+                            if (Pos_I % 2 == 0)
                             {
                                 //si esta libre, ponemos la ficha en la nueva pos
-                                TableroOriginal.TableroOriginal[Pos_I, Pos_J] = this.Codigo;
+                                TableroOriginal.TableroOriginal[Pos_I, 2] = this.Codigo;
                                 cont++; //contamos un cambio
                             }
-                            if (Pos_I % 2 != 0 && Pos_J % 2 != 0)
+
+                        }
+
+
+                    }
+                    if (op == 2) //col 5
+                    {
+
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        int Pos_I = Rand.Next(2, 6);
+                        //int Pos_J = Rand.Next(2, 6);
+
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.TableroOriginal[Pos_I, 5] == 0)
+                        {
+                            if (Pos_I % 2 != 0)
                             {
                                 //si esta libre, ponemos la ficha en la nueva pos
-                                TableroOriginal.TableroOriginal[Pos_I, Pos_J] = this.Codigo;
+                                TableroOriginal.TableroOriginal[Pos_I, 5] = this.Codigo;
                                 cont++; //contamos un cambio
                             }
                         }
 
-                    } while (cont == 0);
-                }
-                do
+
+
+                    }
+                    if (op == 3) //fila 2
+                    {
+
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        //int Pos_I = Rand.Next(2, 6);
+                        int Pos_J = Rand.Next(2, 6);
+
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.TableroOriginal[2, Pos_J] == 0)
+                        {
+                            if (Pos_J % 2 == 0)
+                            {
+                                //si esta libre, ponemos la ficha en la nueva pos
+                                TableroOriginal.TableroOriginal[2, Pos_J] = this.Codigo;
+                                cont++; //contamos un cambio
+                            }
+                        }
+
+
+                    }
+                    if (op == 4) //fila 5
+                    {
+
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        //int Pos_I = Rand.Next(2, 6);
+                        int Pos_J = Rand.Next(2, 6);
+
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.TableroOriginal[5, Pos_J] == 0)
+                        {
+                            if (Pos_J % 2 != 0)
+                            {
+                                //si esta libre, ponemos la ficha en la nueva pos
+                                TableroOriginal.TableroOriginal[5, Pos_J] = this.Codigo;
+                                cont++; //contamos un cambio
+                            }
+                        }
+
+
+                    }
+                } while (cont == 0);
+
+                /*do
                 {
                     //generamos una pos aleatoria dentro de los limites establecidos
                     int Pos_I = Rand.Next(2, 6);
@@ -372,7 +488,7 @@ namespace TP_Lab_II
                         }
                     }
 
-                } while (cont == 0);
+                } while (cont == 0);*/
 
             }
 
@@ -386,7 +502,69 @@ namespace TP_Lab_II
 
                 do
                 {
-                    //generamos una pos aleatoria dentro de los limites establecidos
+                    int op = Rand.Next(1, 5);
+
+                    if (op == 1) //col 1
+                    { 
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        int Pos_I = Rand.Next(1, 7);
+                        //int Pos_J = Rand.Next(1, 7);
+
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.TableroOriginal[Pos_I, 2] == 0)
+                        {
+                            //si esta libre, ponemos la ficha en la nueva pos
+                            TableroOriginal.TableroOriginal[Pos_I, 2] = this.Codigo;
+                            cont++; //contamos un cambio
+                        }
+
+                    }
+                    if (op == 2) //col 6
+                    {
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        int Pos_I = Rand.Next(1, 7);
+                        //int Pos_J = Rand.Next(1, 7);
+
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.TableroOriginal[Pos_I, 5] == 0)
+                        {
+                            //si esta libre, ponemos la ficha en la nueva pos
+                            TableroOriginal.TableroOriginal[Pos_I, 5] = this.Codigo;
+                            cont++; //contamos un cambio
+                        }
+
+                    }
+                    if (op == 3) //fila 1
+                    {
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        //int Pos_I = Rand.Next(1, 7);
+                        int Pos_J = Rand.Next(1, 7);
+
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.TableroOriginal[2, Pos_J] == 0)
+                        {
+                            //si esta libre, ponemos la ficha en la nueva pos
+                            TableroOriginal.TableroOriginal[2, Pos_J] = this.Codigo;
+                            cont++; //contamos un cambio
+                        }
+
+                    }
+                    if (op == 4) //fila 6
+                    {
+                        //generamos una pos aleatoria dentro de los limites establecidos
+                        //int Pos_I = Rand.Next(1, 7);
+                        int Pos_J = Rand.Next(1, 7);
+
+                        //preguntamos si la poscion esta libre 
+                        if (TableroOriginal.TableroOriginal[5, Pos_J] == 0)
+                        {
+                            //si esta libre, ponemos la ficha en la nueva pos
+                            TableroOriginal.TableroOriginal[5, Pos_J] = this.Codigo;
+                            cont++; //contamos un cambio
+                        }
+
+                    }
+                    /*generamos una pos aleatoria dentro de los limites establecidos
                     int Pos_I = Rand.Next(1, 7);
                     int Pos_J = Rand.Next(1, 7);
 
@@ -396,7 +574,7 @@ namespace TP_Lab_II
                         //si esta libre, ponemos la ficha en la nueva pos
                         TableroOriginal.TableroOriginal[Pos_I, Pos_J] = this.Codigo;
                         cont++; //contamos un cambio
-                    }
+                    }*/
 
                 } while (cont == 0);
 
