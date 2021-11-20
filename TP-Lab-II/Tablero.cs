@@ -173,11 +173,41 @@ namespace TP_Lab_II
                                 }
                             }
                         }
-
-                        TableroOriginal[4, 3] = 1;
-                        TableroOriginal[3, 3] = 3;
-                        TableroOriginal[4, 4] = 2;
+                        int codigo;
+                        if(TableroOriginal[4, 3]==0)
+                            TableroOriginal[4, 3] = 1;
+                        else
+                        {
+                            codigo = TableroOriginal[4, 3];
+                            TableroOriginal[5, 3] = codigo;
+                            TableroOriginal[4, 3] = 1;
+                        }
+                        if (TableroOriginal[4, 4] == 0)
+                            TableroOriginal[4, 4] = 2;
+                        else
+                        {
+                            codigo = TableroOriginal[5,4];
+                            TableroOriginal[5, 4] = codigo;
+                            TableroOriginal[4, 4] = 2;
+                        }
+                      
+                        if (TableroOriginal[3, 3] == 0)
+                            TableroOriginal[3, 3] = 3;
+                        else
+                        {
+                            codigo = TableroOriginal[3, 3];
+                            TableroOriginal[2, 3] = codigo;
+                            TableroOriginal[3, 3] = 3;
+                        }
                         TableroOriginal[3, 4] = 8;
+                        if (TableroOriginal[3, 4] == 0)
+                            TableroOriginal[3, 4] = 8;
+                        else
+                        {
+                            codigo = TableroOriginal[3, 4];
+                            TableroOriginal[2, 4] = codigo;
+                            TableroOriginal[3, 4] = 8;
+                        }
 
                     }
 
