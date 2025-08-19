@@ -1,4 +1,5 @@
 # Tromino Tiling – Chessboard Coverage Problem (Lab II)
+
 ♟️ **Academic project for Programming Laboratory II**  
 This repository contains a C# implementation of the **Chessboard Coverage Problem** (also known as the **Tromino Tiling Problem**).  
 The project was developed as a game-like application to practice **algorithm design and recursive programming**.
