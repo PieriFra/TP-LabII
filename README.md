@@ -1,52 +1,66 @@
-# OpAmp Workshop (Lab II)
+# Tromino Tiling – Chessboard Coverage Problem (Lab II)
+♟️ **Academic project for Programming Laboratory II**  
+This repository contains a C# implementation of the **Chessboard Coverage Problem** (also known as the **Tromino Tiling Problem**).  
+The project was developed as a game-like application to practice **algorithm design and recursive programming**.
+---
 
-**Academic assignment for Electronic Circuit Simulation using C#**
+## 📖 Problem Description
+The **Chessboard Coverage Problem** consists of:
+- A chessboard of size `2^n x 2^n`.
+- One arbitrary missing square.
+- The goal is to cover the entire board with **L-shaped tromino tiles** (three squares connected in an “L” shape), without overlapping and leaving only the missing square uncovered.
+
+This problem is a classic example for practicing **divide-and-conquer algorithms** and recursive thinking.
 
 ---
 
-##  Project Overview
-
-This repository contains the files and code for the **Lab II assignment**, focused on designing and simulating operational amplifier (OpAmp) circuits using C#. Includes:
-- Visual Studio solution (`TP-Lab-II.sln`) and project files.
-- PDF guides and documentation:
-  - **Guía de Ejercicios N2 – OpAmp.pdf** – circuit exercises and objectives.
-  - **TP2021.pdf** – assignment specifications and methodologies.
-  - **WindowsForms_TP.pdf** – instructions for the Windows Forms interface.
-- **Pierina_Inveninato.txt** – personal notes or reflections.
+## 🚀 Project Objectives
+- Implement the **recursive algorithm** to solve the tiling problem.
+- Visualize the solution on a chessboard through a **Windows Forms application**.
+- Apply programming concepts learned in **Programming Laboratory II**.
 
 ---
 
-##  Getting Started
+## 🛠️ Tech Stack
+- **Language:** C#  
+- **Framework:** .NET Framework (Windows Forms)  
+- **IDE:** Visual Studio  
 
+---
+
+## 📂 Repository Structure
+| File / Folder          | Description                                     |
+|------------------------|-------------------------------------------------|
+| `TP-Lab-II.sln`        | Visual Studio solution file                     |
+| `*.cs`                 | C# source code implementing the algorithm       |
+| `*.pdf`                | Assignment description and university guides    |
+| `Ejemplo_Wind`         | Example project files / resources               |
+| `Pierina_Inveninato.txt` | Personal notes and reflections                 |
+
+---
+
+## 🎮 How to Run
 1. **Clone the repository**  
    ```bash
-   git clone https://github.com/PieriFra/OpAmp-Workshop.git
+   git clone https://github.com/PieriFra/Tromino-Tiling.git
    
 2. Open in Visual Studio:
 Load TP-Lab-II.sln.
 
 3. Build the solution:
- - .NET Framework version: [specify your version here]
- - Restore NuGet packages if necessary.
+Ensure the correct .NET Framework version is installed (e.g., .NET Framework 4.x).
 
 4. Run the application:
-Explore the UI and test the functionalities.
+ - Choose a board size 2^n x 2^n.
+ - Select the missing square.
+ - Watch the algorithm cover the board step by step.
 
-## Key Features
- - C# application with Windows Forms, simulating OpAmp circuits.
- - Includes well-structured documentation and instructions.
- - Intended for students learning analog circuits and programming integration.
+## 🌱 Learning Outcomes
+ - Applying divide-and-conquer techniques.
+ - Implementing recursive algorithms in C#.
+ - Visualizing abstract algorithmic problems through a simple game interface.
 
-## Project Structure
-| File / Folder            | Description                         |
-| ------------------------ | ----------------------------------- |
-| `TP-Lab-II.sln`          | Visual Studio solution file         |
-| `*.pdf`                  | Guides and documentation            |
-| `Pierina_Inveninato.txt` | Personal notes and insights         |
-| `Ejemplo_Wind` folder    | Example files or supplementary code |
-
-## Next Steps
-Consider adding:
- - Screenshots of the application UI or example output.
- - Brief instructions to use or test the app.
- - Future improvements or known limitations.
+## 📸 Future Improvements
+- Add color-coded tiles for better visualization.
+- Allow step-by-step animation of the recursive process.
+- Extend to other tiling or covering problems.
